@@ -1,0 +1,59 @@
+@import '../../../../scss/vars';
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px;
+  border-radius: 15px;
+  background-color: $black-light-1;
+  transition: all .2s;
+
+  .line {
+    position: absolute;
+    left: 0;
+
+    width: 4px;
+    height: 24px;
+    border-radius: 10px;
+    background-color: $green;
+
+    transition: all .2s;
+
+    opacity: 0;
+  }
+
+  .image {
+    width: 30px;
+    height: 30px;
+    fill: $black-light-5;
+    transition: all .2s;
+
+  }
+
+  .text {
+    font-size: $fs-20;
+    color: $black-light-5;
+    transition: all .2s;
+  }
+}
+
+.link:hover, .active {
+  background-color: $black-light-2;
+
+  .image {
+    fill: $white;
+  }
+
+  .text {
+    color: $white;
+  }
+}
+
+.active {
+  .line {
+    opacity: 1;
+  }
+}

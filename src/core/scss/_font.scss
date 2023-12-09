@@ -1,0 +1,21 @@
+@import "mixins/font-face";
+
+// =======
+// GOTHAM
+// =======
+@include font('Gotham-Black', '../static/font/Gotham/Gotham-Black.ttf');
+
+@include font('Gotham-Bold', '../static/font/Gotham/Gotham-Bold.ttf');
+@include font('Gotham-BoldItalic', '../static/font/Gotham/Gotham-BoldItalic.ttf');
+
+@include font('Gotham-Medium', '../static/font/Gotham/Gotham-Medium.ttf');
+@include font('Gotham-MediumItalic', '../static/font/Gotham/Gotham-MediumItalic.ttf');
+
+@include font('Gotham-Book', '../static/font/Gotham/Gotham-Book.ttf');
+@include font('Gotham-BookItalic', '../static/font/Gotham/Gotham-BookItalic.ttf');
+
+
+// =======
+// RUSSO-ONE
+// =======
+@include font('RussoOne', '../static/font/RussoOne/RussoOne-Regular.ttf');
