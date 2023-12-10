@@ -1,7 +1,13 @@
-export type IItemLeftMenu = {
+export type Path = {
     title: string
-    image: string
     to: string
 }
 
-export type IItemLeftMenuRedux = IItemLeftMenu
+// REDUX
+export type PathRedux = Path;
+
+export type PathToIndexRedux = {
+    path: Path
+    index: number
+};
+

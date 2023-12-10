@@ -7,8 +7,12 @@ const MainRouter = () => {
     return (
         <MainLayout>
             <Routes>
-                {mainRoutes.map(({ path, element }) => {
-                    return <Route key={path} path={path} element={element} />
+                {mainRoutes.map(({ route }) => {
+                    return (
+                        <Route key={route.path} 
+                                path={route.path} 
+                                element={route.element} />
+                    )
                 })}
             </Routes>
         </MainLayout>

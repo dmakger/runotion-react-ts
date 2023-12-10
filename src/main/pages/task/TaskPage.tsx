@@ -5,6 +5,10 @@ import {TaskItemLeftMenu} from "core/entity/LeftMenu/data/data";
 const TaskPage = () => {
     useActionCreators().setLeftMenu(TaskItemLeftMenu)
 
+
+
+    useActionCreators().setPathByIndex()
+
     return (
         <div>
             <p>TaskPage</p>

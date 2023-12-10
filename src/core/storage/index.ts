@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {LeftMenuReducer} from "core/entity/LeftMenu/slice/slice";
+import { PathReducer } from "core/entity/Path/slice/slice";
 
 const rootReducer = combineReducers({
-    leftMenu: LeftMenuReducer
+    leftMenu: LeftMenuReducer,
+    path: PathReducer,
 })
 
 export const setupStore = () => {

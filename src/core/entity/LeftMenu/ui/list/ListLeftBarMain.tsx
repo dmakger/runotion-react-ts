@@ -17,7 +17,7 @@ const ListLeftBarMain = ({className}: ListLeftBarMainProps) => {
     return (
         <div className={cls(className, cl.list)}>
             {DATA_LEFT_MENU.map((it, index) => (
-                <ItemListLeftBarMain item={it}
+                <ItemListLeftBarMain item={it} key={index}
                                      isActive={index === activeIndex}/>
             ))}
         </div>
