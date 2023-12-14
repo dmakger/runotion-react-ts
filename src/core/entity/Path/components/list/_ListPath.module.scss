@@ -1,0 +1,12 @@
+@import "core/scss/vars";
+
+
+.block {
+  display: flex;
+  gap: 10px;
+
+  .sep {
+    color: $black-light-5;
+    font-size: 20px;
+  }
+}

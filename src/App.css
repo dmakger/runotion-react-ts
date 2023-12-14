@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+/* ВЫДЕЛЕНИЕ ТЕКСТА */
+::selection {
+  background: #07BF85; /* Safari */
+  color: #FFF;
+}
+::-moz-selection {
+  background: #07BF85; /* Firefox */
+  color: #FFF;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

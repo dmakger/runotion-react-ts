@@ -9,10 +9,9 @@ interface PathProps {
 
 const Path = ({className=''}: PathProps) => {
     const path = useAppSelector(state => state.path)
-    console.log(path);
     
     return (
-        <ListPath list={path} />
+        <ListPath list={path}  className={className}/>
     );
 };
 

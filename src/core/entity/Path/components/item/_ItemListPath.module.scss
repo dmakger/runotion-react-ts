@@ -3,4 +3,9 @@
 .path {
     color: $black-light-5;
     font-size: 20px;
+    transition: all .2s;
+
+    &:hover {
+        color: white;
+    }
 }

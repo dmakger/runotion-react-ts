@@ -3,7 +3,7 @@ import { RouteProps } from "react-router-dom"
 export type TRoute = {
     key: string
     route: RouteProps
-    title: string
+    title?: string
     parent?: TRoute
 }
 

@@ -1,10 +1,14 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {LeftMenuReducer} from "core/entity/LeftMenu/slice/slice";
 import { PathReducer } from "core/entity/Path/slice/slice";
+import {ToggleSwitchReducer} from "core/widget/ToggleSwitch/slice/slice";
+import {FunctionTopLineReducer} from "core/widget/FunctionTopLine/slice/slice";
 
 const rootReducer = combineReducers({
     leftMenu: LeftMenuReducer,
     path: PathReducer,
+    functionTopLine: FunctionTopLineReducer,
+    toggleSwitch: ToggleSwitchReducer,
 })
 
 export const setupStore = () => {

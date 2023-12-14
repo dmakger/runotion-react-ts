@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {PathRedux, PathToIndexRedux} from "../model/model";
 import { TRoute, TRouteRedux } from "core/entity/Route/model/model";
 
 const initialState: TRouteRedux[] = []
@@ -11,6 +10,7 @@ export const PathSlice = createSlice({
         setPath(state, action: PayloadAction<TRoute[]>) {
             const data = action.payload
             state = [...data]
+            return [...data]
         },
 
         push(state, action: PayloadAction<TRoute>) {
@@ -29,13 +29,13 @@ export const PathSlice = createSlice({
             } 
         },
 
-        setSmart(state, action: PayloadAction<TRoute>) {
-            const data = action.payload
-            state = [data, ...state]
-            if (data.parent) {
-                this.setSmart(state, data.parent)
-            }
-        }
+        // setSmart(state, action: PayloadAction<TRoute>) {
+        //     const data = action.payload
+        //     state = [data, ...state]
+        //     if (data.parent) {
+        //         this.setSmart(state, data.parent)
+        //     }
+        // }
 
         // setPathByIndex(state, action: PayloadAction<PathToIndexRedux>) {
         //     const {path, index} = action.payload
