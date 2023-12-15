@@ -1,0 +1,17 @@
+@import "../../../scss/vars";
+
+.button {
+  margin: 0 auto;
+}
+
+.message {
+  margin: 10px auto auto;
+}
+
+.success {
+  color: $green;
+}
+
+.error {
+  color: $red;
+}

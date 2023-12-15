@@ -1,9 +1,10 @@
 import React from 'react';
+import TaskTable from "core/tables/Task/ui/TaskTable";
 
 const TaskListPage = () => {
     return (
         <div>
-            <p>List TaskPage</p>
+            <TaskTable />
         </div>
     );
 };

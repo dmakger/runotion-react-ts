@@ -10,7 +10,9 @@ export const getCurrentURL = () => {
     return window.location.pathname
 }
 
-export const isCurrentURL = (url: string) => {
+export const isCurrentURL = (url: string | undefined) => {
+    if (!url) return false
+
     let _url = url;
     if (!_url.startsWith('/'))
         _url = '/' + _url

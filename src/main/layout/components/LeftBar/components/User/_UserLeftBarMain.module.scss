@@ -1,0 +1,36 @@
+@import "core/scss/vars";
+
+.block {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 20px);
+  gap: 15px;
+  padding: 10px 15px;
+  transition: all .2s;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $black-light-2;
+  }
+
+  .image {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-size: 24px;
+    }
+    .department {
+      font-size: 13px;
+      color: $black-light-5;
+    }
+  }
+}

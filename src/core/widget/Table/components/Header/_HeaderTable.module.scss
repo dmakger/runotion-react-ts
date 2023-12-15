@@ -1,0 +1,13 @@
+@import "core/scss/vars";
+
+
+.line {
+  border-radius: 0 !important;
+  border-bottom: 2px solid $black-light-3;
+  padding-top: 10px !important;
+  padding-bottom: 15px !important;
+
+  &:hover {
+    background-color: $black-light-2 !important;
+  }
+}

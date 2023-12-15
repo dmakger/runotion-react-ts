@@ -1,0 +1,22 @@
+@import "core/scss/vars";
+
+.cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+
+  .image {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .title {
+    font-weight: 500;
+  }
+
+  .empty {
+    color: $black-light-5;
+  }
+}

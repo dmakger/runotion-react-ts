@@ -1,3 +1,45 @@
+@font-face {
+    font-family: "Gotham-Black";
+    src: url("core/static/font/Gotham/Gotham-Black.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gotham-Bold";
+    src: url("core/static/font/Gotham/Gotham-Bold.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Gotham-BoldItalic";
+    src: url("core/static/font/Gotham/Gotham-BoldItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gotham-Medium";
+    src: url("core/static/font/Gotham/Gotham-Medium.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Gotham-MediumItalic";
+    src: url("core/static/font/Gotham/Gotham-MediumItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gotham-Book";
+    src: url("core/static/font/Gotham/Gotham-Book.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Gotham-BookItalic";
+    src: url("core/static/font/Gotham/Gotham-BookItalic.ttf");
+    font-display: swap;
+}
+
+
+
+/*==========================*/
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -43,4 +85,9 @@ img {
     -moz-user-select: none; /* Отключение выделения для Firefox */
     -ms-user-select: none; /* Отключение выделения для Internet Explorer */
     user-select: none; /* Стандартный синтаксис */
+}
+
+button {
+    outline: none;
+    border: none;
 }

@@ -1,0 +1,18 @@
+@import "core/scss/vars";
+
+.line {
+  display: flex;
+  gap: 10px;
+  padding: 5px 20px;
+  width: 100%;
+  border-radius: 10px;
+  transition: all .1s;
+
+  &:hover {
+    background-color: $black-light-3;
+  }
+
+  > * {
+    flex-grow: 1;
+  }
+}

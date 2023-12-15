@@ -1,11 +1,11 @@
 import React, {ReactNode, useEffect} from 'react';
 import cl from './_MainLayout.module.scss'
-import LeftBarMain from "main/layout/components/LeftBar/LeftBarMain";
+import LeftBarMain from "main/layout/components/LeftBar/ui/LeftBarMain";
 import Path from 'core/entity/Path/ui/Path';
 import {useAppSelector} from "core/storage/hooks";
 import {useDispatch} from "react-redux";
 import {TRoute} from "core/entity/Route/model/model";
-import H1 from "core/components/h/1/H1";
+import H1 from "core/components/H/1/H1";
 import FunctionTopLine from "core/widget/FunctionTopLine/ui/FunctionTopLine";
 
 interface MainLayoutProps {

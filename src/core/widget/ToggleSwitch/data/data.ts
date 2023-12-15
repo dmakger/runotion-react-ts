@@ -10,7 +10,7 @@ export const TaskListItemToggleSwitch: IToggleSwitch = {
 
 
 export const TaskGantItemToggleSwitch: IToggleSwitch = {
-    title: 'Гант',
+    title: 'Кабан',
     to: TASK_GANT__MAIN_URL,
     isActive: false
 }

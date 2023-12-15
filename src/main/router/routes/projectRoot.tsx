@@ -1,6 +1,6 @@
 import { TRoute } from "core/entity/Route/model/model";
 import { ALL_PROJECT__MAIN_URL } from "../urlRouter";
-import ProjectPage from "main/pages/project/ProjectPage";
+import ProjectPage from "main/pages/Project/ProjectPage";
 
 // PROJECTS
 export const PROJECT__ROOT: TRoute = {

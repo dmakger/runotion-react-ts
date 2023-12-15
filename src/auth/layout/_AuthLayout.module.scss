@@ -1,0 +1,24 @@
+@import "core/scss/vars";
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 840px;
+  width: 100%;
+  border-radius: 70px;
+  padding: 100px 100px 120px;
+  background-color: $black-light-2;
+
+  .title {
+    text-align: center;
+    font-size: 40px;
+    margin: auto auto 70px;
+  }
+}

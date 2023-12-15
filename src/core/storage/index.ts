@@ -3,12 +3,15 @@ import {LeftMenuReducer} from "core/entity/LeftMenu/slice/slice";
 import { PathReducer } from "core/entity/Path/slice/slice";
 import {ToggleSwitchReducer} from "core/widget/ToggleSwitch/slice/slice";
 import {FunctionTopLineReducer} from "core/widget/FunctionTopLine/slice/slice";
+import {UserReducer} from "core/entity/User/slice/UserSlice";
 
 const rootReducer = combineReducers({
     leftMenu: LeftMenuReducer,
     path: PathReducer,
     functionTopLine: FunctionTopLineReducer,
     toggleSwitch: ToggleSwitchReducer,
+
+    user: UserReducer,
 })
 
 export const setupStore = () => {
@@ -18,7 +21,6 @@ export const setupStore = () => {
             getDefaultMiddleware({
                 serializableCheck: false
             }).concat(
-
             ),
     })
 }
