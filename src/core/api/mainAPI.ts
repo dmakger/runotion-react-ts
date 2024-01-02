@@ -21,7 +21,8 @@ export function getHeaders(forAuth: boolean = false) {
 }
 
 
-export const getParams = (params: IParams) => {
+export const getParams = (params?: IParams) => {
+    if (params === undefined) return ''
     let paramsStr: string[] = []
     Object.entries(params).forEach(([key, value]) => {
         paramsStr.push(`${key}=${value}`)
@@ -29,7 +30,7 @@ export const getParams = (params: IParams) => {
 
     if (paramsStr.length > 0)
         return `?${paramsStr.join('&')}`
-    return paramsStr
+    return ''
 }
 
 export function getURL(url: string, params?: IParams) {

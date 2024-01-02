@@ -46,7 +46,7 @@ const LoginForm = ({className, ...resp}: LoginFormProps) => {
             setError(undefined)
             setSuccess('Успешный вход!')
             navigate(TASK__MAIN_URL)
-        }, () => {
+        }, () => {            
             setSuccess(undefined)
             setError('Неправильный логин или пароль')
         })

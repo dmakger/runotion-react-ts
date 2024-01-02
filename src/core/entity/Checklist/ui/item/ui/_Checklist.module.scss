@@ -1,0 +1,22 @@
+@import 'core/scss/vars';
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+    padding: 10px;
+    background-color: $black-light-3;
+    border-radius: 20px;
+
+    .top {
+        display: flex;
+        gap: auto;
+        padding: 10px;
+
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}

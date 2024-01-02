@@ -1,7 +1,7 @@
 import {getHeaders, getURL, request, URL_API} from "core/api/mainAPI";
 import {IArgsRequest, IRequest} from "core/api/model/model";
 
-const TASK_API = URL_API + '/task'
+export const TASK_API = URL_API + '/task'
 
 // TASKS
 export const getTasks = async (params: IArgsRequest["params"]) => {

@@ -6,6 +6,7 @@ import {cls} from "core/service/cls";
 import Modal from "core/modal/core/ui/Modal";
 import {IModal} from "core/modal/core/modal/modal";
 import SidebarTask from "core/modal/TaskDetail/components/sidebar/ui/SidebarTask";
+import LeftBarTask from '../components/leftbar/LeftBarTask';
 
 interface TaskDetailModalProps extends IModal {
     id?: number
@@ -14,7 +15,6 @@ interface TaskDetailModalProps extends IModal {
 
 const TaskDetailModal = ({ isVisible=false, setIsVisible, id, className }: TaskDetailModalProps) => {
     const [task, setTask] = useState<ITask | undefined>(undefined);
-
     useEffect(() => {
         if (id !== undefined) {
             getDetailTask({ id }).then(it => {
@@ -23,14 +23,12 @@ const TaskDetailModal = ({ isVisible=false, setIsVisible, id, className }: TaskD
         }
     }, [id]);
 
-    console.log(task);
-
     if (!id || !task)
         return null;
 
     return (
         <Modal isVisible={isVisible} setIsVisible={setIsVisible} className={cls(cl.block, className)}>
-            <h2 className={cl.title}>{task.name}</h2>
+            <LeftBarTask id={id} task={task} />
             <SidebarTask task={task} />
         </Modal>
     );

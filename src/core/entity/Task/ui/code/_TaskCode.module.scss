@@ -1,0 +1,14 @@
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .image {
+        width: 20px;
+        height: 20px;
+    }
+
+    .code {
+        font-size: 16px;
+    }
+}
