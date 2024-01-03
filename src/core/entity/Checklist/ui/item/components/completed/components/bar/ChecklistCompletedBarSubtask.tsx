@@ -14,8 +14,10 @@ const ChecklistCompletedBarSubtask = ({infoSubtask, className}: ChecklistComplet
     }
     return (
         <div className={cls(cl.bar, className)}>
-            {infoSubtask.completedList.map(isComplete => (
-                <div className={cls(cl.item, isComplete ? cl.completed : '')} style={styleItem} />
+            {infoSubtask.completedList.map((isComplete, index) => (
+                <div className={cls(cl.item, isComplete ? cl.completed : '')} 
+                     style={styleItem}
+                     key={index} />
             ))}
         </div>
     );

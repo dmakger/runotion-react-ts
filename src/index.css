@@ -91,3 +91,8 @@ button {
     outline: none;
     border: none;
 }
+
+input {
+    border: none;
+    outline: none;
+}

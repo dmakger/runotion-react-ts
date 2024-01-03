@@ -1,0 +1,51 @@
+@import "core/scss/vars";
+
+.subtask {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+
+    .circle {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid $empty;
+        background-color: white;
+        transition: all .2s;
+
+        &:hover {
+            border-color: $green;
+        }
+    
+        .fillCircle {
+          width: 100%;
+          height: 100%;
+          background-color: $green;
+          border: 2px solid white;
+          border-radius: 50%;
+          opacity: 0;
+          transition: all .1s;
+        }
+      }
+
+    .text {
+        background-color: $black-light-3;
+        margin-left: 10px;
+        width: 100%;
+    }
+}
+
+.completed {
+    .circle {
+        background-color: $green-light;
+        
+        .fillCircle {
+            opacity: 1;
+        }
+    }
+    .text {
+        text-decoration: line-through;
+    }
+}

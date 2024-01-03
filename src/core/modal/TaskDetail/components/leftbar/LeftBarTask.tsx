@@ -33,7 +33,7 @@ const LeftBarTask = ({id, task, className}: LeftBarTaskProps) => {
             </div>
             <div className={cl.checklists}>
                 {checklists.map(it => (
-                    <Checklist checklist={it} />
+                    <Checklist checklist={it} key={it.id}/>
                 ))}
             </div>
         </div>

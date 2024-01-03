@@ -1,0 +1,13 @@
+@import "core/scss/vars";
+
+.list {
+    display: flex;
+    flex-direction: column;
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: $black-light-4;
+        border-radius: 2px;
+    }
+}
