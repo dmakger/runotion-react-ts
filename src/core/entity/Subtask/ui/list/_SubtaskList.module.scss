@@ -3,11 +3,32 @@
 .list {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    transition: all .2s;
 
     .line {
         width: 100%;
         height: 1px;
         background-color: $black-light-4;
         border-radius: 2px;
+    }
+
+    .newSubtask {
+        margin-top: 5px;
+        display: flex;
+        border-radius: 20px;
+
+        background-color: $black-light-3;
+        padding: 10px;
+        transition: all .2s;
+
+        &:hover {
+            background-color: $black-light-4;
+            padding-left: 15px;
+        }
+
+        .text {
+            transition: all .2s;
+        }
     }
 }

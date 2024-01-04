@@ -13,7 +13,9 @@ const ChecklistCompletedSubtask = ({infoSubtask, className=''}: ChecklistComplet
     return (
         <div className={cls(cl.block, className)}>
             <ChecklistCompletedBarSubtask infoSubtask={infoSubtask}/>
-            <span>Выполнено: {infoSubtask.completed} из {infoSubtask.all}</span>
+            {infoSubtask.all > 0 &&
+                <span className={cl.text}>Выполнено: {infoSubtask.completed} из {infoSubtask.all}</span>
+            }
         </div>
     );
 };

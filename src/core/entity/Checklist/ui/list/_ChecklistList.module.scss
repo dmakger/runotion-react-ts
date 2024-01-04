@@ -1,0 +1,35 @@
+@import "core/scss/vars";
+
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  height: fit-content;
+  max-height: calc(100% - 108px);
+  overflow-y: auto;
+
+  .creationChecklist {
+    background-color: $black-light-3;
+    padding: 5px;
+    border-radius: 20px;
+
+    span {
+      padding: 10px;
+      width: 100%;
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .2s;
+    }
+
+    &:hover {
+      span {
+        background-color: $black-light-4;
+      }
+    }
+  }
+}

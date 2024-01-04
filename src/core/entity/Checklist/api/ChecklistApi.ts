@@ -8,7 +8,7 @@ const _getChecklistURL = (taskId?: number, checklistId?: number) => {
     return `${TASK_API}/${taskId}/checklist`
 }
 
-// TASKS
+// ALL
 export const getChecklist = async (taskId: number, params?: IArgsRequest["params"]) => {
     const url = `${_getChecklistURL(taskId)}/${getParams(params)}`
     return await request({
@@ -18,6 +18,18 @@ export const getChecklist = async (taskId: number, params?: IArgsRequest["params
     } as IRequest)
 }
 
+// CREATE
+export const createChecklistAPI = async (taskId: number) => {
+    const url = `${_getChecklistURL(taskId)}/create/`
+    return await request({
+        method: 'POST',
+        url: getURL(url),
+        headers: getHeaders(true),
+        body: undefined
+    } as IRequest)
+}
+
+// UPDATE
 export const updateChecklist = async (checklistId: number, {body, params}: IArgsRequest) => {
     const url = `${_getChecklistURL(undefined, checklistId)}/update/${getParams(params)}`
     return await request({
@@ -25,5 +37,16 @@ export const updateChecklist = async (checklistId: number, {body, params}: IArgs
         url: getURL(url, params),
         headers: getHeaders(true),
         body: JSON.stringify(body)
+    } as IRequest)
+}
+
+// DELETE
+export const deleteChecklistAPI = async (checklistId: number) => {
+    const url = `${_getChecklistURL(undefined, checklistId)}/delete/`
+    return await request({
+        method: 'DELETE',
+        url: getURL(url),
+        headers: getHeaders(true),
+        body: undefined
     } as IRequest)
 }

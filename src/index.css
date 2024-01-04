@@ -85,6 +85,7 @@ img {
     -moz-user-select: none; /* Отключение выделения для Firefox */
     -ms-user-select: none; /* Отключение выделения для Internet Explorer */
     user-select: none; /* Стандартный синтаксис */
+    display: -webkit-box;
 }
 
 button {

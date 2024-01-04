@@ -1,4 +1,11 @@
 .block {
     display: flex;
     gap: 20px;
+
+    .text {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 }

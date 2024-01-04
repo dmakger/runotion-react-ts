@@ -6,7 +6,7 @@ export interface ISubtask {
     name: string
     position?: number
     created_at: string
-    completed_at?: string
+    completed_at?: string | null
 }
 
 // QUERY SUBTASK

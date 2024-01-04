@@ -44,13 +44,16 @@ export async function request({method, url, body, headers}: IRequest) {
         method: method,
         credentials: 'include',
         headers: getHeaders(),
-        body: body
+        body: body,
     }
+
     if (headers !== undefined) {
         data.headers = headers
     }
     const res = await fetch(url, data)
     if (res.ok) {
+        if (res.status === 204)
+            return null
         return await res.json();
     }
     return Promise.reject(res);
