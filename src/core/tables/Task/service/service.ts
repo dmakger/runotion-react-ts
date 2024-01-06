@@ -18,13 +18,18 @@ export const taskCellToTableContent = (task: ITask) => {
             image: task.director.image
         }, defaultText: 'Без постановщика'
     });
+
     const responsibleCell = objToCellTable({
         obj: {
             id: task.responsible?.id,
             title: task.responsible?.name,
             image: task.responsible?.image
-        }, defaultText: 'Без ответственного'
+        },
+        defaultText: 'Без ответственного'
     });
+
+    console.log(responsibleCell)
+
     const projectCell = objToCellTable({
         obj: {
             id: task.project.id,

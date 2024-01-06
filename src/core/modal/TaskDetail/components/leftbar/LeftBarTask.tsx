@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './_LeftBarTask.module.scss'
 import TaskCode from 'core/entity/Task/ui/code/TaskCode';
-import { IChecklist } from 'core/entity/Checklist/model/model';
-import { ITask } from 'core/entity/Task/model/model';
+import {IChecklist} from 'core/entity/Checklist/model/model';
+import {ITask} from 'core/entity/Task/model/model';
 import {createChecklistAPI, deleteChecklistAPI, getChecklist} from 'core/entity/Checklist/api/ChecklistApi';
-import { cls } from 'core/service/cls';
+import {cls} from 'core/service/cls';
 import ChecklistList from "core/entity/Checklist/ui/list/ChecklistList";
+import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 
 interface LeftBarTaskProps {
     id: number
@@ -15,10 +16,15 @@ interface LeftBarTaskProps {
 
 const LeftBarTask = ({id, task, className}: LeftBarTaskProps) => {
     const [checklists, setChecklists] = useState<IChecklist[]>([])
+    const [isLoadingChecklists, setIsLoadingChecklists] = useState(false)
 
     useEffect(() => {
+        setIsLoadingChecklists(true)
         getChecklist(id).then(r => {
-            setChecklists(r)
+            setChecklists(() => {
+                setIsLoadingChecklists(false)
+                return r
+            })
         })
     }, [id]);
 
@@ -40,11 +46,13 @@ const LeftBarTask = ({id, task, className}: LeftBarTaskProps) => {
         <div className={cls(cl.left, className)}>
             <div className={cl.top}>
                 <h2 className={cl.title}>{task.name}</h2>
-                <TaskCode code={task.code} className={cl.code}/>    
+                <TaskCode code={task.code} className={cl.code}/>
             </div>
-            <ChecklistList checklistList={checklists}
-                           createChecklist={createChecklist}
-                           deleteChecklist={deleteChecklist} />
+            <LoadingWrapper isLoading={isLoadingChecklists}>
+                <ChecklistList checklistList={checklists}
+                               createChecklist={createChecklist}
+                               deleteChecklist={deleteChecklist}/>
+            </LoadingWrapper>
         </div>
     );
 };

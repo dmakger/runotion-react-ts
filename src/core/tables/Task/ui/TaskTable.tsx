@@ -36,9 +36,8 @@ const TaskTable = ({className}: TaskTableProps) => {
     return (
         <>
             <TaskDetailModal isVisible={isVisible} setIsVisible={setIsVisible} id={activeID}/>
-            {tableData &&
-                <Table table={tableData} className={className}/>
-            }
+
+            <Table table={tableData} className={className}/>
         </>
     );
 };

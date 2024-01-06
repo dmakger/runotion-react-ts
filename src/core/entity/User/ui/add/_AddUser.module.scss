@@ -1,0 +1,16 @@
+@import "core/scss/vars";
+
+
+.block {
+  display: flex;
+
+  border-radius: 20px;
+  background-color: $black-light-3;
+  transition: all .2s;
+  //padding: 5px 17px 5px 15px;
+  padding: 10px 17px 10px 16px;
+
+  &:hover {
+    background-color: $black-light-4;
+  }
+}

@@ -13,6 +13,8 @@ export interface ITask {
     deadline?: string
     completed_at?: string
     responsible?: IUser,
+    collaborators?: IUser[],
+    observers?: IUser[],
 }
 
 

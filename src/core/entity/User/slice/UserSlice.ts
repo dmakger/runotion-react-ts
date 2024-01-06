@@ -1,12 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IAuthResponse, IUser} from "core/entity/User/model/model";
+import {getDefaultUserImage} from "core/entity/User/service/service";
 
 
 const initialState: IUser = {
     id: -1,
     name: '',
     username: '',
-    image: '',
+    image: getDefaultUserImage(),
     department: undefined
 }
 

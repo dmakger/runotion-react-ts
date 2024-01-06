@@ -12,7 +12,6 @@ interface ChecklistListProps {
 }
 
 const ChecklistList = ({checklistList, deleteChecklist, createChecklist, className=''}: ChecklistListProps) => {
-    console.log(checklistList)
 
     // НАЖАТИЕ НА СОЗДАНИЕ ЧЕКЛИСТА
     const handleOnClickCreating = () => {

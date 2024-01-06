@@ -1,8 +1,11 @@
 import React from 'react';
 import {cls} from "core/service/cls";
 import cl from './_SidebarTask.module.scss'
-import RowSidebarTask from "core/modal/TaskDetail/components/sidebar/components/row/RowSidebarTask";
 import {ITask} from "core/entity/Task/model/model";
+import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
+import TextBlockSidebarTask from "core/modal/TaskDetail/components/sidebar/components/block/text/TextBlockSidebarTask";
+import UsersBlockSidebarTask
+    from "core/modal/TaskDetail/components/sidebar/components/block/users/ui/UsersBlockSidebarTask";
 
 interface SidebarTaskProps {
     task?: ITask
@@ -10,12 +13,16 @@ interface SidebarTaskProps {
 }
 
 const SidebarTask = ({task, className}: SidebarTaskProps) => {
-    if (task === undefined)
-        return null
-
     return (
         <div className={cls(cl.block, className)}>
-            <RowSidebarTask title={'Крайний срок'} />
+            <LoadingWrapper isLoading={task === undefined}>
+                {task !== undefined &&
+                    <>
+                        <TextBlockSidebarTask task={task}/>
+                        <UsersBlockSidebarTask task={task}/>
+                    </>
+                }
+            </LoadingWrapper>
         </div>
     );
 };

@@ -1,0 +1,18 @@
+@import "core/scss/vars";
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .item {
+    justify-content: space-between;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+
+    .title {
+      color: $black-light-5;
+    }
+  }
+}

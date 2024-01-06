@@ -6,10 +6,11 @@ export interface ObjToCellTableProps {
 }
 
 export const objToCellTable = ({obj, defaultText}: ObjToCellTableProps) => {
+    let _image = obj.image
     return {
         id: obj.id,
         title: obj.title ? obj.title : defaultText,
-        image: obj.image,
+        image: _image,
         isEmpty: obj.isEmpty === undefined ? !obj.title : obj.isEmpty,
     } as ICellTable
 }

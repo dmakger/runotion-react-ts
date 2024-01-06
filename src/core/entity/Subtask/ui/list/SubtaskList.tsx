@@ -24,7 +24,6 @@ const SubtaskList = ({subtasks=[], createSubtask, isLoadingCreation=false, updat
     }
 
     const createSubtaskItem = () => {
-        console.log(isLoadingCreation)
         if (isLoadingCreation || !createSubtask) return
         createSubtask()
     }

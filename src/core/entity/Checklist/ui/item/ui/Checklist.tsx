@@ -26,7 +26,6 @@ const Checklist = ({checklist, deleteChecklist, isOpen=false, className=''}: Che
 
     // EFFECT
     useEffect(() => {
-        console.log(checklist)
         setChecklistLocal(checklist)
     }, [checklist])
 
@@ -87,8 +86,7 @@ const Checklist = ({checklist, deleteChecklist, isOpen=false, className=''}: Che
     return (
         <div className={cls(cl.block, className, isOpenChecklist ? cl.open : '')}>
             <div className={cl.top} onClick={toggleChecklist}>
-                <input
-                       value={checklistLocal.name}
+                <input value={checklistLocal.name}
                        type="textarea"
                        className={cl.title} onChange={e => handleOnChangeTitle(e.target.value)} />
                 <div className={cl.right}>

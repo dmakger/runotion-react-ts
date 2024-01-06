@@ -7,18 +7,25 @@ import Modal from "core/modal/core/ui/Modal";
 import {IModal} from "core/modal/core/modal/modal";
 import SidebarTask from "core/modal/TaskDetail/components/sidebar/ui/SidebarTask";
 import LeftBarTask from '../components/leftbar/LeftBarTask';
+import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 
 interface TaskDetailModalProps extends IModal {
     id?: number
     className?: string
 }
 
-const TaskDetailModal = ({ isVisible=false, setIsVisible, id, className }: TaskDetailModalProps) => {
+const TaskDetailModal = ({isVisible = false, setIsVisible, id, className}: TaskDetailModalProps) => {
     const [task, setTask] = useState<ITask | undefined>(undefined);
+    const [isLoadingTask, setIsLoadingTask] = useState(false);
+
     useEffect(() => {
+        setIsLoadingTask(true)
         if (id !== undefined) {
-            getDetailTask({ id }).then(it => {
-                setTask(it)
+            getDetailTask({id}).then(it => {
+                setTask(() => {
+                    setIsLoadingTask(false)
+                    return it
+                })
             })
         }
     }, [id]);
@@ -28,8 +35,12 @@ const TaskDetailModal = ({ isVisible=false, setIsVisible, id, className }: TaskD
 
     return (
         <Modal isVisible={isVisible} setIsVisible={setIsVisible} className={cls(cl.block, className)}>
-            <LeftBarTask id={id} task={task} />
-            <SidebarTask task={task} />
+            <LoadingWrapper isLoading={isLoadingTask} className={cl.loadingWrapper}>
+                <>
+                    <LeftBarTask id={id} task={task}/>
+                    <SidebarTask task={task}/>
+                </>
+            </LoadingWrapper>
         </Modal>
     );
 };
