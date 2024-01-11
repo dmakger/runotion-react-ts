@@ -2,6 +2,7 @@ import {TASK__MAIN_URL, TASK_GANT__MAIN_URL} from "main/router/urlRouter";
 import {IToggleSwitch} from "core/widget/ToggleSwitch/model/model";
 
 
+// TASK
 export const TaskListItemToggleSwitch: IToggleSwitch = {
     title: 'Список',
     to: TASK__MAIN_URL,
