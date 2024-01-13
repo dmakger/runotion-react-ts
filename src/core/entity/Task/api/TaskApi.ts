@@ -4,12 +4,14 @@ import {IArgsRequest, IRequest} from "core/api/model/model";
 export const TASK_API = URL_API + '/task'
 
 // TASKS
-export const getTasks = async (params: IArgsRequest["params"]) => {
+export const getTasks = async (params: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
     const url = `${TASK_API}/all/`
+    console.log(body)
     return await request({
-        method: 'GET',
+        method: 'POST',
         url: getURL(url, params),
         headers: getHeaders(true),
+        body: JSON.stringify(body),
     } as IRequest)
 }
 
@@ -24,7 +26,7 @@ export const getDetailTask = async (body: IArgsRequest["body"]) => {
 }
 
 
-// DETAIL TASK
+// CREATE TASK
 export const createTaskAPI = async (body: IArgsRequest["body"]) => {
     const url = `${TASK_API}/create/`
     return await request({

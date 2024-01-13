@@ -1,0 +1,28 @@
+@import "core/scss/vars";
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $black-light-2;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover {
+    background-color: $black-light-3;
+  }
+
+  .navigation {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .check {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

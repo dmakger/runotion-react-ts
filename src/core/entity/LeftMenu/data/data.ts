@@ -1,6 +1,6 @@
 import {IItemLeftMenuRedux} from "core/entity/LeftMenu/model/model";
 import ProjectSVG from "core/static/img/project-outlined.svg";
-import {ALL_PROJECT__MAIN_URL, CHART__MAIN_URL, TASK__MAIN_URL} from "main/router/urlRouter";
+import {PROJECT_ALL__MAIN_URL, CHART__MAIN_URL, TASK__MAIN_URL} from "main/router/urlRouter";
 import TaskSVG from "core/static/img/task-fill-white.svg";
 import ChartSVG from "core/static/img/chart-outlined.svg";
 
@@ -8,7 +8,7 @@ import ChartSVG from "core/static/img/chart-outlined.svg";
 export const ProjectItemLeftMenu: IItemLeftMenuRedux = {
     title: 'Проекты',
     image: ProjectSVG,
-    to: ALL_PROJECT__MAIN_URL,
+    to: PROJECT_ALL__MAIN_URL,
 }
 
 export const TaskItemLeftMenu: IItemLeftMenuRedux = {

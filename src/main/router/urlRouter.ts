@@ -1,5 +1,6 @@
 // ПРОЕКТЫ
-export const ALL_PROJECT__MAIN_URL = '/project/'
+export const PROJECT_ALL__MAIN_URL = '/project/'
+export const PROJECT__TASK__MAIN_URL = '/project/:projectId'
 
 
 // ЗАДАЧИ

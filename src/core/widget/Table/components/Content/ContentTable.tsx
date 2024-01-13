@@ -18,7 +18,7 @@ const ContentTable = ({content, onClick = () => {}, className}: ContentTableProp
         <tbody className={cls(cl.content, className)}>
             {content.map((line, index) => (
                 <React.Fragment key={index}>
-                    <LineTable line={line} className={cl.line} onClick={onClick}/>
+                    <LineTable line={line} className={cl.line} onClick={() => onClick(line)}/>
                     {index < line.line.length && <div className={cl.bottomLine}/>}
                 </React.Fragment>
             ))}

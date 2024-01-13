@@ -6,24 +6,35 @@ import {ITable} from "core/widget/Table/model/model";
 import {DATA_HEADER_TASK_TABLE} from "core/tables/Task/data/data";
 import {taskListToTableContent} from "core/tables/Task/service/service";
 import TaskDetailModal from "core/modal/TaskDetail/ui/TaskDetailModal";
+import cl from './_TaskTable.module.scss'
+import {cls} from "core/service/cls";
+import {IArgsRequest} from "core/api/model/model";
 
 interface TaskTableProps {
+    projectId?: number
     className?: string
 }
 
-const TaskTable = ({className}: TaskTableProps) => {
+const TaskTable = ({projectId, className}: TaskTableProps) => {
+    // STATE
     const [tableData, setTableData] = useState<ITable>()
     const [activeID, setActiveID] = useState<number>()
     const [isVisible, setIsVisible] = useState(false)
 
+    // FUNC
     const handleOnLineClick = (taskID: number | undefined = -1) => {
         if (taskID === -1) return
         setActiveID(taskID)
         setIsVisible(true)
     }
 
+    // EFFECT
     useEffect(() => {
-        getTasks(DATA_PARAMS_TASK).then(r => {
+        let body = {project_id: projectId} as IArgsRequest["body"]
+        if (projectId === undefined)
+            body = undefined
+        getTasks(DATA_PARAMS_TASK, body)
+            .then(r => {
             setTableData({
                 header: DATA_HEADER_TASK_TABLE,
                 content: taskListToTableContent(r.results),
@@ -37,7 +48,7 @@ const TaskTable = ({className}: TaskTableProps) => {
         <>
             <TaskDetailModal isVisible={isVisible} setIsVisible={setIsVisible} id={activeID}/>
 
-            <Table table={tableData} className={className}/>
+            <Table table={tableData} className={cls(cl.table, className)}/>
         </>
     );
 };

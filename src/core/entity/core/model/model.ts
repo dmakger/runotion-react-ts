@@ -6,3 +6,9 @@ export interface IQuery {
     currentPage: number,
     results: any[]
 }
+
+export interface IImportanceLevel {
+    id: number
+    name: string
+    value: number
+}

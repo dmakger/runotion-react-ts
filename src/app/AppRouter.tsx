@@ -11,10 +11,13 @@ import {IDepartment} from "core/entity/Department/model/model";
 
 
 const AppRouter = () => {
+
+    // FUNC
     const currentURL = getCurrentURL()
     const actionCreators = useActionCreators()
     const navigate = useNavigate()
 
+    // EFFECT
     useEffect(() => {
         refreshToken().then(r => {
             actionCreators.saveToken(r as IAuthResponse)
@@ -28,6 +31,7 @@ const AppRouter = () => {
             navigate(LOGIN__AUTH_URL)
         })
     }, [actionCreators, navigate])
+
 
 
     const getRouterToRender = () => {

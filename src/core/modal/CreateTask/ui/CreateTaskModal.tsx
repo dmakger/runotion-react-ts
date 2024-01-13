@@ -4,6 +4,7 @@ import cl from "./_CreateTaskModal.module.scss";
 import Modal from "core/modal/core/ui/Modal";
 import {IModal} from "core/modal/core/modal/modal";
 import {createTaskAPI} from "core/entity/Task/api/TaskApi";
+import SimpleListProject from "core/entity/Project/ui/simple/list/SimpleListProject";
 
 interface CreateTaskModalProps extends IModal {
     onClick?: Function
@@ -29,12 +30,9 @@ const CreateTaskModal = ({onClick = () => {}, setIsLoadingRequest = () => {}, is
     }
 
     return (
-        <Modal isVisible={isVisible} setIsVisible={setIsVisible} className={cls(cl.block, className)}>
+        <Modal title={'Создание задачи'} isVisible={isVisible} setIsVisible={setIsVisible} className={cls(cl.block, className)}>
             <div>
-                <h2>Создание задачи</h2>
-                <div className={cl.content}>
-
-                </div>
+                <SimpleListProject className={cl.content} />
                 <div className={cl.buttons}>
                     <button>
                         Добавить
