@@ -4,11 +4,11 @@ import cl from './_InputText.module.scss'
 import {ETypeInput, IInput} from "core/components/Input/model/model";
 
 
-const InputText = ({name, type=ETypeInput.TEXT, placeholder, className}: IInput) => {
+const InputText = ({name, type=ETypeInput.TEXT, placeholder, required=false, className}: IInput) => {
     return (
         <input name={name}
                type={type}
-               placeholder={placeholder}
+               placeholder={placeholder} required={required}
                className={cls(cl.input, className)}/>
     );
 };

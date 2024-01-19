@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getTasks} from "core/entity/Task/api/TaskApi";
 import {DATA_PARAMS_TASK} from "core/entity/Task/data/data";
 import Table from "core/widget/Table/ui/Table";
-import {ITable} from "core/widget/Table/model/model";
+import {ICellTable, ITable} from "core/widget/Table/model/model";
 import {DATA_HEADER_TASK_TABLE} from "core/tables/Task/data/data";
 import {taskListToTableContent} from "core/tables/Task/service/service";
 import TaskDetailModal from "core/modal/TaskDetail/ui/TaskDetailModal";
@@ -22,9 +22,9 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     const [isVisible, setIsVisible] = useState(false)
 
     // FUNC
-    const handleOnLineClick = (taskID: number | undefined = -1) => {
-        if (taskID === -1) return
-        setActiveID(taskID)
+    const handleOnLineClick = (task: ICellTable | undefined) => {
+        if (task === undefined || task?.id === -1) return
+        setActiveID(task.id)
         setIsVisible(true)
     }
 
@@ -35,6 +35,8 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
             body = undefined
         getTasks(DATA_PARAMS_TASK, body)
             .then(r => {
+                console.log(r);
+                
             setTableData({
                 header: DATA_HEADER_TASK_TABLE,
                 content: taskListToTableContent(r.results),

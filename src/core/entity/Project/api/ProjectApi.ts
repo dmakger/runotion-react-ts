@@ -13,3 +13,15 @@ export const getProjectsAPI = async (params?: IArgsRequest["params"]) => {
         headers: getHeaders(true),
     } as IRequest)
 }
+
+
+// CREATE PROJECT
+export const createProjectAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${PROJECT_API}/create/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}

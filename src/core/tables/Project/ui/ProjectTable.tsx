@@ -32,7 +32,7 @@ const ProjectTable = ({className}: ProjectTableProps) => {
                 onLineClick: handleOnLineClick
             })
         });
-    }, [handleOnLineClick]);
+    }, []);
 
     return (
         <Table table={tableData} className={className}/>

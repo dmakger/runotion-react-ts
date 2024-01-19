@@ -1,0 +1,26 @@
+@import 'core/scss/vars';
+
+.block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 2px solid $empty;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100%;
+
+    .text {
+        text-align: center;
+    }
+}
+
+.error {
+    background-color: $red-dark;
+    border-color: $red;
+}
+
+.success {
+    background-color: $green-dark;
+    border-color: $green;
+}

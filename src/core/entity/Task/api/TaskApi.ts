@@ -30,7 +30,7 @@ export const getDetailTask = async (body: IArgsRequest["body"]) => {
 export const createTaskAPI = async (body: IArgsRequest["body"]) => {
     const url = `${TASK_API}/create/`
     return await request({
-        method: 'CREATE',
+        method: 'POST',
         url: url,
         headers: getHeaders(true),
         body: JSON.stringify(body),

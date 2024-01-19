@@ -11,9 +11,10 @@ import {IProject} from "core/entity/Project/model/model";
 interface SimpleListProjectProps {
     onClick?: (project: IProject) => void
     className?: string
+    classNameItem?: string
 }
 
-const SimpleListProject = ({onClick, className}: SimpleListProjectProps) => {
+const SimpleListProject = ({onClick, className, classNameItem}: SimpleListProjectProps) => {
     // STATE
     const [listProject, setListProject] = useState<IProject[]>([])
     const [isLoadingListProject, setIsLoadingListProject] = useState(true)
@@ -47,7 +48,7 @@ const SimpleListProject = ({onClick, className}: SimpleListProjectProps) => {
                     <SimpleListItemProject project={it}
                                            onClick={handleOnClickProject}
                                            isSelect={selectProject === it}
-                                           className={cl.project}
+                                           className={cls(cl.project, classNameItem)}
                                            key={it.id} />
                 ))}
             </div>

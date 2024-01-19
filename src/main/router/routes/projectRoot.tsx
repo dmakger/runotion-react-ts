@@ -30,11 +30,6 @@ export const PROJECT__TASK__ROOT: TRoute = {
     key: 'projectTask',
     route: {
         path: PROJECT__TASK__MAIN_URL,
-        element: (
-            <ProjectLayout>
-                <Outlet />
-            </ProjectLayout>
-        ),
         children: (
             <>
                 <Route path={PROJECT__TASK__MAIN_URL} element={<ProjectTaskPage />} />

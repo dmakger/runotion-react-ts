@@ -7,5 +7,6 @@ export interface IInput {
     name?: string
     type?: ETypeInput
     placeholder?: string
+    required?: boolean
     className?: string
 }

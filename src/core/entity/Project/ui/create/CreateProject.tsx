@@ -2,13 +2,16 @@ import React, {useState} from 'react';
 import cl from './_CreateProject.module.scss'
 import {ITask} from "core/entity/Task/model/model";
 import {cls} from "core/service/cls";
+import Button from 'core/components/Button/ui/parent/Button';
+import { IProject } from '../../model/model';
+import CreateProjectModal from 'core/modal/CreateProject/ui/CreateProjectModal';
 
-interface CreateTaskProps {
-    onClick?: (task: ITask) => void
+interface CreateProjectProps {
+    onClick?: (project: IProject) => void
     className?: string
 }
 
-const CreateProject = ({onClick, className}: CreateTaskProps) => {
+const CreateProject = ({onClick, className}: CreateProjectProps) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isVisibleModal, setIsVisibleModal] = useState(false)
 
@@ -18,17 +21,12 @@ const CreateProject = ({onClick, className}: CreateTaskProps) => {
 
     return (
         <>
-            {/* <CreateTaskModal onClick={onClick}
+            <CreateProjectModal onClick={onClick}
+                             isLoadingRequest={isLoading}
                              setIsLoadingRequest={setIsLoading}
                              isVisible={isVisibleModal}
-                             setIsVisible={setIsVisibleModal}/> */}
-            <button onClick={handleOnClick} className={cls(cl.button, className)}>
-                {isLoading ? (
-                    'Добавление...'
-                ) : (
-                    'Создать проект'
-                )}
-            </button>
+                             setIsVisible={setIsVisibleModal}/>
+            <Button.Green onClick={handleOnClick} title={isLoading ? 'Создание...' : 'Создать проект'} />
         </>
     );
 };
