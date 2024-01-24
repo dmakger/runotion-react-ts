@@ -4,6 +4,15 @@ export type TRoute = {
     key: string
     route: RouteProps
     title?: string
+    titlePath?: string
+    parent?: TRoute
+}
+
+export type TRouteArgs = {
+    key?: string
+    route?: RouteProps
+    title?: string
+    titlePath?: string
     parent?: TRoute
 }
 

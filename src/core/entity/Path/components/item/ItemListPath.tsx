@@ -13,7 +13,7 @@ interface ItemListPathProps {
 const ItemListPath = ({itemPath, className=''}: ItemListPathProps) => {
     return (
         <Link to={getLinkPath(itemPath)} className={cls(cl.path, className)}>
-            {itemPath.title}
+            {itemPath.titlePath !== undefined ? itemPath.titlePath : itemPath.title}
         </Link>
     );
 };

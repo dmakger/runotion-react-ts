@@ -4,9 +4,11 @@ import { PathReducer } from "core/entity/Path/slice/slice";
 import {ToggleSwitchReducer} from "core/widget/ToggleSwitch/slice/slice";
 import {FunctionTopLineReducer} from "core/widget/FunctionTopLine/slice/slice";
 import {UserReducer} from "core/entity/User/slice/UserSlice";
+import {CurrentEntityReducer} from "core/entity/CurrentEntity/slice/slice";
 
 const rootReducer = combineReducers({
     leftMenu: LeftMenuReducer,
+    currentEntity: CurrentEntityReducer,
     path: PathReducer,
     functionTopLine: FunctionTopLineReducer,
     toggleSwitch: ToggleSwitchReducer,

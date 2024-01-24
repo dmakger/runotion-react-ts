@@ -9,13 +9,9 @@ interface LoadingWrapperProps {
 }
 
 const LoadingWrapper = ({isLoading, children, className, classNameLoop}: LoadingWrapperProps) => {
-    return (
-        <>
-            {isLoading ? (
-                <LoadingLoop className={className} classNameLoop={classNameLoop}/>
-            ) : ( <> {children} </> )}
-        </>
-    );
+    if (isLoading)
+        return <LoadingLoop className={className} classNameLoop={classNameLoop}/>
+    return <>{children}</>
 };
 
 export default LoadingWrapper;

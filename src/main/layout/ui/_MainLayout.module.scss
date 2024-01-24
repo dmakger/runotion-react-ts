@@ -1,7 +1,10 @@
+@import "core/scss/vars";
+
 .layout {
   display: flex;
   .leftBar {
     height: 100vh;
+    border-right: 3px solid $black-light-2;
   }
 
   .content {

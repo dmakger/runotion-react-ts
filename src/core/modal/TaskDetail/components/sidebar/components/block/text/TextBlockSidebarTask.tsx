@@ -16,9 +16,9 @@ const TextBlockSidebarTask = ({task, className}: TextBlockSidebarTaskProps) => {
     ]
     return (
         <div className={cls(cl.block, className)}>
-            {data.map(it => (
+            {data.map((it, index) => (
                 // <RowSidebarTask title={it.title} text={it.text} className={cl.item}/>
-                <div className={cl.item}>
+                <div className={cl.item} key={index}>
                     <span className={cl.title}>{it.title}:</span>
                     {it.text &&
                         <span className={cl.text}>{it.text}</span>

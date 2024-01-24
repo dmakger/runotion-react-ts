@@ -6,7 +6,6 @@ export const TASK_API = URL_API + '/task'
 // TASKS
 export const getTasks = async (params: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
     const url = `${TASK_API}/all/`
-    console.log(body)
     return await request({
         method: 'POST',
         url: getURL(url, params),

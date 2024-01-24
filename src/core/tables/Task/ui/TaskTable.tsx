@@ -21,6 +21,7 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     const [activeID, setActiveID] = useState<number>()
     const [isVisible, setIsVisible] = useState(false)
 
+
     // FUNC
     const handleOnLineClick = (task: ICellTable | undefined) => {
         if (task === undefined || task?.id === -1) return
@@ -35,14 +36,12 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
             body = undefined
         getTasks(DATA_PARAMS_TASK, body)
             .then(r => {
-                console.log(r);
-                
-            setTableData({
-                header: DATA_HEADER_TASK_TABLE,
-                content: taskListToTableContent(r.results),
-                onLineClick: handleOnLineClick,
-            })
-        });
+                setTableData({
+                    header: DATA_HEADER_TASK_TABLE,
+                    content: taskListToTableContent(r.results),
+                    onLineClick: handleOnLineClick,
+                })
+            });
     }, []);
 
 

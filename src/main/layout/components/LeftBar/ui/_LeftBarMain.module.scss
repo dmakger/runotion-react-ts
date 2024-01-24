@@ -8,6 +8,7 @@
 
   display: flex;
   flex-direction: column;
+  gap: 20px;
 
   .user {
     display: flex;
@@ -18,12 +19,14 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 0 10px;
-    margin-top: 20px;
 
     .title {
       margin-left: 20px;
       color: $black-light-5;
     }
+  }
+
+  .section {
+    margin: 0 10px;
   }
 }

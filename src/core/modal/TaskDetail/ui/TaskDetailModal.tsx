@@ -15,8 +15,6 @@ interface TaskDetailModalProps extends IModal {
 }
 
 const TaskDetailModal = ({isVisible = false, setIsVisible, id, className}: TaskDetailModalProps) => {
-    console.log('TaskDetailModal', id);
-    
     const [task, setTask] = useState<ITask | undefined>(undefined);
     const [isLoadingTask, setIsLoadingTask] = useState(false);
 

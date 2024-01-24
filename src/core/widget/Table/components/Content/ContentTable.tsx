@@ -14,15 +14,17 @@ const ContentTable = ({content, onClick = () => {}, className}: ContentTableProp
     if (content === undefined || content.length === 0)
         return <></>
     
-    console.log(content);
-    
 
     return (
         <tbody className={cls(cl.content, className)}>
             {content.map((line, index) => (
                 <React.Fragment key={index}>
                     <LineTable line={line} className={cl.line} onClick={() => onClick(line)}/>
-                    {index < content.length - 1 && <div className={cl.bottomLine}/>}
+                    {index < content.length - 1 && (
+                        <tr className={cl.bottomLine}>
+                            <td colSpan={line.line.length} />
+                        </tr>
+                    )}
                 </React.Fragment>
             ))}
         </tbody>

@@ -28,8 +28,6 @@ export const taskCellToTableContent = (task: ITask) => {
         defaultText: 'Без ответственного'
     });
 
-    console.log(responsibleCell)
-
     const projectCell = objToCellTable({
         obj: {
             id: task.project.id,

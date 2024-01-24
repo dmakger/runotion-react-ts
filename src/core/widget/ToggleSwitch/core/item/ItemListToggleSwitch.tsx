@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {cls} from "core/service/cls";
-import cl from './_ItemListToggleSwitchProps.module.scss'
+import cl from './_ItemListToggleSwitch.module.scss'
 import {IToggleSwitch} from "core/widget/ToggleSwitch/model/model";
 import {Link} from "react-router-dom";
 import {isCurrentURL} from "core/entity/Path/service/service";
@@ -13,15 +13,20 @@ interface ItemListToggleSwitchProps {
 }
 
 const ItemListToggleSwitch = ({item, className}: ItemListToggleSwitchProps) => {
+    // RTK
     const dispatch = useDispatch()
+
+    // EFFECT
     useEffect(() => {
         if (isCurrentURL(item.to)) {
             dispatch(ToggleSwitchSlice.actions.setActive(item.to))
         }
     }, [dispatch, item.to])
+
     const handleOnClick = () => {
         dispatch(ToggleSwitchSlice.actions.setActive(item.to))
     }
+
     return (
         <Link to={item.to} className={cls(cl.item, item.isActive ? cl.active : '', className)} onClick={handleOnClick}>
             {item.title}

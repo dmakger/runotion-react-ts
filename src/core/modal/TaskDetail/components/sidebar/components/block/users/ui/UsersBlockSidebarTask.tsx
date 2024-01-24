@@ -25,7 +25,7 @@ const UsersBlockSidebarTask = ({task, className}: UsersBlockSidebarTaskProps) =>
     return (
         <div className={cls(cl.block, className)}>
             {data.map((it, index) => (
-                <div className={cl.item}>
+                <div className={cl.item} key={index}>
                     <div className={cl.top}>
                         <span className={cl.title}>{it.title}:</span>
                     </div>
@@ -33,7 +33,7 @@ const UsersBlockSidebarTask = ({task, className}: UsersBlockSidebarTaskProps) =>
 
                     <div className={cl.list}>
                         {it.data.map(user => (
-                            user && <User user={user}/>
+                            user && <User user={user} key={user.id}/>
                         ))}
                         {index > 1 &&
                             <AddUser className={cl.addUser} />

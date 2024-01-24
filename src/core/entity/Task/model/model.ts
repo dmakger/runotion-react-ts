@@ -22,3 +22,13 @@ export interface ITask {
 export interface IQueryToTask extends IQuery{
     results: ITask[]
 }
+
+// ТИПЫ ПРЕДСТАВЛЕНИЙ [TASK]
+export enum ETypeTask {
+    LIST,
+    KANBAN
+}
+
+export interface TaskPageProps {
+    type: ETypeTask
+}

@@ -15,6 +15,17 @@ export const getProjectsAPI = async (params?: IArgsRequest["params"]) => {
 }
 
 
+// PROJECT BY ID
+export const getProjectByIdAPI = async (projectId: number | string) => {
+    const url = `${PROJECT_API}/detail/${projectId}`
+    return await request({
+        method: 'GET',
+        url: getURL(url),
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+
 // CREATE PROJECT
 export const createProjectAPI = async (body: IArgsRequest["body"]) => {
     const url = `${PROJECT_API}/create/`

@@ -1,6 +1,7 @@
 // ПРОЕКТЫ
 export const PROJECT_ALL__MAIN_URL = '/project/'
-export const PROJECT__TASK__MAIN_URL = '/project/:projectId'
+export const PROJECT__TASK__MAIN_URL = '/project/:projectId/task/list'
+export const PROJECT__KANBAN__MAIN_URL = '/project/:projectId/task/kanban'
 
 
 // ЗАДАЧИ

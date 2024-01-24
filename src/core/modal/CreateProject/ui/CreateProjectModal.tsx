@@ -35,12 +35,10 @@ const CreateProjectModal = ({onClick = () => {}, isLoadingRequest, setIsLoadingR
         setIsLoadingRequest(true)
         createProjectAPI(formData)
             .then(r => {
-                console.log(r)
                 onClick(r)
                 setHintModal(getSuccessHintModal('Проект успешно создан!'))
             })
             .catch(e => {
-                console.log(e)
                 let text = 'Ошибка сервера'
                 if (e.status === 400)
                     text = "Такой код уже существует"

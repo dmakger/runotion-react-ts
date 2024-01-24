@@ -4,7 +4,7 @@ import {ITable} from "core/widget/Table/model/model";
 import ContentTable from "core/widget/Table/components/Content/ContentTable";
 import cl from './_Table.module.scss'
 import {cls} from "core/service/cls";
-import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
+import LoadingLoop from "core/widget/Loading/ui/loop/LoadingLoop";
 
 interface TableProps {
     table?: ITable
@@ -12,16 +12,12 @@ interface TableProps {
 }
 
 const Table = ({table, className}: TableProps) => {
+    if (table === undefined)
+        return <LoadingLoop/>
     return (
         <table className={cls(cl.table, className)}>
-            <LoadingWrapper isLoading={table === undefined}>
-                {table &&
-                    <>
-                        <HeaderTable line={table!.header}/>
-                        <ContentTable content={table!.content} onClick={table!.onLineClick}/>
-                    </>
-                }
-            </LoadingWrapper>
+            <HeaderTable line={table!.header}/>
+            <ContentTable content={table!.content} onClick={table!.onLineClick}/>
         </table>
     );
 };

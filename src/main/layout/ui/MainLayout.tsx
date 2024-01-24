@@ -15,6 +15,7 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
     const dispatch = useDispatch();
     const path = useAppSelector(state => state.path);
+    console.log(path)
     const [current, setCurrent] = React.useState<TRoute | undefined>(undefined);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             setCurrent(path[path.length - 1]);
         }
     }, [dispatch, path, setCurrent]);
+
 
     return (
         <div className={cl.layout}>

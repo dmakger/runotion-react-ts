@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {cls} from "core/service/cls";
 import cl from "./_CreateTaskModal.module.scss";
 import Modal from "core/modal/core/ui/ui/Modal";
-import {ETypeHintModal, IHintModal, IModal} from "core/modal/core/modal/modal";
+import {IHintModal, IModal} from "core/modal/core/modal/modal";
 import {createTaskAPI} from "core/entity/Task/api/TaskApi";
 import SimpleListProject from "core/entity/Project/ui/simple/list/SimpleListProject";
 import Button from 'core/components/Button/ui/parent/Button';
@@ -31,7 +31,6 @@ const CreateTaskModal = ({onClick = () => {}, isLoadingRequest, setIsLoadingRequ
         setIsLoadingRequest(true)
         createTaskAPI({'project_id': selectProject.id})
             .then(r => {
-                console.log(r)
                 onClick(r)
                 setHintModal(getSuccessHintModal('Задача успешно создана!'))
             })
