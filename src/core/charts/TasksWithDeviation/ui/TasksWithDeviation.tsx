@@ -25,6 +25,7 @@ const TasksWithDeviation = ({projects=[], users=[], levels=[]}: TasksWithDeviati
             levels: levels
         }
         tasksWithDeviationAPI(body).then(r => {
+            console.log(r)
             const formattedData = tasksWithDeviationToChat(dataKey, r as ITasksWithDeviation)
             setData(formattedData)
         })

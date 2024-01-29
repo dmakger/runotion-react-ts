@@ -31,6 +31,7 @@ const CreateTaskModal = ({onClick = () => {}, isLoadingRequest, setIsLoadingRequ
         setIsLoadingRequest(true)
         createTaskAPI({'project_id': selectProject.id})
             .then(r => {
+                console.log(r)
                 onClick(r)
                 setHintModal(getSuccessHintModal('Задача успешно создана!'))
             })

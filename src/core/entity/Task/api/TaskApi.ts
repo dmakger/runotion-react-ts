@@ -35,3 +35,15 @@ export const createTaskAPI = async (body: IArgsRequest["body"]) => {
         body: JSON.stringify(body),
     } as IRequest)
 }
+
+
+// UPDATE TASK
+export const updateTaskAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${TASK_API}/${body!.id}/update`
+    return await request({
+        method: 'PUT',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
