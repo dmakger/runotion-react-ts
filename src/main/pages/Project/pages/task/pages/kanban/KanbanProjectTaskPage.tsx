@@ -1,10 +1,11 @@
 import React from 'react';
+import {useParams} from "react-router-dom";
+import TaskSections from "core/sections/Task/ui/TaskSections";
 
 const KanbanProjectTaskPage = () => {
+    let { projectId } = useParams();
     return (
-        <>
-            ВЫфвыфывфыв
-        </>
+        <TaskSections projectId={projectId} />
     );
 };
 

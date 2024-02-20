@@ -35,6 +35,7 @@ const LoginForm = ({className, ...resp}: LoginFormProps) => {
         const formData = getFormData(e, formRef)
         if (formData === undefined) return
 
+        console.log(formData)
         login({body: formData}).then(r => {
             actionCreators.saveToken(r)
             getUserData().then(res => {

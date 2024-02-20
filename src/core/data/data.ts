@@ -19,3 +19,11 @@ export const DataColorsPurpleToBlue = [
     '#e66767',
     '#303952',
 ]
+
+
+export enum EColors2 {
+    Red= '#A32B2C',
+    Purple= '#672BA4',
+    Orange= '#A34F2C',
+    Green= '#2BA352',
+}

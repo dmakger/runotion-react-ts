@@ -7,13 +7,15 @@ import { cls } from 'core/service/cls';
 interface TaskCodeProps {
     code: string
     className?: string
+    classNameImage?: string
+    classNameCode?: string
 }
 
-const TaskCode = ({code, className=''}: TaskCodeProps) => {
+const TaskCode = ({code, className='', classNameImage, classNameCode}: TaskCodeProps) => {
     return (
         <div className={cls(cl.task, className)}>
-            <img src={taskFlag} alt={code} className={cl.image} />
-            <span className={cl.code}>{code}</span>
+            <img src={taskFlag} alt={code} className={cls(cl.image, classNameImage)} />
+            <span className={cls(cl.code, classNameCode)}>{code}</span>
         </div>
     );
 };

@@ -1,0 +1,28 @@
+@import "core/scss/vars";
+
+.block {
+  padding: 10px;
+  background-color: $black-light-2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: all .2s;
+
+  &:hover {
+    background-color: $black-light-3;
+    //border: 3px;
+  }
+
+
+  .code {
+    .codeImage {
+      width: 18px;
+      height: 18px;
+    }
+
+    .codeText {
+      font-size: 14px;
+    }
+  }
+}
