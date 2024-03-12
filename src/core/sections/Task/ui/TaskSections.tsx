@@ -4,6 +4,7 @@ import {getSectionsProjectsAPI} from "core/entity/Project/api/SectionApi";
 import Section from "core/widget/Section/ui/Section";
 import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 import {ITaskSection} from "core/sections/Task/model/model";
+import {useSortable} from "@dnd-kit/sortable";
 
 interface TaskSectionsProps {
     projectId?: string | number
@@ -12,7 +13,12 @@ interface TaskSectionsProps {
 
 const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     const [sections, setSections] = useState<ITaskSection[]>()
-    console.log(sections)
+
+    const { items, setNodeRef } = useSortable({
+        items: sections.map((section, index) => (
+            { id: section.id, content: <Task key={task.id} task={task} /> }
+        )),
+    });
 
     useEffect(() => {
         if (sections !== undefined || projectId === undefined) return
@@ -20,6 +26,7 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
             setSections(r as ISection[])
         })
     }, [projectId, sections])
+
     return (
         <LoadingWrapper isLoading={sections === undefined}>
             {sections !== undefined &&
