@@ -1,5 +1,5 @@
 import React from 'react';
-import {ISection} from "core/widget/Section/model/model";
+import {ETypeSection, ISection} from "core/widget/Section/model/model";
 import HeaderSectionItem from "core/widget/Section/components/item/components/header/HeaderSectionItem";
 import BodySectionItem from "core/widget/Section/components/item/components/body/ui/BodySectionItem";
 import cl from './_SectionItem.module.scss'
@@ -15,7 +15,10 @@ interface SectionItemProps {
 
 const SectionItem = ({section, color, className}: SectionItemProps) => {
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
-        id: section.id
+        id: section.id,
+        data: {
+            type: ETypeSection.SECTION
+        }
     })
 
     const style = {
@@ -25,6 +28,7 @@ const SectionItem = ({section, color, className}: SectionItemProps) => {
 
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
+        {/* <div className={cls(cl.block, className)}> */}
             <HeaderSectionItem name={section.name} color={color}/>
             <BodySectionItem body={section.body} color={color}/>
         </div>
