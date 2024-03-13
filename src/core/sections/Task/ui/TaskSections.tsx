@@ -14,12 +14,6 @@ interface TaskSectionsProps {
 const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     const [sections, setSections] = useState<ITaskSection[]>()
 
-    const { items, setNodeRef } = useSortable({
-        items: sections.map((section, index) => (
-            { id: section.id, content: <Task key={task.id} task={task} /> }
-        )),
-    });
-
     useEffect(() => {
         if (sections !== undefined || projectId === undefined) return
         getSectionsProjectsAPI(projectId).then(r => {
@@ -30,7 +24,7 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     return (
         <LoadingWrapper isLoading={sections === undefined}>
             {sections !== undefined &&
-                <Section sections={sections} className={className}/>
+                <Section sections={sections} setSections={setSections} className={className}/>
             }
         </LoadingWrapper>
     );

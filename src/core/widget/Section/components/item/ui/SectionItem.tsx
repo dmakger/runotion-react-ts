@@ -4,6 +4,8 @@ import HeaderSectionItem from "core/widget/Section/components/item/components/he
 import BodySectionItem from "core/widget/Section/components/item/components/body/ui/BodySectionItem";
 import cl from './_SectionItem.module.scss'
 import {cls} from "core/service/cls";
+import {useSortable} from "@dnd-kit/sortable";
+import { CSS } from '@dnd-kit/utilities';
 
 interface SectionItemProps {
     section: ISection
@@ -12,10 +14,19 @@ interface SectionItemProps {
 }
 
 const SectionItem = ({section, color, className}: SectionItemProps) => {
+    const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
+        id: section.id
+    })
+
+    const style = {
+        transition,
+        transform: CSS.Transform.toString(transform),
+    }
+
     return (
-        <div className={cls(cl.block, className)}>
+        <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
             <HeaderSectionItem name={section.name} color={color}/>
-            <BodySectionItem body={section.body} color={color} />
+            <BodySectionItem body={section.body} color={color}/>
         </div>
     );
 };
