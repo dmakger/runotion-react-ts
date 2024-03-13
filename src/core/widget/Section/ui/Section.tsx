@@ -12,10 +12,11 @@ import { getElementFromSection, getTypeSection } from '../lib/section.lib';
 interface SectionProps {
     sections: ISection[]
     setSections:  React.Dispatch<React.SetStateAction<ITaskSection[] | undefined>>
+    itemToSection?: Function
     className?: string
 }
 
-const Section = ({sections, setSections, className}: SectionProps) => {
+const Section = ({sections, setSections, itemToSection, className}: SectionProps) => {
     const colors = Object.values(EColors2)
 
     const onDragEnd = (e: DragEndEvent) => {
@@ -27,14 +28,12 @@ const Section = ({sections, setSections, className}: SectionProps) => {
         const activeType = getTypeSection(active)
         const overType = getTypeSection(over)
 
-        console.log(activeType, overType);
-        
-        
+        const activeEl = getElementFromSection(sections, active.id, ETypeSection.ITEM)
+        const sectionEl = getElementFromSection(sections, over.id, ETypeSection.SECTION)
+
         if (activeType === ETypeSection.ITEM && overType === ETypeSection.SECTION) {
-            const activeEl = getElementFromSection(sections, active.id, ETypeSection.ITEM)
-            const sectionEl = getElementFromSection(sections, over.id, ETypeSection.SECTION)
             console.log(activeEl, sectionEl);
-            
+            if (itemToSection) itemToSection(sectionEl, activeEl)
         }
         
         

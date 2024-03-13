@@ -19,3 +19,12 @@ export const getSectionsProjectsAPI = async (projectId: number | string) => {
         headers: getHeaders(true),
     } as IRequest)
 }
+
+
+export const taskInOtherSectionProjectsAPI = async (section_project_id: number | string, taskId: number | string) => {
+    return await request({
+        method: 'PUT',
+        url: `task/section-project/${section_project_id}/task/${taskId}/update/`,
+        headers: getHeaders(true),
+    } as IRequest)
+}
