@@ -4,22 +4,24 @@ import HeaderSectionItem from "core/widget/Section/components/item/components/he
 import BodySectionItem from "core/widget/Section/components/item/components/body/ui/BodySectionItem";
 import cl from './_SectionItem.module.scss'
 import {cls} from "core/service/cls";
-import {useSortable} from "@dnd-kit/sortable";
+import {SortableContext, useSortable} from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
 import { IColor } from 'core/entity/core/model/model';
 import { getValueColor } from 'core/entity/core/service/service';
+import {UniqueIdentifier} from "@dnd-kit/core";
 
 interface SectionItemProps {
+    ident: UniqueIdentifier
     section: ISection
     color?: IColor
     className?: string
 }
 
-const SectionItem = ({section, color, className}: SectionItemProps) => {
+const SectionItem = ({ident, section, color, className}: SectionItemProps) => {
     const colorValue = getValueColor(color)
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
-        id: section.id,
+        id: ident,
         data: {
             type: ETypeSection.SECTION
         }

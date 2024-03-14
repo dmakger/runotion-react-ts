@@ -5,16 +5,18 @@ import TaskCode from "core/entity/Task/ui/code/TaskCode";
 import {useSortable} from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
 import { ETypeSection } from 'core/widget/Section/model/model';
+import {UniqueIdentifier} from "@dnd-kit/core";
 
 interface ItemBodySectionItemProps {
+    ident: UniqueIdentifier
     sectionData: any
     color?: string
     className?: string
 }
 
-const ItemBodySectionItem = ({sectionData, color, className}: ItemBodySectionItemProps) => {
+const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySectionItemProps) => {
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
-        id: sectionData.id,
+        id: ident,
         data: {
             type: ETypeSection.ITEM
         }

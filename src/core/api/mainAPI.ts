@@ -50,7 +50,6 @@ export async function request({method, url, body, headers}: IRequest) {
     if (headers !== undefined) {
         data.headers = headers
     }
-    console.log(url)
     const res = await fetch(url, data)
     if (res.ok) {
         if (res.status === 204)
