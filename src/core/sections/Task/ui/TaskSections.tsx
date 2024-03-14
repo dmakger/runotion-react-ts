@@ -24,29 +24,42 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     }, [projectId, sections])
 
 
-    const taskToSection = (section: ITaskSection, item: ITask) => {
-        if (projectId === undefined) return
-        taskInOtherSectionProjectsAPI(section.id, item.id).then(r => {
-            setSections(prevSections => {
-                let _prevSections: ITaskSection[] = []
-                if (prevSections !== undefined)
-                    _prevSections = [...prevSections]
-                const newIndexSection = _prevSections.findIndex(_section => _section.id === section.id)
-                const oldIndexSection = _prevSections.findIndex(_section => (
-                    _section.body?.map(it => it.id === item.id)
-                ))
+    const swapItemIntoSection = (itemId: number, newSectionId: number, oldSectionId?: number) => {
+        let _oldSectionId = oldSectionId !== undefined ? oldSectionId : sections?.find(_section => _section.body?.find(it => it.id === itemId))?.id
+        console.log(_oldSectionId);
+        
+        if (_oldSectionId === undefined) return 
+        setSections(prevSections => {
+            let _prevSections: ITaskSection[] = []
+            if (prevSections !== undefined)
+                _prevSections = [...prevSections]
 
-                let newBody = _prevSections[newIndexSection].body
-                if (newBody === undefined)
-                    newBody = []
-                let oldBody = _prevSections[oldIndexSection].body
-                if (oldBody === undefined)
-                    oldBody = []
+            const newIndex = _prevSections.findIndex(it => it.id === newSectionId)
+            const oldIndex = _prevSections.findIndex(it => it.id === _oldSectionId)
 
-                _prevSections[newIndexSection].body = [item, ...newBody]
-                _prevSections[oldIndexSection].body = oldBody.filter(it => it.id !== item.id)
-                return _prevSections
-            })
+            let newBody = _prevSections[newIndex].body
+            if (newBody === undefined)
+                newBody = []
+            let oldBody = _prevSections[oldIndex].body
+            if (oldBody === undefined)
+                oldBody = []
+
+            const item = oldBody.find(it => it.id === itemId)
+            if (item === undefined) return prevSections
+
+            _prevSections[newIndex].body = [item, ...newBody]
+            _prevSections[oldIndex].body = oldBody.filter(it => it.id !== itemId)
+            return _prevSections
+        })
+    }
+
+
+    const taskToSection = (newSectionId: number, itemId: number) => {
+        const oldSections = sections ? [...sections] : []
+        swapItemIntoSection(itemId, newSectionId)
+
+        taskInOtherSectionProjectsAPI(newSectionId, itemId).catch(e => {
+            setSections(oldSections)
         })
     }
 

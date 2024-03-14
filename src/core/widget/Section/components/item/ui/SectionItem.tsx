@@ -6,14 +6,18 @@ import cl from './_SectionItem.module.scss'
 import {cls} from "core/service/cls";
 import {useSortable} from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
+import { IColor } from 'core/entity/core/model/model';
+import { getValueColor } from 'core/entity/core/service/service';
 
 interface SectionItemProps {
     section: ISection
-    color?: string
+    color?: IColor
     className?: string
 }
 
 const SectionItem = ({section, color, className}: SectionItemProps) => {
+    const colorValue = getValueColor(color)
+
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
         id: section.id,
         data: {
@@ -28,9 +32,8 @@ const SectionItem = ({section, color, className}: SectionItemProps) => {
 
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
-        {/* <div className={cls(cl.block, className)}> */}
-            <HeaderSectionItem name={section.name} color={color}/>
-            <BodySectionItem body={section.body} color={color}/>
+            <HeaderSectionItem name={section.name} color={colorValue}/>
+            <BodySectionItem body={section.body} color={colorValue}/>
         </div>
     );
 };

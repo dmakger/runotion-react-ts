@@ -17,7 +17,7 @@ interface SectionProps {
 }
 
 const Section = ({sections, setSections, itemToSection, className}: SectionProps) => {
-    const colors = Object.values(EColors2)
+    // const colors = Object.values(EColors2)
 
     const onDragEnd = (e: DragEndEvent) => {
         const {active, over} = e
@@ -28,23 +28,9 @@ const Section = ({sections, setSections, itemToSection, className}: SectionProps
         const activeType = getTypeSection(active)
         const overType = getTypeSection(over)
 
-        const activeEl = getElementFromSection(sections, active.id, ETypeSection.ITEM)
-        const sectionEl = getElementFromSection(sections, over.id, ETypeSection.SECTION)
-
         if (activeType === ETypeSection.ITEM && overType === ETypeSection.SECTION) {
-            console.log(activeEl, sectionEl);
-            if (itemToSection) itemToSection(sectionEl, activeEl)
+            if (itemToSection) itemToSection(over.id, active.id)
         }
-        
-        
-        // const oldIndex = sections.findIndex(section => section.id === active.id)
-        // const newIndex = sections.findIndex(section => section.id === over.id)
-        
-        // setSections(prevState => {
-        //     const oldIndex = sections.findIndex(section => section.id === active.id)
-        //     const newIndex = sections.findIndex(section => section.id === over.id)
-        //     return arrayMove(prevState ? prevState : [], oldIndex, newIndex)
-        // })
     }
 
     return (
@@ -53,7 +39,7 @@ const Section = ({sections, setSections, itemToSection, className}: SectionProps
                 {/* <SortableContext items={sections} strategy={verticalListSortingStrategy}> */}
                 <SortableContext items={sections}>
                     {sections.map((it, index) => (
-                        <SectionItem section={it} color={colors[index % colors.length]} key={it.id} />
+                        <SectionItem section={it} color={it.color} key={it.id} />
                     ))}
                 </SortableContext>
             </DndContext>

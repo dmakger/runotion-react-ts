@@ -12,3 +12,9 @@ export interface IImportanceLevel {
     name: string
     value: number
 }
+
+export interface IColor {
+    id: number
+    name: string
+    value: string
+}
