@@ -1,0 +1,18 @@
+@import "core/scss/vars";
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $black-light-2;
+    font-size: $fs-24;
+    border-radius: 10px;
+    padding: 5px;
+
+    transition: .2s;
+
+    &:hover {
+        background-color: $black-light-3;
+    }
+}
