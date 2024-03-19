@@ -2,7 +2,7 @@ import {IParams, IRequest} from "core/api/model/model";
 
 export const LOCAL_URL = 'http://127.0.0.1:8000';
 export const GLOBAL_URL = 'https://api.ru-notion.ru';
-export const CURRENT_URL = LOCAL_URL;
+export const CURRENT_URL = GLOBAL_URL;
 export const URL_API = `${CURRENT_URL}/api`;
 
 export const HEADERS: Record<string, string> = {
