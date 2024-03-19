@@ -5,9 +5,9 @@ import Modal from "core/modal/core/ui/ui/Modal";
 import {IHintModal, IModal} from "core/modal/core/modal/modal";
 import {createTaskAPI} from "core/entity/Task/api/TaskApi";
 import SimpleListProject from "core/entity/Project/ui/simple/list/SimpleListProject";
-import Button from 'core/components/Button/ui/parent/Button';
 import { IProject } from 'core/entity/Project/model/model';
 import { getErrorHintModal, getSuccessHintModal } from 'core/modal/core/ui/components/hint/service/service';
+import InListModal from "core/modal/core/ui/components/list/InListModal";
 
 interface CreateTaskModalProps extends IModal {
     onClick?: Function
@@ -58,18 +58,12 @@ const CreateTaskModal = ({onClick = () => {}, isLoadingRequest, setIsLoadingRequ
                isVisible={isVisible} setIsVisible={setIsVisible} 
                className={cls(cl.block, className)}
         >
-            <div className={cl.wrapper}>
-                <div className={cl.content}>
-                    <span className={cl.description}>Выберите проект в который добавится задача</span>
-                    <SimpleListProject onClick={handleOnClickProject} className={cl.projectList} />
-                </div>
-                <div className={cl.buttons}>
-                    <Button.Green title={"Назад"} onClick={handleOnClickBack} className={cl.back} />
-                    <Button.Green title={"Создать"} 
-                                  isLoading={isLoadingRequest} titleLoading={"Создание..."}
-                                  onClick={createTask}/>
-                </div>
-            </div>
+            <InListModal titleBack={"Назад"} onClickBack={handleOnClickBack}
+                         titleSuccess={"Создать"} onClickSuccess={createTask}
+                         isLoadingSuccess={isLoadingRequest} titleLoadingSuccess={"Создание..."}
+                         description={"Выберите проект в который добавится задача"}>
+                <SimpleListProject onClick={handleOnClickProject} className={cl.projectList} />
+            </InListModal>
         </Modal>
     );
 };

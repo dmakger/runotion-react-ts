@@ -4,8 +4,9 @@ import {IArgsRequest, IRequest} from "core/api/model/model";
 export const TASK_API = URL_API + '/task'
 
 // TASKS
-export const getTasks = async (params: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
+export const getTasksAPI = async (params?: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
     const url = `${TASK_API}/all/`
+    console.log(body)
     return await request({
         method: 'POST',
         url: getURL(url, params),
@@ -47,3 +48,16 @@ export const updateTaskAPI = async (body: IArgsRequest["body"]) => {
         body: JSON.stringify(body),
     } as IRequest)
 }
+
+
+// ADD TASK IN SECTION
+export const addTaskInSectionAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${TASK_API}/${body!.taskId}/add/section/${body!.sectionId}/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
