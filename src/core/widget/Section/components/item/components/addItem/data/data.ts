@@ -1,0 +1,1 @@
+export const DEFAULT_TEXT__ITEM_FROM_BODY_SECTION = '+'

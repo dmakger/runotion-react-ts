@@ -1,0 +1,40 @@
+@import "core/scss/vars";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    border: 2px solid $black-light-3;
+    border-radius: 20px;
+
+    .description {
+      color: $black-light-5;
+      border-bottom: 2px solid $black-light-3;
+      padding: 10px 15px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+
+    .back {
+      background-color: $black-light-3;
+      color: #fff;
+      width: 100px;
+      height: max-content;
+      border: 2px solid $black-light-3;
+
+      &:hover {
+        background-color: $black-light-2;
+      }
+    }
+  }
+}

@@ -1,38 +1,44 @@
 import React from 'react';
-import {ETypeSection, ISection} from "core/widget/Section/model/model";
+import {ETypeSection, ISection, ISectionFunction} from "core/widget/Section/model/model";
 import SectionItem from "core/widget/Section/components/item/ui/SectionItem";
 import cl from './_Section.module.scss'
 import {cls} from "core/service/cls";
-import {closestCenter, DndContext, DragEndEvent} from '@dnd-kit/core';
-import {ITaskSection} from "core/sections/Task/model/model";
+import {closestCenter, DndContext, DragEndEvent, DragStartEvent} from '@dnd-kit/core';
 import {getIdFromSection, getTypeSection} from '../lib/section.lib';
 import {SortableContext} from "@dnd-kit/sortable";
 
 
 interface SectionProps {
     sections: ISection[]
-    setSections:  React.Dispatch<React.SetStateAction<ITaskSection[] | undefined>>
     itemToSection?: Function
+    onItemClick?: ISectionFunction['onItemClick']
+    onAddItemClick?: ISectionFunction['onAddItemClick']
     className?: string
 }
 
-const Section = ({sections, setSections, itemToSection, className}: SectionProps) => {
-
-    console.log(sections)
-    // DND DRAG END
+const Section = ({sections, itemToSection, onItemClick, onAddItemClick, className}: SectionProps) => {    
+    // ======{ DND }======
     const onDragEnd = (e: DragEndEvent) => {
         const {active, over} = e
-        if (over === null || active.id === over?.id)
+        console.log('onDragEnd', active, over);
+        
+        if (over === null)
             return
-        console.log(active, over)
+
+        const overId = Number(getIdFromSection(over))
+        const activeId = Number(getIdFromSection(active))
+                
+        // CLICK ON ITEM ?
+        if (active.id === over.id){
+            if (onItemClick) 
+                onItemClick(activeId)
+            return
+        }
 
         const activeType = getTypeSection(active)
         const overType = getTypeSection(over)
 
         if (activeType === ETypeSection.ITEM && overType === ETypeSection.SECTION) {
-            console.log('YES')
-            const overId = Number(getIdFromSection(over))
-            const activeId = Number(getIdFromSection(active))
             if (itemToSection) itemToSection(overId, activeId)
         }
     }
@@ -42,7 +48,8 @@ const Section = ({sections, setSections, itemToSection, className}: SectionProps
             <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
                 <SortableContext items={sections}>
                     {sections.map(it => (
-                        <SectionItem ident={`${ETypeSection.SECTION}-${it.id}`} section={it} color={it.color} key={it.id} />
+                        <SectionItem ident={`${ETypeSection.SECTION}-${it.id}`} section={it} color={it.color}  
+                                     onAddItemClick={onAddItemClick} key={it.id} />
                     ))}
                 </SortableContext>
             </DndContext>

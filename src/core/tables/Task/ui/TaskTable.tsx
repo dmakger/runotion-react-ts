@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getTasks} from "core/entity/Task/api/TaskApi";
+import {getTasksAPI} from "core/entity/Task/api/TaskApi";
 import {DATA_PARAMS_TASK} from "core/entity/Task/data/data";
 import Table from "core/widget/Table/ui/Table";
 import {ICellTable, ITable} from "core/widget/Table/model/model";
@@ -34,7 +34,7 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         let body = {project_id: projectId} as IArgsRequest["body"]
         if (projectId === undefined)
             body = undefined
-        getTasks(DATA_PARAMS_TASK, body)
+        getTasksAPI(DATA_PARAMS_TASK, body)
             .then(r => {
                 setTableData({
                     header: DATA_HEADER_TASK_TABLE,

@@ -4,7 +4,7 @@ import cl from './_ItemBodySectionItem.module.scss'
 import TaskCode from "core/entity/Task/ui/code/TaskCode";
 import {useSortable} from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
-import { ETypeSection } from 'core/widget/Section/model/model';
+import { ETypeSection, ISectionFunction } from 'core/widget/Section/model/model';
 import {UniqueIdentifier} from "@dnd-kit/core";
 
 interface ItemBodySectionItemProps {
@@ -14,7 +14,7 @@ interface ItemBodySectionItemProps {
     className?: string
 }
 
-const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySectionItemProps) => {
+const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySectionItemProps) => {    
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
         id: ident,
         data: {
@@ -30,10 +30,10 @@ const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySec
 
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
+        <button ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
             <span className={cl.name}>{sectionData.name}</span>
             <TaskCode code={sectionData.code} className={cl.code} classNameImage={cl.codeImage} classNameCode={cl.codeText}/>
-        </div>
+        </button>
     );
 };
 
