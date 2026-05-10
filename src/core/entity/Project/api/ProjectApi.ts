@@ -36,3 +36,44 @@ export const createProjectAPI = async (body: IArgsRequest["body"]) => {
         body: JSON.stringify(body),
     } as IRequest)
 }
+
+
+export const getProjectRolesAPI = async () => {
+    const url = `${PROJECT_API}/roles/`
+    return await request({
+        method: 'GET',
+        url: url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+
+export const getProjectUsersAPI = async (projectId: number | string) => {
+    const url = `${PROJECT_API}/${projectId}/users/`
+    return await request({
+        method: 'GET',
+        url: url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+
+export const getProjectUsersWithParamsAPI = async (projectId: number | string, params?: IArgsRequest["params"]) => {
+    const url = `${PROJECT_API}/${projectId}/users/`
+    return await request({
+        method: 'GET',
+        url: getURL(url, params),
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+
+export const addProjectUserAPI = async (projectId: number | string, body: IArgsRequest["body"]) => {
+    const url = `${PROJECT_API}/${projectId}/users/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}

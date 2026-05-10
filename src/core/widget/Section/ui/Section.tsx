@@ -3,7 +3,7 @@ import {ETypeSection, ISection, ISectionFunction} from "core/widget/Section/mode
 import SectionItem from "core/widget/Section/components/item/ui/SectionItem";
 import cl from './_Section.module.scss'
 import {cls} from "core/service/cls";
-import {closestCenter, DndContext, DragEndEvent, DragStartEvent} from '@dnd-kit/core';
+import {closestCenter, DndContext, DragEndEvent} from '@dnd-kit/core';
 import {getIdFromSection, getTypeSection} from '../lib/section.lib';
 import {SortableContext} from "@dnd-kit/sortable";
 

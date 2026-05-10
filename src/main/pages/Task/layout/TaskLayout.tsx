@@ -8,8 +8,7 @@ import {TASK__ROOT} from "main/router/routes/taskRoot";
 import {DATA_TASK__TOGGLE_SWITCH} from "core/widget/ToggleSwitch/data/data";
 import {DATA_TASK} from "core/widget/FunctionTopLine/data/dataToKey";
 import {FunctionTopLineSlice} from "core/widget/FunctionTopLine/slice/slice";
-import {CREATE_TASK__FUNCTION_TOP_LINE, DATA_TASK__FUNCTION_TOP_LINE} from "core/widget/FunctionTopLine/data/data";
-import { ITask } from 'core/entity/Task/model/model';
+import {DATA_TASK__FUNCTION_TOP_LINE} from "core/widget/FunctionTopLine/data/data";
 
 interface TaskLayoutProps {
     children?: ReactNode
@@ -17,10 +16,7 @@ interface TaskLayoutProps {
 
 const TaskLayout = ({children}: TaskLayoutProps) => {
     const dispatch = useDispatch();
-
-    // CREATE_TASK__FUNCTION_TOP_LINE.element.props.onClick = (task: ITask) => {
-    //     console.log('23123123', task)
-    // }
+    const actionCreators = useActionCreators()
 
     useEffect(() => {
         dispatch(LeftMenuSlice.actions.setLeftMenu(TaskItemLeftMenu), {refetchOnMountOrArgChange: true});
@@ -28,10 +24,9 @@ const TaskLayout = ({children}: TaskLayoutProps) => {
 
         dispatch(FunctionTopLineSlice.actions.setFunctionTopLine(DATA_TASK__FUNCTION_TOP_LINE), {refetchOnMountOrArgChange: true});
         dispatch(FunctionTopLineSlice.actions.swapVisibleByKey(DATA_TASK), {refetchOnMountOrArgChange: true});
+        actionCreators.setToggleList(DATA_TASK__TOGGLE_SWITCH)
 
-    }, [dispatch]);
-
-    useActionCreators().setToggleList(DATA_TASK__TOGGLE_SWITCH)
+    }, [actionCreators, dispatch]);
 
     return (
         <>

@@ -2,6 +2,7 @@ export interface ICellTable {
     id?: number
     title?: string,
     image?: string,
+    entity?: 'user' | 'project',
     isEmpty?: boolean
 }
 

@@ -2,8 +2,6 @@ import React from 'react';
 import cl from 'core/entity/Task/ui/simple/item/_SimpleListItemTask.module.scss'
 import {cls} from "core/service/cls";
 import checkSVG from "core/static/img/complete-fill-green.svg"
-
-import {IProject} from "core/entity/Project/model/model";
 import {ITask} from "core/entity/Task/model/model";
 
 

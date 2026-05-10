@@ -15,7 +15,8 @@ export const taskCellToTableContent = (task: ITask) => {
         obj: {
             id: task.director.id,
             title: task.director.name,
-            image: task.director.image
+            image: task.director.image,
+            entity: 'user',
         }, defaultText: 'Без постановщика'
     });
 
@@ -23,7 +24,8 @@ export const taskCellToTableContent = (task: ITask) => {
         obj: {
             id: task.responsible?.id,
             title: task.responsible?.name,
-            image: task.responsible?.image
+            image: task.responsible?.image,
+            entity: 'user',
         },
         defaultText: 'Без ответственного'
     });
@@ -32,7 +34,8 @@ export const taskCellToTableContent = (task: ITask) => {
         obj: {
             id: task.project.id,
             title: task.project.name,
-            image: task.project.image
+            image: task.project.image,
+            entity: 'project',
         }, defaultText: 'Без проекта'
     });
 

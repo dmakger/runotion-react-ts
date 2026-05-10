@@ -1,0 +1,742 @@
+
+> runotion-react-ts@0.1.0 start
+> react-scripts start
+
+Starting the development server...
+
+Compiled successfully!
+
+You can now view runotion-react-ts in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.56.1:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/auth/layout/_AuthLayout.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\auth\layout\_AuthLayout.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/main/layout/ui/_MainLayout.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\main\layout\ui\_MainLayout.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/ToggleSwitch/ui/_ToggleSwitch.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\ToggleSwitch\ui\_ToggleSwitch.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/components/H/1/_H1.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/FunctionTopLine/ui/_FunctionTopLine.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/main/layout/components/LeftBar/ui/_LeftBarMain.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\main\layout\components\LeftBar\ui\_LeftBarMain.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/main/pages/Chart/_ChartPage.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/ToggleSwitch/core/list/_ListToggleSwitch.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Path/components/list/_ListPath.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Path\components\list\_ListPath.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/forms/Login/ui/_LoginForm.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\forms\Login\ui\_LoginForm.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/CreateTask/ui/_CreateTaskModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\CreateTask\ui\_CreateTaskModal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/CreateProject/ui/_CreateProjectModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\CreateProject\ui\_CreateProjectModal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/main/layout/components/LeftBar/components/User/_UserLeftBarMain.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\main\layout\components\LeftBar\components\User\_UserLeftBarMain.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/LeftMenu/ui/list/_ListLeftBarMain.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/main/layout/components/LeftBar/components/logout/_Logout.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\main\layout\components\LeftBar\components\logout\_Logout.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/ToggleSwitch/core/item/_ItemListToggleSwitch.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\ToggleSwitch\core\item\_ItemListToggleSwitch.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/tables/Task/ui/_TaskTable.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Path/components/item/_ItemListPath.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Path\components\item\_ItemListPath.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/components/Button/ui/Green/_GreenButton.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\components\Button\ui\Green\_GreenButton.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/components/Button/ui/Large/_LargeButton.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\components\Button\ui\Large\_LargeButton.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/core/ui/ui/_Modal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\core\ui\ui\_Modal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/core/ui/components/list/_InListModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\core\ui\components\list\_InListModal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Project/ui/simple/big/_SimpleBigProject.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Project\ui\simple\big\_SimpleBigProject.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/LeftMenu/ui/item/_ItemListLeftBarMain.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\LeftMenu\ui\item\_ItemListLeftBarMain.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Project/ui/simple/list/_SimpleListProject.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/components/Input/Text/_InputText.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\components\Input\Text\_InputText.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Table/ui/_Table.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Table\ui\_Table.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/ui/_TaskDetailModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\TaskDetail\ui\_TaskDetailModal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/components/Form/ui/Column/_ColumnForm.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Project/ui/simple/item/_SimpleListItemProject.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Project\ui\simple\item\_SimpleListItemProject.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/core/ui/components/hint/ui/_HintModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\core\ui\components\hint\ui\_HintModal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Loading/ui/loop/_LoadingLoop.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/components/leftbar/_LeftBarTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Table/components/Header/_HeaderTable.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Table\components\Header\_HeaderTable.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Table/components/Content/_ContentTable.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Table\components\Content\_ContentTable.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Chart/components/tooltip/_CustomTooltip.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Chart\components\tooltip\_CustomTooltip.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Chart/components/wrapper/_ChartWrapper.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Chart\components\wrapper\_ChartWrapper.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/ui/_Section.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/components/sidebar/ui/_SidebarTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\TaskDetail\components\sidebar\ui\_SidebarTask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/CreateOrAddTask/components/default/_DefaultCreateOrAddTaskModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Task/ui/code/_TaskCode.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/core/ui/_Modal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\core\ui\_Modal.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Table/components/Line/_LineTable.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Table\components\Line\_LineTable.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Checklist/ui/list/_ChecklistList.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Checklist\ui\list\_ChecklistList.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/CreateOrAddTask/components/addExistsTask/_AddExistsTaskCreateOrAddTaskModal.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/components/sidebar/components/complete/_CompleteButtonSidebarTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\TaskDetail\components\sidebar\components\complete\_CompleteButtonSidebarTask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/components/sidebar/components/block/text/_TextBlockSidebarTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\TaskDetail\components\sidebar\components\block\text\_TextBlockSidebarTask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/components/item/ui/_SectionItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/TaskDetail/components/sidebar/components/block/users/ui/_UsersBlockSidebarTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\TaskDetail\components\sidebar\components\block\users\ui\_UsersBlockSidebarTask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Checklist/ui/item/ui/_Checklist.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Checklist\ui\item\ui\_Checklist.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Table/components/Cell/_CellTable.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Table\components\Cell\_CellTable.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/modal/core/ui/components/card/_ModalCard.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\modal\core\ui\components\card\_ModalCard.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/User/ui/add/_AddUser.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\User\ui\add\_AddUser.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Task/ui/simple/list/_SimpleListTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/User/ui/user/_User.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\User\ui\user\_User.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/components/item/components/header/_HeaderSectionItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Section\components\item\components\header\_HeaderSectionItem.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/components/item/components/addItem/ui/_BodySectionAddItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Section\components\item\components\addItem\ui\_BodySectionAddItem.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/components/item/components/body/ui/_BodySectionItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Subtask/ui/list/_SubtaskList.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Subtask\ui\list\_SubtaskList.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Checklist/ui/item/components/completed/ui/_ChecklistCompletedSubtask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Task/ui/simple/item/_SimpleListItemTask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Task\ui\simple\item\_SimpleListItemTask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/widget/Section/components/item/components/body/components/item/_ItemBodySectionItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\widget\Section\components\item\components\body\components\item\_ItemBodySectionItem.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Subtask/ui/item/_SubtaskItem.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Subtask\ui\item\_SubtaskItem.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+[1mLOG from ./node_modules/sass-loader/dist/cjs.js sass-loader ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/core/entity/Checklist/ui/item/components/completed/components/bar/_ChecklistCompletedBarSubtask.module.scss[39m[22m
+<w> [1m[33mDeprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info: https://sass-lang.com/d/legacy-js-api[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mnull[39m[22m
+<w> [1m[33mDeprecation Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33mMore info and automated migrator: https://sass-lang.com/d/import[39m[22m
+<w> [1m[33m[39m[22m
+<w> [1m[33msrc\core\entity\Checklist\ui\item\components\completed\components\bar\_ChecklistCompletedBarSubtask.module.scss 1:9  root stylesheet[39m[22m
+<w> [1m[33m[39m[22m
+
+webpack compiled [1m[32msuccessfully[39m[22m
+No issues found.

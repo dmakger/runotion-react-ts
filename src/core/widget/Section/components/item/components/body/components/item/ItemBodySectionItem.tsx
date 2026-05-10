@@ -4,7 +4,7 @@ import cl from './_ItemBodySectionItem.module.scss'
 import TaskCode from "core/entity/Task/ui/code/TaskCode";
 import {useSortable} from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
-import { ETypeSection, ISectionFunction } from 'core/widget/Section/model/model';
+import { ETypeSection } from 'core/widget/Section/model/model';
 import {UniqueIdentifier} from "@dnd-kit/core";
 
 interface ItemBodySectionItemProps {

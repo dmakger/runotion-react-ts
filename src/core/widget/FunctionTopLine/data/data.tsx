@@ -3,6 +3,7 @@ import ToggleSwitch from "core/widget/ToggleSwitch/ui/ToggleSwitch";
 import CreateTask from "core/entity/Task/ui/create/CreateTask";
 import React from "react";
 import CreateProject from "core/entity/Project/ui/create/CreateProject";
+import AddProjectUser from "core/entity/Project/ui/user/AddProjectUser";
 
 // TOGGLE SWITCH
 export const TOGGLE_SWITCH__FUNCTION_TOP_LINE: IFunctionTopLine = {
@@ -27,9 +28,16 @@ export const CREATE_TASK__FUNCTION_TOP_LINE: IFunctionTopLine = {
     element: <CreateTask />
 }
 
+export const ADD_PROJECT_USER__FUNCTION_TOP_LINE: IFunctionTopLine = {
+    key: 'addProjectUser',
+    isVisible: true,
+    element: <AddProjectUser />
+}
+
 export const DATA_TASK__FUNCTION_TOP_LINE: IFunctionTopLine[] = [
     TOGGLE_SWITCH__FUNCTION_TOP_LINE,
     CREATE_TASK__FUNCTION_TOP_LINE,
+    ADD_PROJECT_USER__FUNCTION_TOP_LINE,
 ]
 
 

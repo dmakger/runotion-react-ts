@@ -3,7 +3,7 @@ export enum EVariantKeyParam {
     ORDERING = 'ordering',
 }
 
-export type IParams  = Record<EVariantKeyParam, string>
+export type IParams = Partial<Record<EVariantKeyParam | string, string>>
 
 export interface IArgsRequest {
     body?: Record<string, any>,

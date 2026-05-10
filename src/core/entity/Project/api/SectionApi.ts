@@ -1,5 +1,5 @@
 import {getHeaders, getURL, request, URL_API} from "core/api/mainAPI";
-import {IArgsRequest, IRequest} from "core/api/model/model";
+import {IRequest} from "core/api/model/model";
 import {PROJECT_API} from "core/entity/Project/api/ProjectApi";
 
 

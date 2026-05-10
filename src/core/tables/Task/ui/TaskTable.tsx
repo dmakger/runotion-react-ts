@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {getTasksAPI} from "core/entity/Task/api/TaskApi";
 import {DATA_PARAMS_TASK} from "core/entity/Task/data/data";
 import Table from "core/widget/Table/ui/Table";
@@ -23,11 +23,11 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
 
 
     // FUNC
-    const handleOnLineClick = (task: ICellTable | undefined) => {
+    const handleOnLineClick = useCallback((task: ICellTable | undefined) => {
         if (task === undefined || task?.id === -1) return
         setActiveID(task.id)
         setIsVisible(true)
-    }
+    }, [])
 
     // EFFECT
     useEffect(() => {
@@ -42,7 +42,7 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
                     onLineClick: handleOnLineClick,
                 })
             });
-    }, []);
+    }, [handleOnLineClick, projectId]);
 
 
     return (

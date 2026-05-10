@@ -1,6 +1,5 @@
 import {Active, Over, UniqueIdentifier} from "@dnd-kit/core"
 import {ETypeSection, ISection} from "../model/model"
-import React from "react";
 import {ITaskSection} from "core/sections/Task/model/model";
 
 // ======{ ELEMENTS }======

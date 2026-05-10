@@ -1,4 +1,4 @@
-import {getHeaders, request, URL_API} from "core/api/mainAPI";
+import {getHeaders, getURL, request, URL_API} from "core/api/mainAPI";
 import {IArgsRequest, IRequest} from "core/api/model/model";
 
 const USER_API = URL_API + '/user'
@@ -31,4 +31,10 @@ export const getUserData = async () => {
     const url = `${USER_API}/get/`
     const headers = getHeaders(true)
     return await request({method: 'GET', url, headers} as IRequest)
+}
+
+export const getUsersAPI = async (params?: IArgsRequest["params"]) => {
+    const url = `${USER_API}/all/`
+    const headers = getHeaders(true)
+    return await request({method: 'GET', url: getURL(url, params), headers} as IRequest)
 }

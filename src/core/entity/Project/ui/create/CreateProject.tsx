@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import cl from './_CreateProject.module.scss'
-import {ITask} from "core/entity/Task/model/model";
-import {cls} from "core/service/cls";
 import Button from 'core/components/Button/ui/parent/Button';
 import { IProject } from '../../model/model';
 import CreateProjectModal from 'core/modal/CreateProject/ui/CreateProjectModal';
@@ -11,7 +8,7 @@ interface CreateProjectProps {
     className?: string
 }
 
-const CreateProject = ({onClick, className}: CreateProjectProps) => {
+const CreateProject = ({onClick}: CreateProjectProps) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isVisibleModal, setIsVisibleModal] = useState(false)
 

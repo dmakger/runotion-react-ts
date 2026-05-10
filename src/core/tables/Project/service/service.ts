@@ -1,7 +1,5 @@
-import {ITask} from "core/entity/Task/model/model";
 import {ILineTable, ITable} from "core/widget/Table/model/model";
 import {objToCellTable} from "core/widget/Table/service/service";
-import {formattedData} from "core/service/date";
 import {IProject} from "core/entity/Project/model/model";
 
 export const projectListToTableContent = (projects: IProject[]): ITable["content"] => {
@@ -14,14 +12,16 @@ export const projectCellToTableContent = (project: IProject) => {
         obj: {
             id: project.id,
             title: project.name,
-            image: project.image
+            image: project.image,
+            entity: 'project',
         }
     });
     const adminCell = objToCellTable({
         obj: {
             id: project.admin.id,
             title: project.admin.name,
-            image: project.admin.image
+            image: project.admin.image,
+            entity: 'user',
         }
     });
     const roleCell = objToCellTable({obj: {title: project.role?.name}, defaultText: 'Без роли'});

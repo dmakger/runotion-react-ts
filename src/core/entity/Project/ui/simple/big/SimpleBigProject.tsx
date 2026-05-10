@@ -2,7 +2,7 @@ import React from 'react';
 import cl from './_SimpleBigProject.module.scss'
 import {IProject} from "core/entity/Project/model/model";
 import {cls} from "core/service/cls";
-import {getProjectImage} from "core/entity/Project/service/service";
+import EntityImage, {EEntityImageVariant} from "core/components/EntityImage/EntityImage";
 
 interface SimpleBigProjectProps {
     project: IProject
@@ -10,10 +10,12 @@ interface SimpleBigProjectProps {
 }
 
 const SimpleBigProject = ({project, className}: SimpleBigProjectProps) => {
-    console.log(project)
     return (
         <div className={cls(cl.block ,className)}>
-            <img src={getProjectImage(project.image)} alt={project.name} className={cl.image} />
+            <EntityImage src={project.image}
+                         title={project.name}
+                         variant={EEntityImageVariant.PROJECT}
+                         className={cl.image}/>
             <div className={cl.right}>
                 <span className={cl.hint}>Проект:</span>
                 <span className={cl.project}>{project.name}</span>

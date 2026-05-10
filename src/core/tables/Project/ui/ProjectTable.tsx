@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ILineTable, ITable} from "core/widget/Table/model/model";
 import {DATA_HEADER_PROJECT_TABLE} from "core/tables/Project/data/data";
 import {DATA_PARAMS_PROJECT} from "core/entity/Project/data/data";
@@ -17,12 +17,12 @@ const ProjectTable = ({className}: ProjectTableProps) => {
     const [tableData, setTableData] = useState<ITable>()
     const navigate = useNavigate()
 
-    const handleOnLineClick = (line: ILineTable) => {
+    const handleOnLineClick = useCallback((line: ILineTable) => {
         if (line.id === undefined) return
 
         const url = PROJECT__TASK__MAIN_URL.replace(':projectId', line.id.toString());
         navigate(url)
-    }
+    }, [navigate])
 
     useEffect(() => {
         getProjectsAPI(DATA_PARAMS_PROJECT).then(r => {
@@ -32,7 +32,7 @@ const ProjectTable = ({className}: ProjectTableProps) => {
                 onLineClick: handleOnLineClick
             })
         });
-    }, []);
+    }, [handleOnLineClick]);
 
     return (
         <Table table={tableData} className={className}/>
