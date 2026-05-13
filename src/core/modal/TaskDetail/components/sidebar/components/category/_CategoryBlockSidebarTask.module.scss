@@ -26,7 +26,7 @@
   overflow: hidden;
   color: $white;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -75,7 +75,7 @@
   border-radius: 8px;
   background-color: $purple;
   color: $white;
-  font-weight: 700;
+  font-weight: 500;
   transition: opacity .2s;
 
   &:disabled {

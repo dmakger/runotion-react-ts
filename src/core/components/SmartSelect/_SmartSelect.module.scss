@@ -16,7 +16,7 @@
 .label {
   color: $gray-2;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .hint {
@@ -49,7 +49,7 @@
 
 .triggerText {
   overflow: hidden;
-  font-weight: 700;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -76,7 +76,7 @@
   background: $green-dark;
   color: $green;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .clear {
@@ -88,7 +88,7 @@
   border-radius: 50%;
   background: $black-light-4;
   color: $gray-2;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
 }
 
@@ -115,10 +115,8 @@
 }
 
 .panel {
-  position: absolute;
-  z-index: 30;
-  top: calc(100% + 7px);
-  left: 0;
+  position: fixed;
+  z-index: 1000;
   width: 100%;
   min-width: 260px;
   max-height: 330px;
@@ -140,7 +138,7 @@
   outline: none;
   background: $black-light-1;
   color: $white;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 9px;
   box-shadow: 0 0 0 2px $green-dark;
 
@@ -152,7 +150,7 @@
 .recommendation {
   color: $black-light-5;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 500;
   margin: 12px 4px 8px;
 }
 
@@ -223,7 +221,7 @@
 .optionLabel {
   overflow: hidden;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -232,7 +230,7 @@
   overflow: hidden;
   color: $black-light-5;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -241,13 +239,13 @@
   justify-self: end;
   color: $green;
   font-size: 17px;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .empty {
   color: $black-light-5;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   padding: 12px 8px;
 }
 
@@ -260,12 +258,18 @@
   padding-top: 8px;
 }
 
+.footer {
+  border-top: 1px solid $black-light-3;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
 .secondaryAction,
 .primaryAction {
   min-height: 34px;
   border-radius: 8px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 500;
   transition: background-color .15s, color .15s, opacity .15s;
 }
 

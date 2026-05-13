@@ -60,6 +60,27 @@ const CategoryBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Ca
         }).finally(() => setIsLoading(false))
     }
 
+    const createCategoryControl = (
+        <div className={cl.create}>
+            <input className={cl.input}
+                   value={name}
+                   onChange={(event) => setName(event.target.value)}
+                   placeholder="Новая категория"
+                   disabled={isLoading}/>
+            <input className={cl.colorInput}
+                   type="color"
+                   value={color}
+                   onChange={(event) => setColor(event.target.value)}
+                   disabled={isLoading}/>
+            <button className={cl.button}
+                    type="button"
+                    onClick={createCategory}
+                    disabled={isLoading || !name.trim()}>
+                Добавить
+            </button>
+        </div>
+    )
+
     return (
         <div className={cls(cl.block, className)}>
             <div className={cl.header}>
@@ -78,24 +99,10 @@ const CategoryBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Ca
                          placeholder={'Без категории'}
                          searchPlaceholder={'Найти категорию'}
                          emptyText={'Категорий пока нет'}
+                         dropdownFooter={createCategoryControl}
                          disabled={isLoading}
                          className={cl.select}/>
 
-            <div className={cl.create}>
-                <input className={cl.input}
-                       value={name}
-                       onChange={(event) => setName(event.target.value)}
-                       placeholder="Новая категория"
-                       disabled={isLoading}/>
-                <input className={cl.colorInput}
-                       type="color"
-                       value={color}
-                       onChange={(event) => setColor(event.target.value)}
-                       disabled={isLoading}/>
-                <button className={cl.button} onClick={createCategory} disabled={isLoading || !name.trim()}>
-                    Добавить
-                </button>
-            </div>
         </div>
     );
 };

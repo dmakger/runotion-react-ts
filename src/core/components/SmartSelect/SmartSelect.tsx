@@ -1,4 +1,5 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {createPortal} from 'react-dom';
 import {cls} from 'core/service/cls';
 import EntityImage, {EEntityImageVariant} from 'core/components/EntityImage/EntityImage';
 import cl from './_SmartSelect.module.scss';
@@ -27,6 +28,7 @@ interface SmartSelectProps {
     disabled?: boolean
     loading?: boolean
     emptyText?: string
+    dropdownFooter?: React.ReactNode
     searchValue?: string
     onSearchChange?: (value: string) => void
     withApplyButtons?: boolean
@@ -60,6 +62,8 @@ const OptionVisual = ({option}: { option: ISmartSelectOption }) => {
     return <span className={cl.optionBullet}/>
 }
 
+const PANEL_OFFSET = 7
+
 const SmartSelect = ({
     label,
     hint,
@@ -72,6 +76,7 @@ const SmartSelect = ({
     disabled = false,
     loading = false,
     emptyText = 'Ничего не найдено',
+    dropdownFooter,
     searchValue,
     onSearchChange,
     withApplyButtons,
@@ -81,7 +86,9 @@ const SmartSelect = ({
     const [isOpen, setIsOpen] = useState(false)
     const [localSearch, setLocalSearch] = useState('')
     const [draftValues, setDraftValues] = useState<SmartSelectValue[]>([])
+    const [panelPosition, setPanelPosition] = useState({top: 0, left: 0, width: 0})
     const rootRef = useRef<HTMLDivElement>(null)
+    const panelRef = useRef<HTMLDivElement>(null)
     const selectedValues = useMemo(() => normalizeValue(value), [value])
     const hasApplyButtons = withApplyButtons ?? multiple
     const activeValues = hasApplyButtons ? draftValues : selectedValues
@@ -89,7 +96,8 @@ const SmartSelect = ({
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (!rootRef.current || rootRef.current.contains(event.target as Node)) return
+            const target = event.target as Node
+            if (rootRef.current?.contains(target) || panelRef.current?.contains(target)) return
             setIsOpen(false)
             setDraftValues(selectedValues)
         }
@@ -101,6 +109,31 @@ const SmartSelect = ({
     useEffect(() => {
         if (!isOpen) setDraftValues(selectedValues)
     }, [isOpen, selectedValues])
+
+    useLayoutEffect(() => {
+        if (!isOpen) return
+
+        const updatePanelPosition = () => {
+            const trigger = rootRef.current?.querySelector(`.${cl.trigger}`)
+            if (!(trigger instanceof HTMLElement)) return
+
+            const rect = trigger.getBoundingClientRect()
+            setPanelPosition({
+                top: rect.bottom + PANEL_OFFSET,
+                left: rect.left,
+                width: rect.width,
+            })
+        }
+
+        updatePanelPosition()
+        window.addEventListener('resize', updatePanelPosition)
+        window.addEventListener('scroll', updatePanelPosition, true)
+
+        return () => {
+            window.removeEventListener('resize', updatePanelPosition)
+            window.removeEventListener('scroll', updatePanelPosition, true)
+        }
+    }, [isOpen])
 
     const selectedOptions = useMemo(() => {
         return options.filter(option => selectedValues.includes(option.value))
@@ -181,6 +214,63 @@ const SmartSelect = ({
         )
     }
 
+    const dropdown = isOpen ? createPortal(
+        <div className={cl.panel}
+             ref={panelRef}
+             style={{
+                 top: panelPosition.top,
+                 left: panelPosition.left,
+                 width: panelPosition.width,
+             }}>
+            {searchable &&
+                <input className={cl.search}
+                       value={currentSearch}
+                       onChange={event => handleSearch(event.target.value)}
+                       placeholder={searchPlaceholder}
+                       autoFocus/>
+            }
+
+            <div className={cl.recommendation}>Рекомендации</div>
+
+            <div className={cl.options}>
+                {filteredOptions.map(option => {
+                    const isSelected = activeValues.includes(option.value)
+
+                    return (
+                        <button className={cls(cl.option, isSelected ? cl.optionSelected : '', option.disabled ? cl.optionDisabled : '')}
+                                type="button"
+                                key={option.value}
+                                onClick={() => handleOptionClick(option)}>
+                            <OptionVisual option={option}/>
+                            <span className={cl.optionContent}>
+                                <span className={cl.optionLabel}>{option.label}</span>
+                                {option.subtitle && <span className={cl.optionSubtitle}>{option.subtitle}</span>}
+                            </span>
+                            {isSelected && <span className={cl.check}>✓</span>}
+                        </button>
+                    )
+                })}
+
+                {!loading && filteredOptions.length === 0 && <div className={cl.empty}>{emptyText}</div>}
+                {loading && <div className={cl.empty}>Загрузка...</div>}
+            </div>
+
+            {dropdownFooter && <div className={cl.footer}>{dropdownFooter}</div>}
+
+            {hasApplyButtons &&
+                <div className={cl.actions}>
+                    <button className={cl.secondaryAction} type="button" onClick={clearDraft}>
+                        Очистить
+                    </button>
+                    <button className={cl.primaryAction} type="button" onClick={applyDraft}>
+                        Применить
+                    </button>
+                </div>
+            }
+        </div>,
+        document.body,
+    ) : null
+
     return (
         <div className={cls(cl.root, isOpen ? cl.open : '', disabled ? cl.disabled : '', className)} ref={rootRef}>
             {(label || hint) &&
@@ -201,53 +291,8 @@ const SmartSelect = ({
                 <span className={cl.chevron}/>
             </button>
 
-            {isOpen &&
-                <div className={cl.panel}>
-                    {searchable &&
-                        <input className={cl.search}
-                               value={currentSearch}
-                               onChange={event => handleSearch(event.target.value)}
-                               placeholder={searchPlaceholder}
-                               autoFocus/>
-                    }
+            {dropdown}
 
-                    <div className={cl.recommendation}>Рекомендации</div>
-
-                    <div className={cl.options}>
-                        {filteredOptions.map(option => {
-                            const isSelected = activeValues.includes(option.value)
-
-                            return (
-                                <button className={cls(cl.option, isSelected ? cl.optionSelected : '', option.disabled ? cl.optionDisabled : '')}
-                                        type="button"
-                                        key={option.value}
-                                        onClick={() => handleOptionClick(option)}>
-                                    <OptionVisual option={option}/>
-                                    <span className={cl.optionContent}>
-                                        <span className={cl.optionLabel}>{option.label}</span>
-                                        {option.subtitle && <span className={cl.optionSubtitle}>{option.subtitle}</span>}
-                                    </span>
-                                    {isSelected && <span className={cl.check}>✓</span>}
-                                </button>
-                            )
-                        })}
-
-                        {!loading && filteredOptions.length === 0 && <div className={cl.empty}>{emptyText}</div>}
-                        {loading && <div className={cl.empty}>Загрузка...</div>}
-                    </div>
-
-                    {hasApplyButtons &&
-                        <div className={cl.actions}>
-                            <button className={cl.secondaryAction} type="button" onClick={clearDraft}>
-                                Очистить
-                            </button>
-                            <button className={cl.primaryAction} type="button" onClick={applyDraft}>
-                                Применить
-                            </button>
-                        </div>
-                    }
-                </div>
-            }
         </div>
     );
 };
