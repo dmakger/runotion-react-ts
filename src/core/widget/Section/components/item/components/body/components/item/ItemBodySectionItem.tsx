@@ -32,6 +32,12 @@ const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySec
     return (
         <button ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
             <span className={cl.name}>{sectionData.name}</span>
+            {sectionData.category &&
+                <span className={cl.category}>
+                    <span className={cl.categoryDot} style={{backgroundColor: sectionData.category.color}}/>
+                    {sectionData.category.name}
+                </span>
+            }
             <TaskCode code={sectionData.code} className={cl.code} classNameImage={cl.codeImage} classNameCode={cl.codeText}/>
         </button>
     );

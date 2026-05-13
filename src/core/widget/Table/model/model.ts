@@ -3,6 +3,7 @@ export interface ICellTable {
     title?: string,
     image?: string,
     entity?: 'user' | 'project',
+    color?: string,
     isEmpty?: boolean
 }
 

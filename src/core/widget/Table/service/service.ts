@@ -11,6 +11,7 @@ export const objToCellTable = ({obj, defaultText}: ObjToCellTableProps) => {
         id: obj.id,
         title: obj.title ? obj.title : defaultText,
         image: _image,
+        color: obj.color,
         isEmpty: obj.isEmpty === undefined ? !obj.title : obj.isEmpty,
     } as ICellTable
 }

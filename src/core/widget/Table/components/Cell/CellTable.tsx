@@ -21,6 +21,9 @@ const CellTable = ({cell, isHeader=false, className, ...resp}: CellTableProps) =
                              variant={imageVariant}
                              className={cl.image}/>
             }
+            {cell.color &&
+                <span className={cl.color} style={{backgroundColor: cell.color}}/>
+            }
             <span className={cls(cl.title, cell.isEmpty ? cl.empty : '')}>
                 {cell.title}
             </span>

@@ -37,9 +37,7 @@
   line-height: 1.35;
 }
 
-.input,
-.select,
-.roleSelect {
+.input {
   width: 100%;
   outline: none;
   background-color: $black-light-3;
@@ -53,6 +51,11 @@
     border-color: $green;
     box-shadow: 0 0 0 2px $green-dark;
   }
+}
+
+.select,
+.roleSelect {
+  width: 100%;
 }
 
 .memberHeader {
@@ -85,10 +88,6 @@
   background-color: $black-light-2;
   border: 1px solid $black-light-3;
   border-radius: 12px;
-}
-
-.roleSelect {
-  padding: 10px 12px;
 }
 
 .state {

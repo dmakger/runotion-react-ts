@@ -2,6 +2,14 @@ import {IProject} from "core/entity/Project/model/model";
 import {IUser} from "core/entity/User/model/model";
 import {IQuery} from "core/entity/core/model/model";
 
+export interface ITaskCategory {
+    id: number
+    project: number
+    name: string
+    color: string
+    created_at: string
+}
+
 // TASK
 export interface ITask {
     id: number
@@ -15,6 +23,7 @@ export interface ITask {
     responsible?: IUser,
     collaborators?: IUser[],
     observers?: IUser[],
+    category?: ITaskCategory | null,
 }
 
 

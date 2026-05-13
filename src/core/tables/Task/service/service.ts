@@ -11,6 +11,13 @@ export const taskListToTableContent = (tasks: ITask[]): ITable["content"] => {
 export const taskCellToTableContent = (task: ITask) => {
     const nameCell = objToCellTable({obj: {title: task.name}, defaultText: 'Без названия'});
     const deadlineCell = objToCellTable({obj: {title: formattedData(task.deadline)}, defaultText: 'Без срока'});
+    const categoryCell = objToCellTable({
+        obj: {
+            title: task.category?.name,
+            color: task.category?.color,
+        },
+        defaultText: 'Без категории'
+    });
     const directorCell = objToCellTable({
         obj: {
             id: task.director.id,
@@ -42,7 +49,7 @@ export const taskCellToTableContent = (task: ITask) => {
     return {
         id: task.id,
         line: [
-            nameCell, deadlineCell, directorCell, responsibleCell, projectCell
+            nameCell, deadlineCell, categoryCell, directorCell, responsibleCell, projectCell
         ]
     } as ILineTable
 }

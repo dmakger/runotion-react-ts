@@ -31,8 +31,13 @@ const CreateTaskModal = ({onClick = () => {}, isLoadingRequest, setIsLoadingRequ
         setIsLoadingRequest(true)
         createTaskAPI({'project_id': selectProject.id})
             .then(r => {
-                console.log(r)
                 onClick(r)
+                window.dispatchEvent(new CustomEvent('runotion:task-created', {
+                    detail: {
+                        task: r,
+                        projectId: selectProject.id,
+                    }
+                }))
                 setHintModal(getSuccessHintModal('Задача успешно создана!'))
             })
             .catch(e => {

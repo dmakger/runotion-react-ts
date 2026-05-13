@@ -14,6 +14,7 @@ import {getUsersAPI} from 'core/entity/User/api/UserAPI';
 import {IUser} from 'core/entity/User/model/model';
 import {cls} from 'core/service/cls';
 import User from 'core/entity/User/ui/user/User';
+import SmartSelect, {ISmartSelectOption} from 'core/components/SmartSelect/SmartSelect';
 import cl from './_ProjectUserModal.module.scss';
 
 interface ProjectUserModalProps extends IModal {
@@ -108,6 +109,18 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
     const usersToInvite = useMemo(() => {
         return users.filter(it => it.id !== projectAdmin?.user.id)
     }, [projectAdmin, users])
+    const userOptions: ISmartSelectOption[] = usersToInvite.map(user => ({
+        value: user.id,
+        label: getDisplayName(user),
+        subtitle: user.department?.name || user.username || 'Пользователь',
+        image: user.image,
+        entity: 'user',
+    }))
+    const roleOptions: ISmartSelectOption[] = roles.map(role => ({
+        value: role.id,
+        label: role.name,
+        subtitle: `Уровень: ${role.level?.value ?? '-'}`,
+    }))
 
     const upsertProjectUser = (item: IUserToProject) => {
         setProjectUsers(prev => {
@@ -167,30 +180,27 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
                         <p className={cl.muted}>Найдите пользователя и назначьте должность в проекте.</p>
                     </div>
 
-                    <input value={userSearch}
-                           onChange={e => setUserSearch(e.target.value)}
-                           placeholder={'Поиск пользователей'}
-                           className={cl.input}/>
+                    <SmartSelect label={'Пользователь'}
+                                 hint={'Можно искать по имени, логину или отделу'}
+                                 value={selectedUserId}
+                                 options={userOptions}
+                                 onChange={(value) => setSelectedUserId(String(value))}
+                                 placeholder={isUsersLoading ? 'Загрузка...' : 'Выберите пользователя'}
+                                 searchPlaceholder={'Введите имя пользователя'}
+                                 searchValue={userSearch}
+                                 onSearchChange={setUserSearch}
+                                 loading={isUsersLoading}
+                                 emptyText={'Пользователи не найдены'}
+                                 className={cl.select}/>
 
-                    <select value={selectedUserId}
-                            onChange={e => setSelectedUserId(e.target.value)}
-                            className={cl.select}>
-                        <option value={''}>{isUsersLoading ? 'Загрузка...' : 'Выберите пользователя'}</option>
-                        {usersToInvite.map(user => (
-                            <option value={user.id} key={user.id}>
-                                {getDisplayName(user)}{user.username ? ` · ${user.username}` : ''}
-                            </option>
-                        ))}
-                    </select>
-
-                    <select value={selectedRoleId}
-                            onChange={e => setSelectedRoleId(e.target.value)}
-                            className={cl.select}>
-                        <option value={''}>Выберите должность</option>
-                        {roles.map(role => (
-                            <option value={role.id} key={role.id}>{role.name}</option>
-                        ))}
-                    </select>
+                    <SmartSelect label={'Должность'}
+                                 value={selectedRoleId}
+                                 options={roleOptions}
+                                 onChange={(value) => setSelectedRoleId(String(value))}
+                                 placeholder={'Выберите должность'}
+                                 searchPlaceholder={'Найти должность'}
+                                 emptyText={'Должности не найдены'}
+                                 className={cl.select}/>
 
                     <Button.Green title={'Сохранить'}
                                   type={ETypeButton.BUTTON}
@@ -217,14 +227,13 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
                                 <User user={item.user}
                                       subtitle={item.user.username || 'Участник проекта'}
                                       variant={'compact'}/>
-                                <select value={item.role.id}
-                                        disabled={item.id === null || isSaving}
-                                        onChange={e => saveUserRole(item.user.id, e.target.value)}
-                                        className={cl.roleSelect}>
-                                    {roles.map(role => (
-                                        <option value={role.id} key={role.id}>{role.name}</option>
-                                    ))}
-                                </select>
+                                <SmartSelect value={item.role.id}
+                                             options={roleOptions}
+                                             disabled={item.id === null || isSaving}
+                                             onChange={(value) => saveUserRole(item.user.id, value)}
+                                             placeholder={'Должность'}
+                                             searchPlaceholder={'Найти должность'}
+                                             className={cl.roleSelect}/>
                             </div>
                         ))}
 

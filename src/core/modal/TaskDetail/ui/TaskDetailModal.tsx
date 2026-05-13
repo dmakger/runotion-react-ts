@@ -38,7 +38,7 @@ const TaskDetailModal = ({isVisible = false, setIsVisible, id, className}: TaskD
             <LoadingWrapper isLoading={isLoadingTask} className={cl.loadingWrapper}>
                 <>
                     <LeftBarTask id={id} task={task}/>
-                    <SidebarTask task={task}/>
+                    <SidebarTask task={task} onTaskChange={setTask}/>
                 </>
             </LoadingWrapper>
         </Modal>

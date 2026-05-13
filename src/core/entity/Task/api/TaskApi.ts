@@ -6,7 +6,6 @@ export const TASK_API = URL_API + '/task'
 // TASKS
 export const getTasksAPI = async (params?: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
     const url = `${TASK_API}/all/`
-    console.log(body)
     return await request({
         method: 'POST',
         url: getURL(url, params),
@@ -40,7 +39,36 @@ export const createTaskAPI = async (body: IArgsRequest["body"]) => {
 
 // UPDATE TASK
 export const updateTaskAPI = async (body: IArgsRequest["body"]) => {
-    const url = `${TASK_API}/${body!.id}/update`
+    const url = `${TASK_API}/${body!.id}/update/`
+    return await request({
+        method: 'PUT',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+export const getTaskCategoriesAPI = async (projectId: number | string, params?: IArgsRequest["params"]) => {
+    const url = `${TASK_API}/project/${projectId}/category/`
+    return await request({
+        method: 'GET',
+        url: getURL(url, params),
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+export const createTaskCategoryAPI = async (projectId: number | string, body: IArgsRequest["body"]) => {
+    const url = `${TASK_API}/project/${projectId}/category/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+export const updateTaskCategoryAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${TASK_API}/category/${body!.id}/update/`
     return await request({
         method: 'PUT',
         url: url,

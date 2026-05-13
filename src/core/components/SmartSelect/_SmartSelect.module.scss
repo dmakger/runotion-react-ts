@@ -1,0 +1,288 @@
+@import "core/scss/vars";
+
+.root {
+  position: relative;
+  width: 100%;
+  color: $white;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 7px;
+}
+
+.label {
+  color: $gray-2;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hint {
+  color: $black-light-5;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.trigger {
+  width: 100%;
+  min-height: 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  background: $black-light-3;
+  color: $white;
+  padding: 6px 12px;
+  text-align: left;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+
+  &:focus,
+  &:hover {
+    border-color: $green;
+    box-shadow: 0 0 0 2px $green-dark;
+  }
+}
+
+.triggerText {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerOption {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.placeholder {
+  color: $black-light-5;
+}
+
+.count {
+  min-width: 28px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: $green-dark;
+  color: $green;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.clear {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $black-light-4;
+  color: $gray-2;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid $gray-1;
+  border-bottom: 2px solid $gray-1;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .2s;
+}
+
+.open {
+  z-index: 20;
+
+  .chevron {
+    transform: rotate(225deg) translate(-2px, -1px);
+  }
+}
+
+.disabled {
+  opacity: .65;
+  pointer-events: none;
+}
+
+.panel {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 7px);
+  left: 0;
+  width: 100%;
+  min-width: 260px;
+  max-height: 330px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  background: $black-light-2;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .34);
+  color: $white;
+  padding: 8px;
+}
+
+.search {
+  height: 36px;
+  width: 100%;
+  border: 1px solid $green;
+  border-radius: 6px;
+  outline: none;
+  background: $black-light-1;
+  color: $white;
+  font-weight: 700;
+  padding: 0 9px;
+  box-shadow: 0 0 0 2px $green-dark;
+
+  &::placeholder {
+    color: $black-light-5;
+  }
+}
+
+.recommendation {
+  color: $black-light-5;
+  font-size: 12px;
+  font-weight: 800;
+  margin: 12px 4px 8px;
+}
+
+.options {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.option {
+  width: 100%;
+  min-height: 38px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 22px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: $gray-2;
+  padding: 7px 8px;
+  text-align: left;
+  transition: background-color .15s, color .15s;
+
+  &:hover {
+    background: $black-light-3;
+  }
+}
+
+.optionSelected {
+  background: $green-dark;
+  color: $green;
+
+  .optionSubtitle {
+    color: $green-light;
+  }
+}
+
+.optionDisabled {
+  opacity: .55;
+  pointer-events: none;
+}
+
+.optionImage {
+  width: 24px;
+  height: 24px;
+}
+
+.optionColor {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+}
+
+.optionBullet {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  background: $black-light-4;
+}
+
+.optionContent {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.optionLabel {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionSubtitle {
+  overflow: hidden;
+  color: $black-light-5;
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.check {
+  justify-self: end;
+  color: $green;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.empty {
+  color: $black-light-5;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 8px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid $black-light-3;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.secondaryAction,
+.primaryAction {
+  min-height: 34px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background-color .15s, color .15s, opacity .15s;
+}
+
+.secondaryAction {
+  background: $black-light-3;
+  color: $gray-2;
+
+  &:hover {
+    background: $black-light-4;
+  }
+}
+
+.primaryAction {
+  background: $green;
+  color: $black-light-1;
+
+  &:hover {
+    opacity: .88;
+  }
+}

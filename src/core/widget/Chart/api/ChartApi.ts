@@ -38,3 +38,47 @@ export const taskToPerformersAPI = async (body: IArgsRequest["body"]) => {
         body: JSON.stringify(body),
     } as IRequest)
 }
+
+
+export const taskStatusAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${CHART_API}/task_status/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+
+export const tasksByProjectAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${CHART_API}/tasks_by_project/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+
+export const tasksByDirectorAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${CHART_API}/tasks_by_director/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+
+export const chartFiltersAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${CHART_API}/filters/`
+    return await request({
+        method: 'POST',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}

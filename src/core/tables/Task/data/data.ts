@@ -8,12 +8,16 @@ export const DEADLINE_ITEM_HEADER_TASK_TABLE: ICellTable = {
     title: 'Крайний срок'
 }
 
+export const CATEGORY_ITEM_HEADER_TASK_TABLE: ICellTable = {
+    title: 'Категория'
+}
+
 export const DIRECTOR_ITEM_HEADER_TASK_TABLE: ICellTable = {
     title: 'Постановщик'
 }
 
 export const RESPONSIBLE_ITEM_HEADER_TASK_TABLE: ICellTable = {
-    title: 'Ответсвенный'
+    title: 'Ответственный'
 }
 
 export const PROJECT_ITEM_HEADER_TASK_TABLE: ICellTable = {
@@ -26,6 +30,7 @@ export const DATA_HEADER_TASK_TABLE: ILineTable = {
     line: [
         NAME_ITEM_HEADER_TASK_TABLE,
         DEADLINE_ITEM_HEADER_TASK_TABLE,
+        CATEGORY_ITEM_HEADER_TASK_TABLE,
         DIRECTOR_ITEM_HEADER_TASK_TABLE,
         RESPONSIBLE_ITEM_HEADER_TASK_TABLE,
         PROJECT_ITEM_HEADER_TASK_TABLE,

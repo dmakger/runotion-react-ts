@@ -8,20 +8,23 @@ import UsersBlockSidebarTask
     from "core/modal/TaskDetail/components/sidebar/components/block/users/ui/UsersBlockSidebarTask";
 import CompleteButtonSidebarTask
     from "core/modal/TaskDetail/components/sidebar/components/complete/CompleteButtonSidebarTask";
+import CategoryBlockSidebarTask
+    from "core/modal/TaskDetail/components/sidebar/components/category/CategoryBlockSidebarTask";
 
 interface SidebarTaskProps {
     task?: ITask
+    onTaskChange?: (task: ITask) => void
     className?: string
 }
 
-const SidebarTask = ({task, className}: SidebarTaskProps) => {
-    console.log(task)
+const SidebarTask = ({task, onTaskChange, className}: SidebarTaskProps) => {
     return (
         <div className={cls(cl.block, className)}>
             <LoadingWrapper isLoading={task === undefined}>
                 {task !== undefined &&
                     <>
                         <CompleteButtonSidebarTask taskId={task.id} isCompleted={task.completed_at !== null} />
+                        <CategoryBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <TextBlockSidebarTask task={task}/>
                         <UsersBlockSidebarTask task={task}/>
                     </>

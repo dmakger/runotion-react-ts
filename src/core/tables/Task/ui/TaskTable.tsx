@@ -29,20 +29,40 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         setIsVisible(true)
     }, [])
 
-    // EFFECT
-    useEffect(() => {
+    const loadTasks = useCallback(() => {
         let body = {project_id: projectId} as IArgsRequest["body"]
         if (projectId === undefined)
             body = undefined
-        getTasksAPI(DATA_PARAMS_TASK, body)
-            .then(r => {
-                setTableData({
-                    header: DATA_HEADER_TASK_TABLE,
-                    content: taskListToTableContent(r.results),
-                    onLineClick: handleOnLineClick,
-                })
-            });
-    }, [handleOnLineClick, projectId]);
+
+        return getTasksAPI(DATA_PARAMS_TASK, body).then(r => {
+            setTableData({
+                header: DATA_HEADER_TASK_TABLE,
+                content: taskListToTableContent(r.results),
+                onLineClick: handleOnLineClick,
+            })
+        });
+    }, [handleOnLineClick, projectId])
+
+    // EFFECT
+    useEffect(() => {
+        loadTasks()
+    }, [loadTasks]);
+
+    useEffect(() => {
+        const handleTaskChanged = (event: Event) => {
+            const detail = (event as CustomEvent).detail
+            const changedProjectId = detail?.projectId || detail?.task?.project?.id
+            if (projectId !== undefined && changedProjectId !== projectId) return
+            loadTasks()
+        }
+
+        window.addEventListener('runotion:task-created', handleTaskChanged)
+        window.addEventListener('runotion:task-updated', handleTaskChanged)
+        return () => {
+            window.removeEventListener('runotion:task-created', handleTaskChanged)
+            window.removeEventListener('runotion:task-updated', handleTaskChanged)
+        }
+    }, [loadTasks, projectId]);
 
 
     return (
