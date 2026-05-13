@@ -1,5 +1,51 @@
+@import "core/scss/vars";
+
 .body {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
+  border-radius: 10px;
+  transition: background-color .22s, box-shadow .22s, padding .22s;
+}
+
+.dragTarget {
+  padding: 8px;
+  background: $black-light-2;
+  background: color-mix(in srgb, var(--section-color) 12%, #18181B);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-color) 42%, transparent);
+}
+
+.dropIndicator {
+  height: 10px;
+  position: relative;
+  border-radius: 999px;
+  animation: drop-indicator-in .16s ease both;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--section-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--section-color) 16%, transparent),
+                0 0 18px color-mix(in srgb, var(--section-color) 34%, transparent);
+  }
+}
+
+@keyframes drop-indicator-in {
+  from {
+    opacity: 0;
+    transform: scaleX(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }

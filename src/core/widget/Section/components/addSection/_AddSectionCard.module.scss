@@ -1,0 +1,140 @@
+@import "core/scss/vars";
+
+.compact,
+.card {
+  width: 300px;
+  flex: 0 0 300px;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  background: linear-gradient(145deg, $black-light-2, $black-light-1);
+  color: $gray-2;
+}
+
+.compact {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-style: dashed;
+  transition: border-color .2s, background-color .2s, transform .2s;
+
+  &:hover {
+    border-color: $green;
+    background: $black-light-2;
+    transform: translateY(-2px);
+  }
+}
+
+.plus {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $green-dark;
+  color: $green;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .24);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.close {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: $black-light-3;
+  color: $gray-1;
+}
+
+.input {
+  height: 38px;
+  width: 100%;
+  border: 1px solid $black-light-4;
+  border-radius: 8px;
+  outline: none;
+  background: $black-light-1;
+  color: $white;
+  padding: 0 10px;
+
+  &:focus {
+    border-color: $green;
+    box-shadow: 0 0 0 2px $green-dark;
+  }
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+
+.swatch {
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.activeSwatch {
+  border-color: $white;
+  box-shadow: 0 0 0 2px rgba(0, 242, 166, .3);
+}
+
+.customColor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+  color: $black-light-5;
+  font-size: 12px;
+
+  input {
+    width: 42px;
+    height: 34px;
+    border: 1px solid $black-light-4;
+    border-radius: 8px;
+    overflow: hidden;
+    background: $black-light-1;
+    padding: 3px;
+  }
+}
+
+.submit {
+  min-height: 38px;
+  border-radius: 8px;
+  background: $green;
+  color: $black-light-1;
+  font-weight: 500;
+  transition: opacity .2s, transform .2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: .5;
+  }
+}

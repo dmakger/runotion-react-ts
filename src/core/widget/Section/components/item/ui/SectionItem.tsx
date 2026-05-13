@@ -16,10 +16,14 @@ interface SectionItemProps {
     section: ISection
     color?: IColor
     onAddItemClick?: ISectionFunction['onAddItemClick']
+    isDragTarget?: boolean
+    dropIndex?: number
+    activeItemId?: number
+    movedItemId?: number
     className?: string
 }
 
-const SectionItem = ({ident, section, color, onAddItemClick, className}: SectionItemProps) => {
+const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropIndex, activeItemId, movedItemId, className}: SectionItemProps) => {
     // console.log('SectionItem');
     
     const colorValue = getValueColor(color)
@@ -37,10 +41,21 @@ const SectionItem = ({ident, section, color, onAddItemClick, className}: Section
     }
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} className={cls(cl.block, className)}>
+        <div ref={setNodeRef}
+             style={{
+                 ...style,
+                 '--section-color': colorValue,
+             } as React.CSSProperties}
+             {...attributes}
+             className={cls(cl.block, isDragTarget ? cl.dragTarget : '', className)}>
             <HeaderSectionItem name={section.name} color={colorValue}/>
             <BodySectionAddItem ident={`${ETypeSection.ADD_ITEM}-${section.id}`} addItem={onAddItemClick} section={section} />
-            <BodySectionItem body={section.body} color={colorValue}/>
+            <BodySectionItem body={section.body}
+                             color={colorValue}
+                             isDragTarget={isDragTarget}
+                             dropIndex={dropIndex}
+                             activeItemId={activeItemId}
+                             movedItemId={movedItemId}/>
         </div>
     );
 };

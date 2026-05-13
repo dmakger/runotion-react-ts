@@ -1,4 +1,9 @@
 .list {
+  height: calc(100vh - 96px);
   display: flex;
   gap: 20px;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 16px;
 }

@@ -11,11 +11,12 @@ interface ItemBodySectionItemProps {
     ident: UniqueIdentifier
     sectionData: any
     color?: string
+    isRecentlyMoved?: boolean
     className?: string
 }
 
-const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySectionItemProps) => {    
-    const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
+const ItemBodySectionItem = ({ident, sectionData, color, isRecentlyMoved, className}: ItemBodySectionItemProps) => {    
+    const {attributes, listeners, setNodeRef, transform, transition, isDragging} = useSortable({
         id: ident,
         data: {
             type: ETypeSection.ITEM
@@ -26,11 +27,16 @@ const ItemBodySectionItem = ({ident, sectionData, color, className}: ItemBodySec
         transition,
         transform: CSS.Transform.toString(transform),
         borderLeft: `3px solid ${color}`,
-    }
+        '--section-color': color,
+    } as React.CSSProperties
 
 
     return (
-        <button ref={setNodeRef} style={style} {...attributes} {...listeners} className={cls(cl.block, className)}>
+        <button ref={setNodeRef}
+                style={style}
+                {...attributes}
+                {...listeners}
+                className={cls(cl.block, isDragging ? cl.dragging : '', isRecentlyMoved ? cl.justMoved : '', className)}>
             <span className={cl.name}>{sectionData.name}</span>
             {sectionData.category &&
                 <span className={cl.category}>

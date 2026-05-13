@@ -44,29 +44,36 @@ export const getIdFromSection = (element: Active | Over) => {
 }
 
 // ======{ ELEMENTS }======
-export const swapItemIntoSection = (itemId: number, newSectionId: number, sections?: ISection[]) => {
-    let _oldSectionId = sections?.find(_section => _section.body?.find(it => it.id === itemId))?.id
+export const swapItemIntoSection = (itemId: number, newSectionId: number, sections?: ISection[], insertIndex = 0) => {
+    const oldSectionId = sections?.find(section => section.body?.find(item => item.id === itemId))?.id
+    if (oldSectionId === undefined || sections === undefined) return sections
 
-    if (_oldSectionId === undefined) return
-    let _prevSections: ITaskSection[] = []
-    if (sections !== undefined)
-        _prevSections = [...sections]
+    const nextSections: ITaskSection[] = sections.map(section => ({
+        ...section,
+        body: section.body ? [...section.body] : [],
+    }))
+    const newIndex = nextSections.findIndex(section => section.id === newSectionId)
+    const oldIndex = nextSections.findIndex(section => section.id === oldSectionId)
 
-    const newIndex = _prevSections.findIndex(it => it.id === newSectionId)
-    const oldIndex = _prevSections.findIndex(it => it.id === _oldSectionId)
+    if (newIndex < 0 || oldIndex < 0) return sections
 
-    let newBody = _prevSections[newIndex].body
-    if (newBody === undefined)
-        newBody = []
-    let oldBody = _prevSections[oldIndex].body
-    if (oldBody === undefined)
-        oldBody = []
+    const oldBody = nextSections[oldIndex].body || []
+    const oldItemIndex = oldBody.findIndex(item => item.id === itemId)
+    if (oldItemIndex < 0) return sections
 
-    const item = oldBody.find(it => it.id === itemId)
-    if (item === undefined) return sections
+    const [item] = oldBody.splice(oldItemIndex, 1)
+    let nextInsertIndex = Math.max(0, insertIndex)
 
-    _prevSections[newIndex].body = [item, ...newBody]
-    _prevSections[oldIndex].body = oldBody.filter(it => it.id !== itemId)
-    return _prevSections
+    if (oldSectionId === newSectionId && oldItemIndex < nextInsertIndex) {
+        nextInsertIndex -= 1
+    }
+
+    const newBody = nextSections[newIndex].body || []
+    nextInsertIndex = Math.min(nextInsertIndex, newBody.length)
+    newBody.splice(nextInsertIndex, 0, item)
+
+    nextSections[oldIndex].body = oldBody
+    nextSections[newIndex].body = newBody
+    return nextSections
 }
 

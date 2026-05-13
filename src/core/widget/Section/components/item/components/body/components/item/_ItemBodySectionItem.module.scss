@@ -7,7 +7,8 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  transition: all .2s;
+  text-align: left;
+  transition: background-color .22s, box-shadow .22s, opacity .18s, transform .22s;
   cursor: pointer;
 
   &:hover {
@@ -25,6 +26,10 @@
     .codeText {
       font-size: 14px;
     }
+  }
+
+  .name {
+    text-align: left;
   }
 
   .category {
@@ -46,5 +51,31 @@
     height: 9px;
     border-radius: 50%;
     flex-shrink: 0;
+  }
+}
+
+.dragging {
+  opacity: .54;
+  transform: scale(.98);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .28);
+}
+
+.justMoved {
+  animation: task-arrive .64s ease both;
+}
+
+@keyframes task-arrive {
+  0% {
+    background-color: $black-light-3;
+    background-color: color-mix(in srgb, var(--section-color, #00F2A6) 24%, #18181B);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--section-color, #00F2A6) 52%, transparent),
+                0 14px 30px rgba(0, 0, 0, .24);
+    transform: translateY(-8px) scale(1.015);
+  }
+
+  100% {
+    background-color: $black-light-2;
+    box-shadow: none;
+    transform: translateY(0) scale(1);
   }
 }

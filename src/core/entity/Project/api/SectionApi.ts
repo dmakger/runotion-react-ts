@@ -20,12 +20,30 @@ export const getSectionsProjectsAPI = async (projectId: number | string) => {
     } as IRequest)
 }
 
+export const createSectionProjectAPI = async (
+    projectId: number | string,
+    body: { name: string, color_value?: string },
+) => {
+    const url = `${getSectionURL(projectId)}/create/`
+    return await request({
+        method: 'POST',
+        url: getURL(url),
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
 
-export const taskInOtherSectionProjectsAPI = async (section_project_id: number | string, taskId: number | string) => {
+
+export const taskInOtherSectionProjectsAPI = async (
+    section_project_id: number | string,
+    taskId: number | string,
+    position?: number,
+) => {
     const url = `${URL_API}/task/section-project/${section_project_id}/task/${taskId}/update/`
     return await request({
         method: 'PUT',
         url: url,
         headers: getHeaders(true),
+        body: JSON.stringify({position}),
     } as IRequest)
 }

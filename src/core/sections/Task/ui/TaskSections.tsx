@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {ISection, ISectionFunction} from "core/widget/Section/model/model";
-import {getSectionsProjectsAPI, taskInOtherSectionProjectsAPI} from "core/entity/Project/api/SectionApi";
+import {createSectionProjectAPI, getSectionsProjectsAPI, taskInOtherSectionProjectsAPI} from "core/entity/Project/api/SectionApi";
 import Section from "core/widget/Section/ui/Section";
 import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 import {ITaskSection} from "core/sections/Task/model/model";
 import {swapItemIntoSection} from "core/widget/Section/lib/section.lib";
 import TaskDetailModal from 'core/modal/TaskDetail/ui/TaskDetailModal';
-import CreateOrAddTaskModal from "core/modal/CreateOrAddTask/ui/CreateOrAddTaskModal";
-import {addTaskInSectionAPI, createTaskAPI} from "core/entity/Task/api/TaskApi";
-import {ITask} from "core/entity/Task/model/model";
+import {createTaskAPI} from "core/entity/Task/api/TaskApi";
 
 interface TaskSectionsProps {
     projectId?: string | number
@@ -21,9 +19,6 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     const [taskIsVisible, setTaskIsVisible] = useState(false)
     const [taskId, setTaskId] = useState<number>()
 
-    const [sectionId, setSectionId] = useState<number>()
-    const [sectionIsVisible, setSectionIsVisible] = useState(false)
-
     // EFFECT
     useEffect(() => {
         if (sections !== undefined || projectId === undefined) return
@@ -33,26 +28,13 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     }, [projectId, sections])
 
     // ITEM to SECTION
-    const taskToSection = (newSectionId: number, itemId: number) => {
+    const taskToSection = (newSectionId: number, itemId: number, insertIndex = 0) => {
         const oldSections = sections ? [...sections] : []
-        const newSections = swapItemIntoSection(itemId, newSectionId, sections)
+        const newSections = swapItemIntoSection(itemId, newSectionId, sections, insertIndex)
         setSections(newSections)
 
-        taskInOtherSectionProjectsAPI(newSectionId, itemId).catch(e => {
+        taskInOtherSectionProjectsAPI(newSectionId, itemId, insertIndex + 1).catch(e => {
             setSections(oldSections)
-        })
-    }
-
-    const addInSection = (task: ITask) => {
-        if (sections === undefined) return
-        setSections(() => {
-            const sectionIndex = sections.findIndex(it => it.id === sectionId)
-            const _sections = [...sections]
-            let _body = _sections[sectionIndex].body
-            if (_body === undefined)
-                _body = []
-            _sections[sectionIndex].body = [task, ..._body]
-            return _sections
         })
     }
 
@@ -62,30 +44,30 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     }
 
     const onAddTaskClick: ISectionFunction['onAddItemClick'] = (section: ITaskSection) => {
-        setSectionIsVisible(true)
-        setSectionId(section.id)
-    }
-
-    const createNewTask = () => {
         if (sections === undefined) return
         const body = {
             'project_id': projectId,
-            'section_id': sectionId,
+            'section_id': section.id,
         }
         createTaskAPI(body).then(r => {
-            addInSection(r)
-            setSectionIsVisible(false)
-            setSectionId(undefined)
+            setSections(prev => {
+                if (prev === undefined) return prev
+                return prev.map(item => {
+                    if (item.id !== section.id) return item
+                    return {...item, body: [...(item.body || []), r]}
+                })
+            })
         })
     }
 
-    const addExistsTask = (task: ITask) => {
-        if (sections === undefined) return
-        const body = {taskId: task.id, sectionId}
-        addTaskInSectionAPI(body).then(r => {
-            addInSection(task)
-            setSectionIsVisible(false)
-            setSectionId(undefined)
+    const addSection = (name: string, color: string) => {
+        if (projectId === undefined || sections === undefined) return
+
+        createSectionProjectAPI(projectId, {name, color_value: color}).then((section: ITaskSection) => {
+            setSections(prev => {
+                if (prev === undefined) return prev
+                return [...prev, {...section, body: section.body || []}]
+            })
         })
     }
 
@@ -94,11 +76,10 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
             {sections !== undefined &&
                 <Section sections={sections} itemToSection={taskToSection} 
                          onItemClick={onTaskClick} onAddItemClick={onAddTaskClick}
+                         onAddSection={addSection}
                          className={className}/>
             }
             <TaskDetailModal isVisible={taskIsVisible} setIsVisible={setTaskIsVisible} id={taskId}/>
-            <CreateOrAddTaskModal isVisible={sectionIsVisible} setIsVisible={setSectionIsVisible}
-                                  addExistsTask={addExistsTask} createNewTask={createNewTask}/>
         </LoadingWrapper>
     );
 };

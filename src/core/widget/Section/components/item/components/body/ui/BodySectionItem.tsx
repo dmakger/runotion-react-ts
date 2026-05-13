@@ -9,17 +9,32 @@ import {ETypeSection} from "core/widget/Section/model/model";
 interface BodySectionItemProps {
     body?: any[]
     color?: string
+    isDragTarget?: boolean
+    dropIndex?: number
+    activeItemId?: number
+    movedItemId?: number
     className?: string
 }
 
-const BodySectionItem = ({body, color, className}: BodySectionItemProps) => {
+const DropIndicator = () => <div className={cl.dropIndicator}/>
+
+const BodySectionItem = ({body, color, isDragTarget, dropIndex, activeItemId, movedItemId, className}: BodySectionItemProps) => {
+    const items = body || []
+
     return (
-        <div className={cls(cl.body, className)}>
-            <SortableContext items={body ? body : []}>
-                {body?.map((it, index) => (
-                    <ItemBodySectionItem ident={`${ETypeSection.ITEM}-${it.id}`} 
-                                         sectionData={it} color={color} key={index} />
+        <div className={cls(cl.body, isDragTarget ? cl.dragTarget : '', className)}
+             style={{'--section-color': color} as React.CSSProperties}>
+            <SortableContext items={items}>
+                {items.map((it, index) => (
+                    <React.Fragment key={it.id}>
+                        {dropIndex === index && activeItemId !== it.id && <DropIndicator/>}
+                        <ItemBodySectionItem ident={`${ETypeSection.ITEM}-${it.id}`}
+                                             sectionData={it}
+                                             color={color}
+                                             isRecentlyMoved={movedItemId === it.id}/>
+                    </React.Fragment>
                 ))}
+                {dropIndex === items.length && <DropIndicator/>}
             </SortableContext>
         </div>
     );
