@@ -24,7 +24,7 @@ const BodySectionItem = ({body, color, isDragTarget, dropIndex, activeItemId, mo
     return (
         <div className={cls(cl.body, isDragTarget ? cl.dragTarget : '', className)}
              style={{'--section-color': color} as React.CSSProperties}>
-            <SortableContext items={items}>
+            <SortableContext items={items.map(it => `${ETypeSection.ITEM}-${it.id}`)}>
                 {items.map((it, index) => (
                     <React.Fragment key={it.id}>
                         {dropIndex === index && activeItemId !== it.id && <DropIndicator/>}

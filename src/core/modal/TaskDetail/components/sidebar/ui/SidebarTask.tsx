@@ -10,6 +10,8 @@ import CompleteButtonSidebarTask
     from "core/modal/TaskDetail/components/sidebar/components/complete/CompleteButtonSidebarTask";
 import CategoryBlockSidebarTask
     from "core/modal/TaskDetail/components/sidebar/components/category/CategoryBlockSidebarTask";
+import StageBlockSidebarTask
+    from "core/modal/TaskDetail/components/sidebar/components/stage/StageBlockSidebarTask";
 
 interface SidebarTaskProps {
     task?: ITask
@@ -24,6 +26,7 @@ const SidebarTask = ({task, onTaskChange, className}: SidebarTaskProps) => {
                 {task !== undefined &&
                     <>
                         <CompleteButtonSidebarTask taskId={task.id} isCompleted={task.completed_at !== null} />
+                        <StageBlockSidebarTask task={task}/>
                         <CategoryBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <TextBlockSidebarTask task={task}/>
                         <UsersBlockSidebarTask task={task}/>

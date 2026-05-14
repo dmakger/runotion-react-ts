@@ -3,9 +3,18 @@ import {ETypeSection, ISection, ISectionFunction} from "core/widget/Section/mode
 import SectionItem from "core/widget/Section/components/item/ui/SectionItem";
 import cl from './_Section.module.scss'
 import {cls} from "core/service/cls";
-import {closestCenter, DndContext, DragEndEvent, DragOverEvent, DragStartEvent} from '@dnd-kit/core';
+import {
+    closestCenter,
+    DndContext,
+    DragEndEvent,
+    DragOverEvent,
+    DragStartEvent,
+    PointerSensor,
+    useSensor,
+    useSensors,
+} from '@dnd-kit/core';
 import {getIdFromSection, getTypeSection} from '../lib/section.lib';
-import {SortableContext} from "@dnd-kit/sortable";
+import {arrayMove, SortableContext} from "@dnd-kit/sortable";
 import AddSectionCard from "core/widget/Section/components/addSection/AddSectionCard";
 
 
@@ -15,6 +24,8 @@ interface SectionProps {
     onItemClick?: ISectionFunction['onItemClick']
     onAddItemClick?: ISectionFunction['onAddItemClick']
     onAddSection?: (name: string, color: string) => void
+    onSectionMove?: (sectionId: number, nextIndex: number, previousSections: ISection[]) => void
+    onSectionsChange?: (sections: ISection[]) => void
     className?: string
 }
 
@@ -33,10 +44,26 @@ interface DropPreview {
     index: number
 }
 
-const Section = ({sections, itemToSection, onItemClick, onAddItemClick, onAddSection, className}: SectionProps) => {
+const Section = ({
+    sections,
+    itemToSection,
+    onItemClick,
+    onAddItemClick,
+    onAddSection,
+    onSectionMove,
+    onSectionsChange,
+    className,
+}: SectionProps) => {
     const [activeItemId, setActiveItemId] = useState<number>()
     const [dropPreview, setDropPreview] = useState<DropPreview>()
     const [movedItemId, setMovedItemId] = useState<number>()
+    const sensors = useSensors(
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                distance: 8,
+            },
+        }),
+    )
 
     useEffect(() => {
         if (movedItemId === undefined) return
@@ -87,15 +114,31 @@ const Section = ({sections, itemToSection, onItemClick, onAddItemClick, onAddSec
             return
 
         const activeId = Number(getIdFromSection(active))
+        const activeType = getTypeSection(active)
                 
         // CLICK ON ITEM ?
-        if (active.id === over.id){
+        if (activeType === ETypeSection.ITEM && active.id === over.id){
             if (onItemClick) 
                 onItemClick(activeId)
             return
         }
 
-        const activeType = getTypeSection(active)
+        if (activeType === ETypeSection.SECTION) {
+            const overType = getTypeSection(over)
+            if (overType !== ETypeSection.SECTION) return
+
+            const activeSectionId = Number(getIdFromSection(active))
+            const overSectionId = Number(getIdFromSection(over))
+            const oldIndex = sections.findIndex(section => section.id === activeSectionId)
+            const newIndex = sections.findIndex(section => section.id === overSectionId)
+
+            if (oldIndex >= 0 && newIndex >= 0 && oldIndex !== newIndex) {
+                const previousSections = [...sections]
+                onSectionsChange?.(arrayMove(sections, oldIndex, newIndex))
+                onSectionMove?.(activeSectionId, newIndex, previousSections)
+            }
+            return
+        }
 
         if (activeType === ETypeSection.ITEM) {
             const preview = getDropPreview(e)
@@ -114,7 +157,8 @@ const Section = ({sections, itemToSection, onItemClick, onAddItemClick, onAddSec
 
     return (
         <div className={cls(cl.list, className)}>
-            <DndContext collisionDetection={closestCenter}
+            <DndContext sensors={sensors}
+                        collisionDetection={closestCenter}
                         onDragStart={onDragStart}
                         onDragOver={onDragOver}
                         onDragCancel={() => {
@@ -122,7 +166,7 @@ const Section = ({sections, itemToSection, onItemClick, onAddItemClick, onAddSec
                             setDropPreview(undefined)
                         }}
                         onDragEnd={onDragEnd}>
-                <SortableContext items={sections}>
+                <SortableContext items={sections.map(it => `${ETypeSection.SECTION}-${it.id}`)}>
                     {sections.map(it => (
                         <SectionItem ident={`${ETypeSection.SECTION}-${it.id}`} section={it} color={it.color}  
                                      onAddItemClick={onAddItemClick}

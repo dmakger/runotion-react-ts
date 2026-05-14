@@ -1,6 +1,7 @@
 import {IProject} from "core/entity/Project/model/model";
 import {IUser} from "core/entity/User/model/model";
 import {IQuery} from "core/entity/core/model/model";
+import {ISection} from "core/widget/Section/model/model";
 
 export interface ITaskCategory {
     id: number
@@ -24,6 +25,7 @@ export interface ITask {
     collaborators?: IUser[],
     observers?: IUser[],
     category?: ITaskCategory | null,
+    section?: ISection | null,
 }
 
 

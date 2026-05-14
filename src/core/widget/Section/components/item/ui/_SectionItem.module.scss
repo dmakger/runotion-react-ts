@@ -21,3 +21,17 @@
               0 16px 38px rgba(0, 0, 0, .22);
   transform: translateY(-2px);
 }
+
+.dragHandle {
+  cursor: grab;
+  touch-action: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.dragging {
+  opacity: .62;
+  transform: rotate(.6deg) scale(.99);
+}

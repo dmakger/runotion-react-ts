@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {ISection, ISectionFunction} from "core/widget/Section/model/model";
-import {createSectionProjectAPI, getSectionsProjectsAPI, taskInOtherSectionProjectsAPI} from "core/entity/Project/api/SectionApi";
+import {
+    createSectionProjectAPI,
+    getSectionsProjectsAPI,
+    taskInOtherSectionProjectsAPI,
+    updateSectionProjectAPI
+} from "core/entity/Project/api/SectionApi";
 import Section from "core/widget/Section/ui/Section";
 import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 import {ITaskSection} from "core/sections/Task/model/model";
@@ -71,12 +76,22 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
         })
     }
 
+    const moveSection = (sectionId: number, nextIndex: number, previousSections: ISection[]) => {
+        if (projectId === undefined) return
+
+        updateSectionProjectAPI(projectId, sectionId, {position: nextIndex + 1}).catch(() => {
+            setSections(previousSections as ITaskSection[])
+        })
+    }
+
     return (
         <LoadingWrapper isLoading={sections === undefined}>
             {sections !== undefined &&
                 <Section sections={sections} itemToSection={taskToSection} 
                          onItemClick={onTaskClick} onAddItemClick={onAddTaskClick}
                          onAddSection={addSection}
+                         onSectionsChange={(nextSections) => setSections(nextSections as ITaskSection[])}
+                         onSectionMove={moveSection}
                          className={className}/>
             }
             <TaskDetailModal isVisible={taskIsVisible} setIsVisible={setTaskIsVisible} id={taskId}/>

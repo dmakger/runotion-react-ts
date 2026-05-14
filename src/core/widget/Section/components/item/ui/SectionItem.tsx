@@ -28,7 +28,7 @@ const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropI
     
     const colorValue = getValueColor(color)
 
-    const {attributes, setNodeRef, transform, transition} = useSortable({
+    const {attributes, listeners, setActivatorNodeRef, setNodeRef, transform, transition, isDragging} = useSortable({
         id: ident,
         data: {
             type: ETypeSection.SECTION
@@ -46,9 +46,10 @@ const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropI
                  ...style,
                  '--section-color': colorValue,
              } as React.CSSProperties}
-             {...attributes}
-             className={cls(cl.block, isDragTarget ? cl.dragTarget : '', className)}>
-            <HeaderSectionItem name={section.name} color={colorValue}/>
+             className={cls(cl.block, isDragTarget ? cl.dragTarget : '', isDragging ? cl.dragging : '', className)}>
+            <div className={cl.dragHandle} ref={setActivatorNodeRef} {...attributes} {...listeners}>
+                <HeaderSectionItem name={section.name} color={colorValue}/>
+            </div>
             <BodySectionAddItem ident={`${ETypeSection.ADD_ITEM}-${section.id}`} addItem={onAddItemClick} section={section} />
             <BodySectionItem body={section.body}
                              color={colorValue}
