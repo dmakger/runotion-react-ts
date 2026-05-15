@@ -1,23 +1,28 @@
 import React from 'react';
 import cl from './_CompleteButtonSidebarTask.module.scss'
 import {cls} from "core/service/cls";
-import { format } from 'date-fns';
 import {updateTaskAPI} from "core/entity/Task/api/TaskApi";
+import {ITask} from "core/entity/Task/model/model";
 
 interface CompleteButtonSidebarTaskProps {
-    taskId: number
+    task: ITask
     isCompleted?: boolean
+    onTaskChange?: (task: ITask) => void
     className?: string
 }
 
-const CompleteButtonSidebarTask = ({taskId, isCompleted=false, className}: CompleteButtonSidebarTaskProps) => {
+const CompleteButtonSidebarTask = ({task, isCompleted=false, onTaskChange, className}: CompleteButtonSidebarTaskProps) => {
 
     const handleOnClick = () => {
         let completed_at: string | null = null
         if (!isCompleted) {
-            completed_at = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSSSSSxxx");
+            completed_at = new Date().toISOString()
         }
-        updateTaskAPI({id: taskId, completed_at: completed_at}).then()
+        updateTaskAPI({id: task.id, completed_at: completed_at}).then((response: ITask) => {
+            const updatedTask = {...task, ...response}
+            onTaskChange?.(updatedTask)
+            window.dispatchEvent(new CustomEvent('runotion:task-updated', {detail: {task: updatedTask}}))
+        })
     }
 
     return (

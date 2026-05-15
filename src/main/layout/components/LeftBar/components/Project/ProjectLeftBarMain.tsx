@@ -3,6 +3,8 @@ import SimpleBigProject from "core/entity/Project/ui/simple/big/SimpleBigProject
 import {IProject} from "core/entity/Project/model/model";
 import {getProjectIdFromURL} from "core/entity/Project/service/service";
 import {getProjectByIdAPI} from "core/entity/Project/api/ProjectApi";
+import ProjectSettingsModal from "core/modal/ProjectSettings/ui/ProjectSettingsModal";
+import {useUrlModalState} from "core/modal/core/hooks/useUrlModalState";
 
 interface ProjectLeftBarMainProps {
     className?: string
@@ -11,6 +13,7 @@ interface ProjectLeftBarMainProps {
 const ProjectLeftBarMain = ({className}: ProjectLeftBarMainProps) => {
     // STATE
     const [project, setProject] = useState<IProject>()
+    const [isSettingsVisible, setIsSettingsVisible] = useUrlModalState('project-settings')
 
     const projectId = getProjectIdFromURL()
     
@@ -28,7 +31,15 @@ const ProjectLeftBarMain = ({className}: ProjectLeftBarMainProps) => {
     if (project === undefined) return <></>
 
     return (
-        <SimpleBigProject project={project} className={className} />
+        <>
+            <SimpleBigProject project={project}
+                              onSettingsClick={() => setIsSettingsVisible(true)}
+                              className={className}/>
+            <ProjectSettingsModal project={project}
+                                  isVisible={isSettingsVisible}
+                                  setIsVisible={setIsSettingsVisible}
+                                  onProjectChange={setProject}/>
+        </>
     );
 };
 

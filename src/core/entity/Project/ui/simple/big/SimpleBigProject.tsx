@@ -6,12 +6,13 @@ import EntityImage, {EEntityImageVariant} from "core/components/EntityImage/Enti
 
 interface SimpleBigProjectProps {
     project: IProject
+    onSettingsClick?: () => void
     className?: string
 }
 
-const SimpleBigProject = ({project, className}: SimpleBigProjectProps) => {
+const SimpleBigProject = ({project, onSettingsClick, className}: SimpleBigProjectProps) => {
     return (
-        <div className={cls(cl.block ,className)}>
+        <div className={cls(cl.block, className)}>
             <EntityImage src={project.image}
                          title={project.name}
                          variant={EEntityImageVariant.PROJECT}
@@ -20,6 +21,14 @@ const SimpleBigProject = ({project, className}: SimpleBigProjectProps) => {
                 <span className={cl.hint}>Проект:</span>
                 <span className={cl.project}>{project.name}</span>
             </div>
+            {onSettingsClick &&
+                <button className={cl.settings}
+                        type="button"
+                        aria-label="Настройки проекта"
+                        onClick={onSettingsClick}>
+                    ⚙
+                </button>
+            }
         </div>
     );
 };

@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import {TRoute} from "core/entity/Route/model/model";
 import H1 from "core/components/H/1/H1";
 import FunctionTopLine from "core/widget/FunctionTopLine/ui/FunctionTopLine";
+import {useLocation} from "react-router-dom";
 
 interface MainLayoutProps {
     children: ReactNode,
@@ -15,6 +16,8 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
     const dispatch = useDispatch();
     const path = useAppSelector(state => state.path);
+    const location = useLocation();
+    const isChartPage = location.pathname.startsWith('/chart')
     console.log(path)
     const [current, setCurrent] = React.useState<TRoute | undefined>(undefined);
 
@@ -33,7 +36,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 {current !== undefined &&
                     <H1>{current.title}</H1>
                 }
-                <FunctionTopLine />
+                {!isChartPage && <FunctionTopLine />}
                 {children}
             </div>
         </div>

@@ -35,3 +35,16 @@
   opacity: .62;
   transform: rotate(.6deg) scale(.99);
 }
+
+.finalToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $black-light-5;
+  font-size: 12px;
+  cursor: pointer;
+
+  input {
+    accent-color: $green;
+  }
+}

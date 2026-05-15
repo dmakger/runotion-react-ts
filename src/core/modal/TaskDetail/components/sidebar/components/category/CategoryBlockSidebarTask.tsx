@@ -3,6 +3,7 @@ import {createTaskCategoryAPI, getTaskCategoriesAPI, updateTaskAPI} from "core/e
 import {ITask, ITaskCategory} from "core/entity/Task/model/model";
 import {cls} from "core/service/cls";
 import SmartSelect, {ISmartSelectOption} from "core/components/SmartSelect/SmartSelect";
+import {SECTION_PALETTE} from "core/widget/Section/components/addSection/AddSectionCard";
 import cl from './_CategoryBlockSidebarTask.module.scss';
 
 interface CategoryBlockSidebarTaskProps {
@@ -11,12 +12,10 @@ interface CategoryBlockSidebarTaskProps {
     className?: string
 }
 
-const DEFAULT_COLORS = ['#6D5DFB', '#20B486', '#F59E0B', '#EF4444', '#0EA5E9', '#EC4899'];
-
 const CategoryBlockSidebarTask = ({task, onTaskChange = () => {}, className}: CategoryBlockSidebarTaskProps) => {
     const [categories, setCategories] = useState<ITaskCategory[]>([])
     const [name, setName] = useState('')
-    const [color, setColor] = useState(DEFAULT_COLORS[0])
+    const [color, setColor] = useState(SECTION_PALETTE[0])
     const [isLoading, setIsLoading] = useState(false)
     const categoryOptions: ISmartSelectOption[] = categories.map(category => ({
         value: category.id,
@@ -51,7 +50,7 @@ const CategoryBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Ca
         createTaskCategoryAPI(task.project.id, {name: trimmedName, color}).then((category: ITaskCategory) => {
             setCategories(prev => [...prev, category].sort((a, b) => a.name.localeCompare(b.name)))
             setName('')
-            setColor(DEFAULT_COLORS[(DEFAULT_COLORS.indexOf(color) + 1) % DEFAULT_COLORS.length])
+            setColor(SECTION_PALETTE[(SECTION_PALETTE.indexOf(color) + 1) % SECTION_PALETTE.length])
             return updateTaskAPI({id: task.id, category_id: category.id}).then((response: ITask) => {
                 const updatedTask = {...task, category: response.category}
                 onTaskChange(updatedTask)
@@ -72,6 +71,17 @@ const CategoryBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Ca
                    value={color}
                    onChange={(event) => setColor(event.target.value)}
                    disabled={isLoading}/>
+            <div className={cl.palette}>
+                {SECTION_PALETTE.map(paletteColor => (
+                    <button className={cls(cl.swatch, paletteColor === color ? cl.activeSwatch : '')}
+                            type="button"
+                            key={paletteColor}
+                            style={{backgroundColor: paletteColor}}
+                            aria-label={`Выбрать цвет ${paletteColor}`}
+                            onClick={() => setColor(paletteColor)}
+                            disabled={isLoading}/>
+                ))}
+            </div>
             <button className={cl.button}
                     type="button"
                     onClick={createCategory}

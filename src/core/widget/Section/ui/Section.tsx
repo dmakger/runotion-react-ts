@@ -26,6 +26,7 @@ interface SectionProps {
     onAddSection?: (name: string, color: string) => void
     onSectionMove?: (sectionId: number, nextIndex: number, previousSections: ISection[]) => void
     onSectionsChange?: (sections: ISection[]) => void
+    onSectionFinalToggle?: (section: ISection, isFinal: boolean) => void
     className?: string
 }
 
@@ -52,6 +53,7 @@ const Section = ({
     onAddSection,
     onSectionMove,
     onSectionsChange,
+    onSectionFinalToggle,
     className,
 }: SectionProps) => {
     const [activeItemId, setActiveItemId] = useState<number>()
@@ -174,6 +176,7 @@ const Section = ({
                                      dropIndex={dropPreview?.sectionId === it.id ? dropPreview.index : undefined}
                                      activeItemId={activeItemId}
                                      movedItemId={movedItemId}
+                                     onFinalToggle={onSectionFinalToggle}
                                      key={it.id} />
                     ))}
                 </SortableContext>

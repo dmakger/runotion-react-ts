@@ -25,8 +25,10 @@ const SidebarTask = ({task, onTaskChange, className}: SidebarTaskProps) => {
             <LoadingWrapper isLoading={task === undefined}>
                 {task !== undefined &&
                     <>
-                        <CompleteButtonSidebarTask taskId={task.id} isCompleted={task.completed_at !== null} />
-                        <StageBlockSidebarTask task={task}/>
+                        <CompleteButtonSidebarTask task={task}
+                                                   isCompleted={!!task.completed_at}
+                                                   onTaskChange={onTaskChange}/>
+                        <StageBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <CategoryBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <TextBlockSidebarTask task={task}/>
                         <UsersBlockSidebarTask task={task}/>

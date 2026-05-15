@@ -36,7 +36,7 @@ export const createSectionProjectAPI = async (
 export const updateSectionProjectAPI = async (
     projectId: number | string,
     sectionId: number | string,
-    body: { name?: string, position?: number },
+    body: { name?: string, position?: number, is_final?: boolean },
 ) => {
     const url = `${getSectionURL(projectId)}/${sectionId}/update/`
     return await request({

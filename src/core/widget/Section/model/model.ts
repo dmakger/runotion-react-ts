@@ -6,6 +6,7 @@ export interface ISection {
     position: number
     body?: any[]
     color?: IColor
+    is_final?: boolean
 }
 
 export enum ETypeSection {

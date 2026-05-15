@@ -7,6 +7,7 @@ import {getProjectsAPI} from "core/entity/Project/api/ProjectApi";
 import {projectListToTableContent} from "core/tables/Project/service/service";
 import {useNavigate} from "react-router-dom";
 import {PROJECT__TASK__MAIN_URL} from "main/router/urlRouter";
+import {IProject} from "core/entity/Project/model/model";
 
 
 interface ProjectTableProps {
@@ -14,6 +15,7 @@ interface ProjectTableProps {
 }
 
 const ProjectTable = ({className}: ProjectTableProps) => {
+    const [projects, setProjects] = useState<IProject[]>([])
     const [tableData, setTableData] = useState<ITable>()
     const navigate = useNavigate()
 
@@ -25,14 +27,43 @@ const ProjectTable = ({className}: ProjectTableProps) => {
     }, [navigate])
 
     useEffect(() => {
+        setTableData({
+            header: DATA_HEADER_PROJECT_TABLE,
+            content: projectListToTableContent(projects),
+            onLineClick: handleOnLineClick
+        })
+    }, [handleOnLineClick, projects])
+
+    useEffect(() => {
         getProjectsAPI(DATA_PARAMS_PROJECT).then(r => {
-            setTableData({
-                header: DATA_HEADER_PROJECT_TABLE,
-                content: projectListToTableContent(r.results),
-                onLineClick: handleOnLineClick
-            })
+            setProjects(r.results)
         });
-    }, [handleOnLineClick]);
+
+        const handleProjectCreated = (event: Event) => {
+            const project = (event as CustomEvent).detail?.project
+            if (!project) return
+            setProjects(prev => prev.some(item => item.id === project.id) ? prev : [project, ...prev])
+        }
+        const handleProjectUpdated = (event: Event) => {
+            const project = (event as CustomEvent).detail?.project
+            if (!project) return
+            setProjects(prev => prev.map(item => item.id === project.id ? {...item, ...project} : item))
+        }
+        const handleProjectDeleted = (event: Event) => {
+            const projectId = (event as CustomEvent).detail?.projectId
+            if (!projectId) return
+            setProjects(prev => prev.filter(item => item.id !== Number(projectId)))
+        }
+
+        window.addEventListener('runotion:project-created', handleProjectCreated)
+        window.addEventListener('runotion:project-updated', handleProjectUpdated)
+        window.addEventListener('runotion:project-deleted', handleProjectDeleted)
+        return () => {
+            window.removeEventListener('runotion:project-created', handleProjectCreated)
+            window.removeEventListener('runotion:project-updated', handleProjectUpdated)
+            window.removeEventListener('runotion:project-deleted', handleProjectDeleted)
+        }
+    }, []);
 
     return (
         <Table table={tableData} className={className}/>

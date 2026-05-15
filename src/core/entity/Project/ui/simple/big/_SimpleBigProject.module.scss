@@ -2,6 +2,7 @@
 
 .block {
   display: flex;
+  align-items: center;
   gap: 12px;
   padding: 14px;
 
@@ -19,6 +20,24 @@
     }
     .project {
       font-size: 16px;
+    }
+  }
+
+  .settings {
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+    border: 1px solid $black-light-4;
+    border-radius: 8px;
+    background: $black-light-2;
+    color: $gray-1;
+    font-size: 15px;
+    transition: background-color .2s, border-color .2s, transform .2s;
+
+    &:hover {
+      border-color: $green;
+      background: $black-light-3;
+      transform: translateY(-1px);
     }
   }
 }

@@ -4,6 +4,7 @@ import CreateTaskModal from "core/modal/CreateTask/ui/CreateTaskModal";
 import Button from 'core/components/Button/ui/parent/Button';
 import { createTaskAPI } from '../../api/TaskApi';
 import {useLocation} from "react-router-dom";
+import {useUrlModalState} from "core/modal/core/hooks/useUrlModalState";
 
 interface CreateTaskProps {
     projectId?: number
@@ -13,7 +14,7 @@ interface CreateTaskProps {
 
 const CreateTask = ({projectId, onClick}: CreateTaskProps) => {
     const [isLoading, setIsLoading] = useState(false)
-    const [isVisibleModal, setIsVisibleModal] = useState(false)
+    const [isVisibleModal, setIsVisibleModal] = useUrlModalState('create-task')
     const location = useLocation()
     const projectIdFromPath = location.pathname.match(/^\/project\/([^/]+)\/task/)?.[1]
     const currentProjectId = projectId || (projectIdFromPath ? parseInt(projectIdFromPath) : undefined)

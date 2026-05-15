@@ -12,6 +12,10 @@ export const CATEGORY_ITEM_HEADER_TASK_TABLE: ICellTable = {
     title: 'Категория'
 }
 
+export const STAGE_ITEM_HEADER_TASK_TABLE: ICellTable = {
+    title: 'Этап'
+}
+
 export const DIRECTOR_ITEM_HEADER_TASK_TABLE: ICellTable = {
     title: 'Постановщик'
 }
@@ -31,6 +35,7 @@ export const DATA_HEADER_TASK_TABLE: ILineTable = {
         NAME_ITEM_HEADER_TASK_TABLE,
         DEADLINE_ITEM_HEADER_TASK_TABLE,
         CATEGORY_ITEM_HEADER_TASK_TABLE,
+        STAGE_ITEM_HEADER_TASK_TABLE,
         DIRECTOR_ITEM_HEADER_TASK_TABLE,
         RESPONSIBLE_ITEM_HEADER_TASK_TABLE,
         PROJECT_ITEM_HEADER_TASK_TABLE,

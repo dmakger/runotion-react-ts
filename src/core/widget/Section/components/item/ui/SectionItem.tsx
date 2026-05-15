@@ -20,10 +20,11 @@ interface SectionItemProps {
     dropIndex?: number
     activeItemId?: number
     movedItemId?: number
+    onFinalToggle?: (section: ISection, isFinal: boolean) => void
     className?: string
 }
 
-const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropIndex, activeItemId, movedItemId, className}: SectionItemProps) => {
+const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropIndex, activeItemId, movedItemId, onFinalToggle, className}: SectionItemProps) => {
     // console.log('SectionItem');
     
     const colorValue = getValueColor(color)
@@ -50,6 +51,12 @@ const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropI
             <div className={cl.dragHandle} ref={setActivatorNodeRef} {...attributes} {...listeners}>
                 <HeaderSectionItem name={section.name} color={colorValue}/>
             </div>
+            <label className={cl.finalToggle}>
+                <input type="checkbox"
+                       checked={!!section.is_final}
+                       onChange={(event) => onFinalToggle?.(section, event.target.checked)}/>
+                <span>Завершающий этап</span>
+            </label>
             <BodySectionAddItem ident={`${ETypeSection.ADD_ITEM}-${section.id}`} addItem={onAddItemClick} section={section} />
             <BodySectionItem body={section.body}
                              color={colorValue}

@@ -28,7 +28,6 @@ export const TaskGantItemToggleSwitch: IToggleSwitch = {
 
 export const DATA_TASK__TOGGLE_SWITCH: IToggleSwitch[] = [
     TaskListItemToggleSwitch,
-    TaskGantItemToggleSwitch,
 ]
 
 

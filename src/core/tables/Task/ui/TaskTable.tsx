@@ -9,6 +9,7 @@ import TaskDetailModal from "core/modal/TaskDetail/ui/TaskDetailModal";
 import cl from './_TaskTable.module.scss'
 import {cls} from "core/service/cls";
 import {IArgsRequest} from "core/api/model/model";
+import {useSearchParams} from "react-router-dom";
 
 interface TaskTableProps {
     projectId?: number
@@ -20,14 +21,35 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     const [tableData, setTableData] = useState<ITable>()
     const [activeID, setActiveID] = useState<number>()
     const [isVisible, setIsVisible] = useState(false)
+    const [searchParams, setSearchParams] = useSearchParams()
 
 
     // FUNC
-    const handleOnLineClick = useCallback((task: ICellTable | undefined) => {
-        if (task === undefined || task?.id === -1) return
-        setActiveID(task.id)
+    const setTaskParam = useCallback((taskId?: number) => {
+        const nextParams = new URLSearchParams(searchParams)
+        if (taskId === undefined) nextParams.delete('task')
+        else nextParams.set('task', String(taskId))
+        setSearchParams(nextParams)
+    }, [searchParams, setSearchParams])
+
+    const openTask = useCallback((taskId: number) => {
+        setActiveID(taskId)
         setIsVisible(true)
-    }, [])
+        setTaskParam(taskId)
+    }, [setTaskParam])
+
+    const setTaskModalVisible = useCallback((nextVisible: React.SetStateAction<boolean>) => {
+        setIsVisible(prev => {
+            const resolvedVisible = typeof nextVisible === 'function' ? nextVisible(prev) : nextVisible
+            if (!resolvedVisible) setTaskParam(undefined)
+            return resolvedVisible
+        })
+    }, [setTaskParam])
+
+    const handleOnLineClick = useCallback((task: ICellTable | undefined) => {
+        if (task === undefined || task.id === undefined || task.id === -1) return
+        openTask(task.id)
+    }, [openTask])
 
     const loadTasks = useCallback(() => {
         let body = {project_id: projectId} as IArgsRequest["body"]
@@ -49,6 +71,14 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     }, [loadTasks]);
 
     useEffect(() => {
+        const taskId = Number(searchParams.get('task'))
+        if (!taskId || taskId === activeID) return
+
+        setActiveID(taskId)
+        setIsVisible(true)
+    }, [activeID, searchParams]);
+
+    useEffect(() => {
         const handleTaskChanged = (event: Event) => {
             const detail = (event as CustomEvent).detail
             const changedProjectId = detail?.projectId || detail?.task?.project?.id
@@ -67,7 +97,7 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
 
     return (
         <>
-            <TaskDetailModal isVisible={isVisible} setIsVisible={setIsVisible} id={activeID}/>
+            <TaskDetailModal isVisible={isVisible} setIsVisible={setTaskModalVisible} id={activeID}/>
 
             <Table table={tableData} className={cls(cl.table, className)}/>
         </>

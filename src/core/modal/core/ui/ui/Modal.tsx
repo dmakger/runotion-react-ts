@@ -15,8 +15,9 @@ interface ModalProps extends IModal {
 const Modal = ({ title, hint, isVisible , setIsVisible, classNameModal, className, children }: ModalProps) => {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const handleContentClick = () => {
-        setIsVisible(!isVisible)
+    const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if (event.target !== event.currentTarget) return
+        setIsVisible(false)
     };
 
     return (

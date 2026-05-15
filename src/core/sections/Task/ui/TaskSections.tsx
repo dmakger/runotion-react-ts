@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ISection, ISectionFunction} from "core/widget/Section/model/model";
 import {
     createSectionProjectAPI,
@@ -12,6 +12,7 @@ import {ITaskSection} from "core/sections/Task/model/model";
 import {swapItemIntoSection} from "core/widget/Section/lib/section.lib";
 import TaskDetailModal from 'core/modal/TaskDetail/ui/TaskDetailModal';
 import {createTaskAPI} from "core/entity/Task/api/TaskApi";
+import {useSearchParams} from "react-router-dom";
 
 interface TaskSectionsProps {
     projectId?: string | number
@@ -23,19 +24,54 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     const [sections, setSections] = useState<ITaskSection[]>()
     const [taskIsVisible, setTaskIsVisible] = useState(false)
     const [taskId, setTaskId] = useState<number>()
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const loadSections = useCallback(() => {
+        if (projectId === undefined) return Promise.resolve()
+        return getSectionsProjectsAPI(projectId).then(r => {
+            setSections(r as ISection[])
+        })
+    }, [projectId])
 
     // EFFECT
     useEffect(() => {
         if (sections !== undefined || projectId === undefined) return
-        getSectionsProjectsAPI(projectId).then(r => {
-            setSections(r as ISection[])
-        })
-    }, [projectId, sections])
+        loadSections()
+    }, [loadSections, projectId, sections])
+
+    useEffect(() => {
+        const nextTaskId = Number(searchParams.get('task'))
+        if (!nextTaskId || nextTaskId === taskId) return
+
+        setTaskId(nextTaskId)
+        setTaskIsVisible(true)
+    }, [searchParams, taskId])
+
+    useEffect(() => {
+        const handleTaskChanged = (event: Event) => {
+            const detail = (event as CustomEvent).detail
+            const changedProjectId = detail?.projectId || detail?.task?.project?.id
+            if (projectId !== undefined && Number(changedProjectId) !== Number(projectId)) return
+            loadSections()
+        }
+
+        window.addEventListener('runotion:task-created', handleTaskChanged)
+        window.addEventListener('runotion:task-updated', handleTaskChanged)
+        return () => {
+            window.removeEventListener('runotion:task-created', handleTaskChanged)
+            window.removeEventListener('runotion:task-updated', handleTaskChanged)
+        }
+    }, [loadSections, projectId])
 
     // ITEM to SECTION
     const taskToSection = (newSectionId: number, itemId: number, insertIndex = 0) => {
         const oldSections = sections ? [...sections] : []
-        const newSections = swapItemIntoSection(itemId, newSectionId, sections, insertIndex)
+        const targetSection = sections?.find(section => section.id === newSectionId)
+        const nextCompletedAt = targetSection?.is_final ? new Date().toISOString() : null
+        const newSections = swapItemIntoSection(itemId, newSectionId, sections, insertIndex)?.map(section => ({
+            ...section,
+            body: section.body?.map(task => task.id === itemId ? {...task, completed_at: nextCompletedAt} : task),
+        }))
         setSections(newSections)
 
         taskInOtherSectionProjectsAPI(newSectionId, itemId, insertIndex + 1).catch(e => {
@@ -46,6 +82,21 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
     const onTaskClick: ISectionFunction['onItemClick'] = (itemId: number) => {
         setTaskIsVisible(true)
         setTaskId(itemId)
+        const nextParams = new URLSearchParams(searchParams)
+        nextParams.set('task', String(itemId))
+        setSearchParams(nextParams)
+    }
+
+    const setTaskModalVisible = (nextVisible: React.SetStateAction<boolean>) => {
+        setTaskIsVisible(prev => {
+            const resolvedVisible = typeof nextVisible === 'function' ? nextVisible(prev) : nextVisible
+            if (resolvedVisible) return resolvedVisible
+
+            const nextParams = new URLSearchParams(searchParams)
+            nextParams.delete('task')
+            setSearchParams(nextParams)
+            return resolvedVisible
+        })
     }
 
     const onAddTaskClick: ISectionFunction['onAddItemClick'] = (section: ITaskSection) => {
@@ -62,6 +113,12 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
                     return {...item, body: [...(item.body || []), r]}
                 })
             })
+            window.dispatchEvent(new CustomEvent('runotion:task-created', {
+                detail: {
+                    task: r,
+                    projectId,
+                }
+            }))
         })
     }
 
@@ -84,6 +141,17 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
         })
     }
 
+    const toggleSectionFinal = (section: ISection, isFinal: boolean) => {
+        if (projectId === undefined || sections === undefined) return
+
+        const previousSections = [...sections]
+        setSections(prev => prev?.map(item => item.id === section.id ? {...item, is_final: isFinal} : item))
+
+        updateSectionProjectAPI(projectId, section.id, {is_final: isFinal}).catch(() => {
+            setSections(previousSections as ITaskSection[])
+        })
+    }
+
     return (
         <LoadingWrapper isLoading={sections === undefined}>
             {sections !== undefined &&
@@ -92,9 +160,10 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
                          onAddSection={addSection}
                          onSectionsChange={(nextSections) => setSections(nextSections as ITaskSection[])}
                          onSectionMove={moveSection}
+                         onSectionFinalToggle={toggleSectionFinal}
                          className={className}/>
             }
-            <TaskDetailModal isVisible={taskIsVisible} setIsVisible={setTaskIsVisible} id={taskId}/>
+            <TaskDetailModal isVisible={taskIsVisible} setIsVisible={setTaskModalVisible} id={taskId}/>
         </LoadingWrapper>
     );
 };

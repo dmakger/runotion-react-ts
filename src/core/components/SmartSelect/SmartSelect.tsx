@@ -193,6 +193,16 @@ const SmartSelect = ({
         setIsOpen(false)
     }
 
+    const stopPortalEvent = (event: React.SyntheticEvent) => {
+        event.stopPropagation()
+    }
+
+    const selectOption = (event: React.PointerEvent<HTMLButtonElement>, option: ISmartSelectOption) => {
+        event.preventDefault()
+        event.stopPropagation()
+        handleOptionClick(option)
+    }
+
     const renderTriggerContent = () => {
         if (loading) return <span className={cls(cl.triggerText, cl.placeholder)}>Загрузка...</span>
         if (selectedOptions.length === 0) {
@@ -217,6 +227,9 @@ const SmartSelect = ({
     const dropdown = isOpen ? createPortal(
         <div className={cl.panel}
              ref={panelRef}
+             onPointerDown={stopPortalEvent}
+             onMouseDown={stopPortalEvent}
+             onClick={stopPortalEvent}
              style={{
                  top: panelPosition.top,
                  left: panelPosition.left,
@@ -240,7 +253,7 @@ const SmartSelect = ({
                         <button className={cls(cl.option, isSelected ? cl.optionSelected : '', option.disabled ? cl.optionDisabled : '')}
                                 type="button"
                                 key={option.value}
-                                onClick={() => handleOptionClick(option)}>
+                                onPointerDown={(event) => selectOption(event, option)}>
                             <OptionVisual option={option}/>
                             <span className={cl.optionContent}>
                                 <span className={cl.optionLabel}>{option.label}</span>

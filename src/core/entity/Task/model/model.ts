@@ -20,7 +20,7 @@ export interface ITask {
     code: string
     created_at: string
     deadline?: string
-    completed_at?: string
+    completed_at?: string | null
     responsible?: IUser,
     collaborators?: IUser[],
     observers?: IUser[],

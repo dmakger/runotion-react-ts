@@ -18,6 +18,13 @@ export const taskCellToTableContent = (task: ITask) => {
         },
         defaultText: 'Без категории'
     });
+    const stageCell = objToCellTable({
+        obj: {
+            title: task.section?.name,
+            color: task.section?.color?.value,
+        },
+        defaultText: 'Без этапа'
+    });
     const directorCell = objToCellTable({
         obj: {
             id: task.director.id,
@@ -49,7 +56,7 @@ export const taskCellToTableContent = (task: ITask) => {
     return {
         id: task.id,
         line: [
-            nameCell, deadlineCell, categoryCell, directorCell, responsibleCell, projectCell
+            nameCell, deadlineCell, categoryCell, stageCell, directorCell, responsibleCell, projectCell
         ]
     } as ILineTable
 }

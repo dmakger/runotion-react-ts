@@ -38,6 +38,27 @@ export const createProjectAPI = async (body: IArgsRequest["body"]) => {
 }
 
 
+export const updateProjectAPI = async (projectId: number | string, body: IArgsRequest["body"]) => {
+    const url = `${PROJECT_API}/${projectId}/update/`
+    return await request({
+        method: 'PUT',
+        url: url,
+        headers: getHeaders(true),
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+
+export const deleteProjectAPI = async (projectId: number | string) => {
+    const url = `${PROJECT_API}/${projectId}/delete/`
+    return await request({
+        method: 'DELETE',
+        url: url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+
 export const getProjectRolesAPI = async () => {
     const url = `${PROJECT_API}/roles/`
     return await request({
