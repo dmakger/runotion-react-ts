@@ -1,13 +1,31 @@
 .left {
-  width: 560px;
+  flex: 1 1 760px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  padding-right: 4px;
 
   .top {
     .title {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      outline: none;
+      background: transparent;
+      color: inherit;
       font-size: 34px;
       font-weight: 500;
+      padding: 4px 8px;
+      margin-left: -8px;
+
+      &:hover,
+      &:focus {
+        border-color: rgba(255, 255, 255, .12);
+        background: rgba(255, 255, 255, .04);
+      }
     }
 
     .code {

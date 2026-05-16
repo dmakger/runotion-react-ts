@@ -3,10 +3,11 @@
 .block {
   display: flex;
   gap: 20px;
+  width: min(1220px, calc(100vw - 48px));
 
-  max-height: 920px;
+  max-height: calc(100vh - 48px);
 
   .loadingWrapper {
-    width: 320px;
+    width: 100%;
   }
 }

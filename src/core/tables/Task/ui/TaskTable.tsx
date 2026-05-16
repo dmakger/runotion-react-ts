@@ -10,6 +10,7 @@ import cl from './_TaskTable.module.scss'
 import {cls} from "core/service/cls";
 import {IArgsRequest} from "core/api/model/model";
 import {useSearchParams} from "react-router-dom";
+import SearchInput from "core/components/SearchInput/SearchInput";
 
 interface TaskTableProps {
     projectId?: number
@@ -21,14 +22,20 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     const [tableData, setTableData] = useState<ITable>()
     const [activeID, setActiveID] = useState<number>()
     const [isVisible, setIsVisible] = useState(false)
+    const [search, setSearch] = useState('')
+    const [debouncedSearch, setDebouncedSearch] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
 
 
     // FUNC
     const setTaskParam = useCallback((taskId?: number) => {
         const nextParams = new URLSearchParams(searchParams)
-        if (taskId === undefined) nextParams.delete('task')
-        else nextParams.set('task', String(taskId))
+        if (taskId === undefined) {
+            nextParams.delete('task')
+        } else {
+            nextParams.set('task', String(taskId))
+            nextParams.delete('modal')
+        }
         setSearchParams(nextParams)
     }, [searchParams, setSearchParams])
 
@@ -52,9 +59,9 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     }, [openTask])
 
     const loadTasks = useCallback(() => {
-        let body = {project_id: projectId} as IArgsRequest["body"]
+        let body = {project_id: projectId, search: debouncedSearch || undefined} as IArgsRequest["body"]
         if (projectId === undefined)
-            body = undefined
+            body = {search: debouncedSearch || undefined}
 
         return getTasksAPI(DATA_PARAMS_TASK, body).then(r => {
             setTableData({
@@ -62,13 +69,24 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
                 content: taskListToTableContent(r.results),
                 onLineClick: handleOnLineClick,
             })
+        }).catch(() => {
+            setTableData({
+                header: DATA_HEADER_TASK_TABLE,
+                content: [],
+                onLineClick: handleOnLineClick,
+            })
         });
-    }, [handleOnLineClick, projectId])
+    }, [debouncedSearch, handleOnLineClick, projectId])
 
     // EFFECT
     useEffect(() => {
         loadTasks()
     }, [loadTasks]);
+
+    useEffect(() => {
+        const timeout = window.setTimeout(() => setDebouncedSearch(search.trim()), 300)
+        return () => window.clearTimeout(timeout)
+    }, [search])
 
     useEffect(() => {
         const taskId = Number(searchParams.get('task'))
@@ -82,7 +100,7 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         const handleTaskChanged = (event: Event) => {
             const detail = (event as CustomEvent).detail
             const changedProjectId = detail?.projectId || detail?.task?.project?.id
-            if (projectId !== undefined && changedProjectId !== projectId) return
+            if (projectId !== undefined && Number(changedProjectId) !== Number(projectId)) return
             loadTasks()
         }
 
@@ -99,6 +117,10 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         <>
             <TaskDetailModal isVisible={isVisible} setIsVisible={setTaskModalVisible} id={activeID}/>
 
+            <SearchInput value={search}
+                         onChange={setSearch}
+                         placeholder={'Поиск по задачам, проектам, этапам, категориям и пользователям'}
+                         className={cl.search}/>
             <Table table={tableData} className={cls(cl.table, className)}/>
         </>
     );

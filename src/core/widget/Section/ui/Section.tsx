@@ -4,7 +4,7 @@ import SectionItem from "core/widget/Section/components/item/ui/SectionItem";
 import cl from './_Section.module.scss'
 import {cls} from "core/service/cls";
 import {
-    closestCenter,
+    closestCorners,
     DndContext,
     DragEndEvent,
     DragOverEvent,
@@ -38,6 +38,18 @@ const getItemIndex = (sections: ISection[], sectionId?: number, itemId?: number)
     if (sectionId === undefined || itemId === undefined) return -1
     const section = sections.find(section => section.id === sectionId)
     return section?.body?.findIndex(item => item.id === itemId) ?? -1
+}
+
+const getSectionIdByOver = (sections: ISection[], over: DragEndEvent['over']) => {
+    if (over === null) return undefined
+
+    const overId = Number(getIdFromSection(over))
+    const overType = getTypeSection(over)
+
+    if (overType === ETypeSection.SECTION || overType === ETypeSection.ADD_ITEM) return overId
+    if (overType === ETypeSection.ITEM) return getSectionIdByItemId(sections, overId)
+
+    return undefined
 }
 
 interface DropPreview {
@@ -126,11 +138,8 @@ const Section = ({
         }
 
         if (activeType === ETypeSection.SECTION) {
-            const overType = getTypeSection(over)
-            if (overType !== ETypeSection.SECTION) return
-
             const activeSectionId = Number(getIdFromSection(active))
-            const overSectionId = Number(getIdFromSection(over))
+            const overSectionId = getSectionIdByOver(sections, over)
             const oldIndex = sections.findIndex(section => section.id === activeSectionId)
             const newIndex = sections.findIndex(section => section.id === overSectionId)
 
@@ -160,7 +169,7 @@ const Section = ({
     return (
         <div className={cls(cl.list, className)}>
             <DndContext sensors={sensors}
-                        collisionDetection={closestCenter}
+                        collisionDetection={closestCorners}
                         onDragStart={onDragStart}
                         onDragOver={onDragOver}
                         onDragCancel={() => {

@@ -36,6 +36,9 @@ const SimpleListProject = ({onClick, className, classNameItem}: SimpleListProjec
             .then(r => {
                 setListProject(r.results)
             })
+            .catch(() => {
+                setListProject([])
+            })
             .finally(() => {
                 setIsLoadingListProject(false)
             })

@@ -84,6 +84,7 @@ const TaskSections = ({projectId, className}: TaskSectionsProps) => {
         setTaskId(itemId)
         const nextParams = new URLSearchParams(searchParams)
         nextParams.set('task', String(itemId))
+        nextParams.delete('modal')
         setSearchParams(nextParams)
     }
 

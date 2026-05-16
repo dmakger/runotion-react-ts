@@ -25,7 +25,7 @@ const ProjectLeftBarMain = ({className}: ProjectLeftBarMainProps) => {
         }
         getProjectByIdAPI(projectId).then(r => {
             setProject(r)
-        })
+        }).catch(() => setProject(undefined))
     }, [projectId])
 
     if (project === undefined) return <></>

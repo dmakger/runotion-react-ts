@@ -17,6 +17,7 @@ export interface ITask {
     director: IUser
     project: IProject
     name: string
+    description?: string
     code: string
     created_at: string
     deadline?: string
@@ -26,6 +27,13 @@ export interface ITask {
     observers?: IUser[],
     category?: ITaskCategory | null,
     section?: ISection | null,
+}
+
+export interface ITaskComment {
+    id: number
+    user: IUser
+    text: string
+    created_at: string
 }
 
 

@@ -25,6 +25,9 @@ const AppRouter = () => {
                 const user = {...res} as IUser
                 user.department = {name: res.department} as IDepartment
                 actionCreators.setAuth(user);
+            }).catch(() => {
+                actionCreators.logout()
+                navigate(LOGIN__AUTH_URL)
             })
         }, () => {
             actionCreators.logout()

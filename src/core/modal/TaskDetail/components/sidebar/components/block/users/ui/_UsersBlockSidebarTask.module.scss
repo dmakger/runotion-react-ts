@@ -42,9 +42,77 @@
     }
 
     .list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
       .addUser {
         margin-top: 3px;
       }
+
+      .addSticky {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        padding-bottom: 5px;
+        // background: $black-light-2;
+      }
+
+      .addSelect button {
+        min-height: 34px;
+        border-radius: 8px;
+      }
+
+      .memberRow {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 24px;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .removeUser {
+        width: 24px;
+        height: 24px;
+        border-radius: 7px;
+        background: $black-light-3;
+        color: $black-light-5;
+        line-height: 1;
+        transition: background-color .2s, color .2s;
+
+        &:hover {
+          background: $red-dark;
+          color: $red;
+        }
+      }
+
+      .pendingUser {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 18px;
+        align-items: center;
+        gap: 8px;
+        opacity: .72;
+      }
+
+      .pendingSpinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid $black-light-5;
+        border-top-color: $green;
+        border-radius: 50%;
+        animation: usersPendingSpin .75s linear infinite;
+      }
     }
+
+    .scrollList {
+      max-height: 190px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+  }
+}
+
+@keyframes usersPendingSpin {
+  to {
+    transform: rotate(360deg);
   }
 }

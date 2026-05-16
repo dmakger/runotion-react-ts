@@ -41,6 +41,10 @@ const normalizeValue = (value?: SmartSelectProps['value']) => {
     return Array.isArray(value) ? value : [value]
 }
 
+const includesValue = (values: SmartSelectValue[], value: SmartSelectValue) => {
+    return values.some(item => String(item) === String(value))
+}
+
 const getImageVariant = (option: ISmartSelectOption) => {
     return option.entity === 'project' ? EEntityImageVariant.PROJECT : EEntityImageVariant.USER
 }
@@ -136,7 +140,7 @@ const SmartSelect = ({
     }, [isOpen])
 
     const selectedOptions = useMemo(() => {
-        return options.filter(option => selectedValues.includes(option.value))
+        return options.filter(option => includesValue(selectedValues, option.value))
     }, [options, selectedValues])
 
     const filteredOptions = useMemo(() => {
@@ -158,9 +162,9 @@ const SmartSelect = ({
 
         if (multiple) {
             const sourceValues = hasApplyButtons ? draftValues : selectedValues
-            const exists = sourceValues.includes(option.value)
+            const exists = includesValue(sourceValues, option.value)
             const nextValue = exists
-                ? sourceValues.filter(item => item !== option.value)
+                ? sourceValues.filter(item => String(item) !== String(option.value))
                 : [...sourceValues, option.value]
 
             if (hasApplyButtons) {
@@ -198,6 +202,12 @@ const SmartSelect = ({
     }
 
     const selectOption = (event: React.PointerEvent<HTMLButtonElement>, option: ISmartSelectOption) => {
+        event.preventDefault()
+        event.stopPropagation()
+        handleOptionClick(option)
+    }
+
+    const clickOption = (event: React.MouseEvent<HTMLButtonElement>, option: ISmartSelectOption) => {
         event.preventDefault()
         event.stopPropagation()
         handleOptionClick(option)
@@ -247,13 +257,15 @@ const SmartSelect = ({
 
             <div className={cl.options}>
                 {filteredOptions.map(option => {
-                    const isSelected = activeValues.includes(option.value)
+                    const isSelected = includesValue(activeValues, option.value)
 
                     return (
                         <button className={cls(cl.option, isSelected ? cl.optionSelected : '', option.disabled ? cl.optionDisabled : '')}
                                 type="button"
                                 key={option.value}
-                                onPointerDown={(event) => selectOption(event, option)}>
+                                onPointerDown={(event) => selectOption(event, option)}
+                                onMouseDown={(event) => event.stopPropagation()}
+                                onClick={(event) => clickOption(event, option)}>
                             <OptionVisual option={option}/>
                             <span className={cl.optionContent}>
                                 <span className={cl.optionLabel}>{option.label}</span>

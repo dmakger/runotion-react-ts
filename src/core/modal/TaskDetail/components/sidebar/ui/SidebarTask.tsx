@@ -31,7 +31,7 @@ const SidebarTask = ({task, onTaskChange, className}: SidebarTaskProps) => {
                         <StageBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <CategoryBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <TextBlockSidebarTask task={task}/>
-                        <UsersBlockSidebarTask task={task}/>
+                        <UsersBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                     </>
                 }
             </LoadingWrapper>

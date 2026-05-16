@@ -1,0 +1,68 @@
+@import "core/scss/vars";
+
+.block {
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  background: linear-gradient(145deg, $black-light-2, $black-light-1);
+  color: $gray-2;
+  padding: 0 12px;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+
+  &:focus-within {
+    border-color: $green;
+    box-shadow: 0 0 0 2px $green-dark;
+  }
+
+  input {
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: $white;
+    font-size: 14px;
+
+    &::placeholder {
+      color: $black-light-5;
+    }
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid $black-light-5;
+  border-radius: 50%;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 7px;
+    height: 2px;
+    position: absolute;
+    right: -6px;
+    bottom: -3px;
+    border-radius: 2px;
+    background: $black-light-5;
+    transform: rotate(45deg);
+  }
+}
+
+.clear {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: $black-light-3;
+  color: $gray-1;
+  line-height: 1;
+  transition: background-color .2s, color .2s;
+
+  &:hover {
+    background: $black-light-4;
+    color: $white;
+  }
+}

@@ -8,6 +8,8 @@ import {projectListToTableContent} from "core/tables/Project/service/service";
 import {useNavigate} from "react-router-dom";
 import {PROJECT__TASK__MAIN_URL} from "main/router/urlRouter";
 import {IProject} from "core/entity/Project/model/model";
+import SearchInput from "core/components/SearchInput/SearchInput";
+import cl from './_ProjectTable.module.scss';
 
 
 interface ProjectTableProps {
@@ -17,6 +19,8 @@ interface ProjectTableProps {
 const ProjectTable = ({className}: ProjectTableProps) => {
     const [projects, setProjects] = useState<IProject[]>([])
     const [tableData, setTableData] = useState<ITable>()
+    const [search, setSearch] = useState('')
+    const [debouncedSearch, setDebouncedSearch] = useState('')
     const navigate = useNavigate()
 
     const handleOnLineClick = useCallback((line: ILineTable) => {
@@ -35,10 +39,12 @@ const ProjectTable = ({className}: ProjectTableProps) => {
     }, [handleOnLineClick, projects])
 
     useEffect(() => {
-        getProjectsAPI(DATA_PARAMS_PROJECT).then(r => {
+        getProjectsAPI({...DATA_PARAMS_PROJECT, search: debouncedSearch || undefined}).then(r => {
             setProjects(r.results)
         });
+    }, [debouncedSearch])
 
+    useEffect(() => {
         const handleProjectCreated = (event: Event) => {
             const project = (event as CustomEvent).detail?.project
             if (!project) return
@@ -65,8 +71,19 @@ const ProjectTable = ({className}: ProjectTableProps) => {
         }
     }, []);
 
+    useEffect(() => {
+        const timeout = window.setTimeout(() => setDebouncedSearch(search.trim()), 300)
+        return () => window.clearTimeout(timeout)
+    }, [search])
+
     return (
-        <Table table={tableData} className={className}/>
+        <>
+            <SearchInput value={search}
+                         onChange={setSearch}
+                         placeholder={'Поиск по проектам, участникам, ролям и коду'}
+                         className={cl.search}/>
+            <Table table={tableData} className={className}/>
+        </>
     );
 };
 

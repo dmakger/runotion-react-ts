@@ -1,0 +1,36 @@
+@import "core/scss/vars";
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status {
+  align-self: flex-end;
+  color: $black-light-5;
+  font-size: 12px;
+}
+
+.textarea {
+  min-height: 92px;
+  resize: vertical;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  outline: none;
+  background: $black-light-2;
+  color: $white;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  transition: border-color .2s, background-color .2s;
+
+  &::placeholder {
+    color: $black-light-5;
+  }
+
+  &:focus {
+    border-color: $green;
+    background: $black-light-1;
+  }
+}
