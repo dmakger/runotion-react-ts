@@ -1,0 +1,274 @@
+@import "core/scss/vars";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero,
+.panel,
+.panelWide {
+  background: $black-light-1;
+  border: 1px solid $black-light-3;
+  border-radius: 12px;
+}
+
+.hero {
+  min-height: 220px;
+  padding: 28px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  background:
+    linear-gradient(135deg, rgba(0, 242, 166, .16), rgba(255, 196, 87, .1) 42%, rgba(39, 39, 42, .94)),
+    $black-light-1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  position: relative;
+}
+
+.avatar {
+  width: 104px;
+  height: 104px;
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, .14);
+  flex-shrink: 0;
+}
+
+.avatarUpload {
+  position: absolute;
+  left: 54px;
+  bottom: -10px;
+  transform: translateX(-50%);
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: $green;
+  color: $black-light-1;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+}
+
+.identity {
+  min-width: 0;
+
+  h2 {
+    margin: 8px 0 10px;
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
+}
+
+.status {
+  width: max-content;
+  max-width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(0, 242, 166, .14);
+  color: $green;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  span {
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+    color: $gray-1;
+    font-size: 14px;
+  }
+}
+
+.quickStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(96px, 1fr));
+  gap: 10px;
+
+  div {
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(12, 12, 13, .54);
+    border: 1px solid rgba(255, 255, 255, .08);
+  }
+
+  strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  span {
+    color: $gray-1;
+    font-size: 13px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(280px, .9fr) minmax(340px, 1.1fr);
+  gap: 20px;
+}
+
+.panel,
+.panelWide {
+  padding: 20px;
+
+  h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.panelWide {
+  grid-column: 1 / -1;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid $black-light-3;
+  }
+
+  span {
+    color: $gray-1;
+  }
+
+  strong {
+    text-align: right;
+    font-weight: 500;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  div {
+    padding: 18px;
+    border-radius: 10px;
+    background: $black-light-2;
+  }
+
+  strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  span {
+    color: $gray-1;
+    font-size: 14px;
+  }
+}
+
+.projectList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border-radius: 10px;
+  color: $white;
+  background: $black-light-2;
+  transition: background-color .2s, transform .2s;
+
+  &:hover {
+    background: $black-light-3;
+    transform: translateY(-1px);
+  }
+
+  div {
+    min-width: 0;
+  }
+
+  strong,
+  span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  span {
+    color: $gray-1;
+    font-size: 13px;
+  }
+}
+
+.projectImage {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.empty,
+.state {
+  padding: 18px;
+  border-radius: 10px;
+  color: $gray-1;
+  background: $black-light-1;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quickStats {
+    grid-template-columns: 1fr;
+  }
+}

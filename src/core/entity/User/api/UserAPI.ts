@@ -38,3 +38,30 @@ export const getUsersAPI = async (params?: IArgsRequest["params"]) => {
     const headers = getHeaders(true)
     return await request({method: 'GET', url: getURL(url, params), headers} as IRequest)
 }
+
+export const getUserByIdAPI = async (userId: number | string) => {
+    const url = `${USER_API}/${userId}/`
+    const headers = getHeaders(true)
+    return await request({method: 'GET', url, headers} as IRequest)
+}
+
+export const createRegistrationRequestAPI = async (body: IArgsRequest["body"]) => {
+    const url = `${USER_API}/registration-request/`
+    return await request({
+        method: 'POST',
+        url,
+        body: JSON.stringify(body),
+    } as IRequest)
+}
+
+export const updateUserProfileAPI = async (userId: number | string, body: FormData) => {
+    const url = `${USER_API}/${userId}/update/`
+    return await request({
+        method: 'PUT',
+        url,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        body,
+    } as IRequest)
+}

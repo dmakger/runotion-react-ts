@@ -8,11 +8,12 @@ import {ETypeInput} from "core/components/Input/model/model";
 import {getFormData} from "core/components/Form/service/service";
 import {getUserData, login} from "core/entity/User/api/UserAPI";
 import {cls} from "core/service/cls";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {TASK__MAIN_URL} from "main/router/urlRouter";
 import {useActionCreators} from "core/storage/hooks";
 import {IDepartment} from "core/entity/Department/model/model";
 import {IUser} from "core/entity/User/model/model";
+import {REGISTRATION_REQUEST__AUTH_URL} from "auth/router/urlRouter";
 
 interface LoginFormProps {
     className?: string
@@ -63,6 +64,9 @@ const LoginForm = ({className, ...resp}: LoginFormProps) => {
                             name={'password'}
                             placeholder={'Password'}/>
                 <Button.Large className={cl.button} title={'Войти'}/>
+                <Link to={`/${REGISTRATION_REQUEST__AUTH_URL}`} className={cl.request}>
+                    Запросить доступ
+                </Link>
             </Form.Column>
 
             {error && <p className={cls(cl.error, cl.message)}>{error}</p>}

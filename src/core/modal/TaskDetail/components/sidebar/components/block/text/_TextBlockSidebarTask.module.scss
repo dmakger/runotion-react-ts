@@ -16,3 +16,33 @@
     }
   }
 }
+
+.deadline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  input {
+    min-height: 38px;
+    border: 1px solid $black-light-4;
+    border-radius: 10px;
+    outline: none;
+    background: linear-gradient(135deg, rgba(0, 242, 166, .1), $black-light-2);
+    color: $white;
+    padding: 0 10px;
+    color-scheme: dark;
+
+    &:focus {
+      border-color: $green;
+      box-shadow: 0 0 0 2px $green-dark;
+    }
+  }
+
+  button {
+    min-height: 32px;
+    border-radius: 8px;
+    background: $black-light-3;
+    color: $gray-2;
+  }
+}

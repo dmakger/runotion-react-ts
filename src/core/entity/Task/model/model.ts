@@ -45,7 +45,8 @@ export interface IQueryToTask extends IQuery{
 // ТИПЫ ПРЕДСТАВЛЕНИЙ [TASK]
 export enum ETypeTask {
     LIST,
-    KANBAN
+    KANBAN,
+    STATISTIC
 }
 
 export interface TaskPageProps {

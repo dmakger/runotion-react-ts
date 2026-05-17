@@ -3,7 +3,7 @@ import {IProject} from "core/entity/Project/model/model";
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {getProjectByIdAPI} from "core/entity/Project/api/ProjectApi";
-import {PROJECT__ROOT, PROJECT__TASK__ROOT} from "main/router/routes/projectRoot";
+import {PROJECT__ROOT, PROJECT__STATISTIC__ROOT, PROJECT__TASK__ROOT} from "main/router/routes/projectRoot";
 import {TRoute, TRouteArgs} from "core/entity/Route/model/model";
 import {swapArgsTRoute, swapArgUrl} from "main/router/service/service";
 import {PathSlice} from "core/entity/Path/slice/slice";
@@ -17,6 +17,7 @@ import {LeftMenuSlice} from "core/entity/LeftMenu/slice/slice";
 import {ProjectItemLeftMenu} from "core/entity/LeftMenu/data/data";
 import ProjectTaskPage from "main/pages/Project/pages/task/pages/list/ProjectTaskPage";
 import KanbanProjectTaskPage from "main/pages/Project/pages/task/pages/kanban/KanbanProjectTaskPage";
+import ChartPage from "main/pages/Chart/ChartPage";
 
 interface ProjectLayoutTaskPageProps extends TaskPageProps{}
 
@@ -73,19 +74,21 @@ const ProjectLayoutTaskPage = ({type}: ProjectLayoutTaskPageProps) => {
         dispatch(LeftMenuSlice.actions.setLeftMenu(ProjectItemLeftMenu), {refetchOnMountOrArgChange: true});
         // dispatch(CurrentEntitySlice.actions.set({...DATA_IN_PROJECT__CURRENT_ENTITY, data: project}), {refetchOnMountOrArgChange: true});
 
-        dispatch(PathSlice.actions.setPath([PROJECT__ROOT, getUpdatedUrl()]), {refetchOnMountOrArgChange: true});
+        dispatch(PathSlice.actions.setPath([PROJECT__ROOT, getUpdatedUrl(type === ETypeTask.STATISTIC ? PROJECT__STATISTIC__ROOT : PROJECT__TASK__ROOT)]), {refetchOnMountOrArgChange: true});
 
         dispatch(FunctionTopLineSlice.actions.setFunctionTopLine(DATA_TASK__FUNCTION_TOP_LINE), {refetchOnMountOrArgChange: true});
         dispatch(FunctionTopLineSlice.actions.swapVisibleByKey(DATA_TASK), {refetchOnMountOrArgChange: true});
 
         dispatch(ToggleSwitchSlice.actions.setToggleList(getUpdatedUrlToggleSwitch()));
 
-    }, [dispatch, getUpdatedUrl, getUpdatedUrlToggleSwitch, project]);
+    }, [dispatch, getUpdatedUrl, getUpdatedUrlToggleSwitch, project, type]);
 
 
     // ===={ RETURN }====
     if (type === ETypeTask.LIST)
         return <ProjectTaskPage />
+    if (type === ETypeTask.STATISTIC)
+        return <ChartPage projectId={projectId ? parseInt(projectId) : undefined} embedded />
     return (
         <KanbanProjectTaskPage />
     );

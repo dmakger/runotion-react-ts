@@ -1,13 +1,13 @@
 @import "core/scss/vars";
 
 .block {
-  width: min(920px, calc(100vw - 32px));
+  width: min(1120px, calc(100vw - 32px));
   max-height: calc(100vh - 48px);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -74,20 +74,83 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: min(440px, calc(100vh - 260px));
+  max-height: min(620px, calc(100vh - 250px));
   overflow-y: auto;
   padding-right: 4px;
 }
 
 .user {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 180px;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 16px;
   align-items: center;
   padding: 12px;
   background-color: $black-light-2;
   border: 1px solid $black-light-3;
   border-radius: 12px;
+}
+
+.person {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaRows {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-left: 34px;
+}
+
+.rolePill {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid $black-light-4;
+  border-radius: 999px;
+  background: $black-light-3;
+  color: $green;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 9px;
+}
+
+.locationText {
+  min-width: 0;
+  color: $black-light-5;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.remove {
+  min-height: 36px;
+  border-radius: 9px;
+  background: $black-light-3;
+  color: $black-light-5;
+  padding: 0 12px;
+  transition: background-color .2s, color .2s, opacity .2s;
+
+  &:hover:not(:disabled) {
+    background: $red-dark;
+    color: $red;
+  }
+
+  &:disabled {
+    opacity: .45;
+    cursor: default;
+  }
 }
 
 .state {
@@ -109,6 +172,7 @@
     grid-template-columns: 1fr;
   }
 
+  .controls,
   .roleSelect {
     grid-column: auto;
   }

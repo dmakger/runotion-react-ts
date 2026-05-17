@@ -96,9 +96,10 @@ export async function request({method, url, body, headers}: IRequest) {
     const data: Record<string, any> = {
         method: method,
         credentials: 'include',
-        headers: headers ?? getHeaders(),
         body: body,
     }
+    if (headers !== undefined) data.headers = headers
+    else if (!(body instanceof FormData)) data.headers = getHeaders()
 
     const res = await fetch(url, data)
     if (res.ok) {

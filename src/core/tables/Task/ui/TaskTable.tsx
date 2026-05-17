@@ -24,6 +24,8 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
     const [isVisible, setIsVisible] = useState(false)
     const [search, setSearch] = useState('')
     const [debouncedSearch, setDebouncedSearch] = useState('')
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(Number(DATA_PARAMS_TASK.limit || 30))
     const [searchParams, setSearchParams] = useSearchParams()
 
 
@@ -63,20 +65,34 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         if (projectId === undefined)
             body = {search: debouncedSearch || undefined}
 
-        return getTasksAPI(DATA_PARAMS_TASK, body).then(r => {
+        return getTasksAPI({...DATA_PARAMS_TASK, page: String(page), limit: String(limit)}, body).then(r => {
             setTableData({
                 header: DATA_HEADER_TASK_TABLE,
                 content: taskListToTableContent(r.results),
                 onLineClick: handleOnLineClick,
+                emptyText: 'Задач пока нет',
+                pagination: {
+                    count: r.count || 0,
+                    pages: r.pages || 0,
+                    currentPage: r.current_page || page,
+                    limit,
+                    limits: [10, 20, 30, 50],
+                    onPageChange: setPage,
+                    onLimitChange: (nextLimit) => {
+                        setLimit(nextLimit)
+                        setPage(1)
+                    },
+                },
             })
         }).catch(() => {
             setTableData({
                 header: DATA_HEADER_TASK_TABLE,
                 content: [],
                 onLineClick: handleOnLineClick,
+                emptyText: 'Задач пока нет',
             })
         });
-    }, [debouncedSearch, handleOnLineClick, projectId])
+    }, [debouncedSearch, handleOnLineClick, limit, page, projectId])
 
     // EFFECT
     useEffect(() => {
@@ -87,6 +103,10 @@ const TaskTable = ({projectId, className}: TaskTableProps) => {
         const timeout = window.setTimeout(() => setDebouncedSearch(search.trim()), 300)
         return () => window.clearTimeout(timeout)
     }, [search])
+
+    useEffect(() => {
+        setPage(1)
+    }, [debouncedSearch, projectId])
 
     useEffect(() => {
         const taskId = Number(searchParams.get('task'))

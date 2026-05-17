@@ -21,6 +21,9 @@ const ProjectTable = ({className}: ProjectTableProps) => {
     const [tableData, setTableData] = useState<ITable>()
     const [search, setSearch] = useState('')
     const [debouncedSearch, setDebouncedSearch] = useState('')
+    const [page, setPage] = useState(1)
+    const [limit, setLimit] = useState(Number(DATA_PARAMS_PROJECT.limit || 20))
+    const [pagination, setPagination] = useState({count: 0, pages: 0, currentPage: 1})
     const navigate = useNavigate()
 
     const handleOnLineClick = useCallback((line: ILineTable) => {
@@ -34,15 +37,33 @@ const ProjectTable = ({className}: ProjectTableProps) => {
         setTableData({
             header: DATA_HEADER_PROJECT_TABLE,
             content: projectListToTableContent(projects),
-            onLineClick: handleOnLineClick
+            onLineClick: handleOnLineClick,
+            emptyText: 'Проектов пока нет',
+            pagination: {
+                count: pagination.count,
+                pages: pagination.pages,
+                currentPage: pagination.currentPage,
+                limit,
+                limits: [10, 20, 30, 50],
+                onPageChange: setPage,
+                onLimitChange: (nextLimit) => {
+                    setLimit(nextLimit)
+                    setPage(1)
+                },
+            },
         })
-    }, [handleOnLineClick, projects])
+    }, [handleOnLineClick, limit, pagination, projects])
 
     useEffect(() => {
-        getProjectsAPI({...DATA_PARAMS_PROJECT, search: debouncedSearch || undefined}).then(r => {
+        getProjectsAPI({...DATA_PARAMS_PROJECT, page: String(page), limit: String(limit), search: debouncedSearch || undefined}).then(r => {
             setProjects(r.results)
+            setPagination({
+                count: r.count || 0,
+                pages: r.pages || 0,
+                currentPage: r.current_page || page,
+            })
         });
-    }, [debouncedSearch])
+    }, [debouncedSearch, limit, page])
 
     useEffect(() => {
         const handleProjectCreated = (event: Event) => {
@@ -75,6 +96,10 @@ const ProjectTable = ({className}: ProjectTableProps) => {
         const timeout = window.setTimeout(() => setDebouncedSearch(search.trim()), 300)
         return () => window.clearTimeout(timeout)
     }, [search])
+
+    useEffect(() => {
+        setPage(1)
+    }, [debouncedSearch])
 
     return (
         <>

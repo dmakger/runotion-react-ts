@@ -6,6 +6,8 @@
   gap: 10px;
   padding: 10px;
   min-width: 0;
+  color: $white;
+  text-decoration: none;
 
   .image {
     width: 40px;
@@ -29,6 +31,15 @@
   .subtitle {
     color: $black-light-5;
     font-size: 12px;
+  }
+}
+
+.link {
+  border-radius: 8px;
+  transition: background-color .15s, color .15s;
+
+  &:hover {
+    background: $black-light-3;
   }
 }
 

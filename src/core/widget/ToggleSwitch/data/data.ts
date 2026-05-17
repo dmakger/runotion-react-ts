@@ -1,5 +1,6 @@
 import {
     PROJECT__KANBAN__MAIN_URL,
+    PROJECT__STATISTIC__MAIN_URL,
     PROJECT__TASK__MAIN_URL,
     TASK__MAIN_URL,
     TASK_GANT__MAIN_URL
@@ -48,9 +49,17 @@ export const ProjectKanbanListItemToggleSwitch: IToggleSwitch = {
     isActive: false
 }
 
+export const ProjectStatisticItemToggleSwitch: IToggleSwitch = {
+    key: ETypeTask.STATISTIC,
+    title: 'Статистика',
+    to: PROJECT__STATISTIC__MAIN_URL,
+    isActive: false
+}
+
 
 
 export const DATA_PROJECT_TASK__TOGGLE_SWITCH: IToggleSwitch[] = [
     ProjectTaskListItemToggleSwitch,
-    ProjectKanbanListItemToggleSwitch
+    ProjectKanbanListItemToggleSwitch,
+    ProjectStatisticItemToggleSwitch
 ]

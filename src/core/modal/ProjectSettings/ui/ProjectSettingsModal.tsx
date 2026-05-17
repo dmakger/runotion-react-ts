@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import Modal from 'core/modal/core/ui/ui/Modal';
 import {IHintModal, IModal} from 'core/modal/core/modal/modal';
 import {getErrorHintModal, getSuccessHintModal} from 'core/modal/core/ui/components/hint/service/service';
-import {deleteProjectAPI, updateProjectAPI} from 'core/entity/Project/api/ProjectApi';
+import {deleteProjectAPI, updateProjectAPI, updateProjectFormAPI} from 'core/entity/Project/api/ProjectApi';
 import {IProject} from 'core/entity/Project/model/model';
 import {PROJECT_ALL__MAIN_URL} from 'main/router/urlRouter';
 import {useSetUrlModal} from 'core/modal/core/hooks/useUrlModalState';
@@ -21,6 +21,7 @@ const ProjectSettingsModal = ({
     onProjectChange = () => {},
 }: ProjectSettingsModalProps) => {
     const [name, setName] = useState(project.name)
+    const [image, setImage] = useState<File | null>(null)
     const [hint, setHint] = useState<IHintModal>()
     const [isSaving, setIsSaving] = useState(false)
     const navigate = useNavigate()
@@ -37,13 +38,23 @@ const ProjectSettingsModal = ({
             return
         }
 
+        const request = image
+            ? (() => {
+                const formData = new FormData()
+                formData.append('name', trimmedName)
+                formData.append('image', image)
+                return updateProjectFormAPI(project.id, formData)
+            })()
+            : updateProjectAPI(project.id, {name: trimmedName})
+
         setIsSaving(true)
-        updateProjectAPI(project.id, {name: trimmedName}).then((response: Partial<IProject>) => {
+        request.then((response: Partial<IProject>) => {
             const updatedProject = {
                 ...project,
                 name: response.name || trimmedName,
                 image: response.image || project.image,
             }
+            setImage(null)
             onProjectChange(updatedProject)
             setHint(getSuccessHintModal('Проект обновлен'))
             window.dispatchEvent(new CustomEvent('runotion:project-updated', {
@@ -83,6 +94,15 @@ const ProjectSettingsModal = ({
                     <input value={name}
                            onChange={(event) => setName(event.target.value)}
                            disabled={isSaving}/>
+                </label>
+
+                <label className={cl.fileField}>
+                    <span>Картинка проекта</span>
+                    <input type="file"
+                           accept="image/*"
+                           onChange={(event) => setImage(event.target.files?.[0] || null)}
+                           disabled={isSaving}/>
+                    <small>{image ? image.name : 'Можно выбрать логотип или обложку проекта'}</small>
                 </label>
 
                 <div className={cl.actions}>

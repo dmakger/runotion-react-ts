@@ -1,0 +1,75 @@
+@import "core/scss/vars";
+
+.form {
+  width: 100%;
+  // width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 12px;
+  background: $black-light-2;
+
+  button {
+    min-height: 40px;
+    border-radius: 9px;
+    color: $gray-2;
+    background: transparent;
+    font-weight: 500;
+  }
+
+  .active {
+    background: $green;
+    color: $black-light-1;
+  }
+}
+
+.comment {
+  min-height: 92px;
+  resize: vertical;
+  border: 2px solid $empty;
+  border-radius: 10px;
+  outline: none;
+  background: $black-light-3;
+  color: $white;
+  padding: 13px 15px;
+  font: inherit;
+
+  &:focus {
+    border-color: $green;
+  }
+
+  &::placeholder {
+    color: $black-light-5;
+  }
+}
+
+.back {
+  margin: 0 auto;
+  color: $gray-1;
+  text-decoration: none;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.success,
+.error {
+  margin: 0;
+  text-align: center;
+}
+
+.success {
+  color: $green;
+}
+
+.error {
+  color: $red;
+}

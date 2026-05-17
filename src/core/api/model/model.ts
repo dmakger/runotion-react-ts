@@ -15,7 +15,7 @@ export interface IArgsRequest {
 export interface IRequest {
     method: string,
     url: string,
-    body?: string,
+    body?: string | FormData,
     headers?: Record<string, string>
     params?: IParams
 }

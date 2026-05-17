@@ -1,5 +1,5 @@
 import { TRoute } from "core/entity/Route/model/model";
-import {PROJECT__KANBAN__MAIN_URL, PROJECT__TASK__MAIN_URL, PROJECT_ALL__MAIN_URL} from "../urlRouter";
+import {PROJECT__KANBAN__MAIN_URL, PROJECT__STATISTIC__MAIN_URL, PROJECT__TASK__MAIN_URL, PROJECT_ALL__MAIN_URL} from "../urlRouter";
 import ProjectPage from "main/pages/Project/pages/projects/ProjectPage";
 import ProjectLayout from "main/pages/Project/layout/ProjectLayout";
 import { Outlet, Route } from "react-router-dom";
@@ -23,6 +23,22 @@ export const PROJECT__ROOT: TRoute = {
         )
     },
     title: 'Проекты'
+}
+
+
+// STATISTIC of PROJECT
+export const PROJECT__STATISTIC__ROOT: TRoute = {
+    key: 'projectStatistic',
+    route: {
+        path: PROJECT__STATISTIC__MAIN_URL,
+        children: (
+            <>
+                <Route path={PROJECT__STATISTIC__MAIN_URL} element={<ProjectLayoutTaskPage type={ETypeTask.STATISTIC} />} />
+            </>
+        )
+    },
+    title: 'Статистика проекта',
+    titlePath: 'Статистика проекта',
 }
 
 

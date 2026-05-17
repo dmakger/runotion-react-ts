@@ -32,6 +32,7 @@ interface SmartSelectProps {
     searchValue?: string
     onSearchChange?: (value: string) => void
     withApplyButtons?: boolean
+    clearable?: boolean
     onChange: (value: any) => void
     className?: string
 }
@@ -84,6 +85,7 @@ const SmartSelect = ({
     searchValue,
     onSearchChange,
     withApplyButtons,
+    clearable = true,
     onChange,
     className,
 }: SmartSelectProps) => {
@@ -201,14 +203,7 @@ const SmartSelect = ({
         event.stopPropagation()
     }
 
-    const selectOption = (event: React.PointerEvent<HTMLButtonElement>, option: ISmartSelectOption) => {
-        event.preventDefault()
-        event.stopPropagation()
-        handleOptionClick(option)
-    }
-
     const clickOption = (event: React.MouseEvent<HTMLButtonElement>, option: ISmartSelectOption) => {
-        event.preventDefault()
         event.stopPropagation()
         handleOptionClick(option)
     }
@@ -263,7 +258,6 @@ const SmartSelect = ({
                         <button className={cls(cl.option, isSelected ? cl.optionSelected : '', option.disabled ? cl.optionDisabled : '')}
                                 type="button"
                                 key={option.value}
-                                onPointerDown={(event) => selectOption(event, option)}
                                 onMouseDown={(event) => event.stopPropagation()}
                                 onClick={(event) => clickOption(event, option)}>
                             <OptionVisual option={option}/>
@@ -310,7 +304,7 @@ const SmartSelect = ({
                     disabled={disabled}
                     onClick={() => setIsOpen(prev => !prev)}>
                 {renderTriggerContent()}
-                {selectedOptions.length > 0 &&
+                {clearable && selectedOptions.length > 0 &&
                     <span className={cl.clear} onClick={clearValue}>x</span>
                 }
                 <span className={cl.chevron}/>

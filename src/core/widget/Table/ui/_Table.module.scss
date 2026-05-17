@@ -1,9 +1,71 @@
 @import "core/scss/vars";
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .table {
   border-radius: 12px;
   padding: 6px;
   width: 100%;
   background-color: $black-light-2;
+}
+
+.empty {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px dashed $black-light-4;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(0, 242, 166, .06), rgba(39, 39, 42, .18));
+  color: $black-light-5;
+}
+
+.emptyMark {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: $black-light-2;
+  color: $green;
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: $gray-2;
+}
+
+.limit,
+.pages,
+.count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.limit select,
+.pages button {
+  min-height: 34px;
+  border-radius: 8px;
+  border: 1px solid $black-light-4;
+  background: $black-light-2;
+  color: $white;
+  padding: 0 10px;
+}
+
+.pages button:disabled {
+  opacity: .45;
 }

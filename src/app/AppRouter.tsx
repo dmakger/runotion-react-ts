@@ -19,6 +19,7 @@ const AppRouter = () => {
 
     // EFFECT
     useEffect(() => {
+        if (currentURL.includes('auth')) return
         refreshToken().then(r => {
             actionCreators.saveToken(r as IAuthResponse)
             getUserData().then(res => {
@@ -33,7 +34,7 @@ const AppRouter = () => {
             actionCreators.logout()
             navigate(LOGIN__AUTH_URL)
         })
-    }, [actionCreators, navigate])
+    }, [actionCreators, currentURL, navigate])
 
 
 

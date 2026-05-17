@@ -9,6 +9,7 @@ import {IUser} from 'core/entity/User/model/model';
 import {addTaskUserAPI, deleteTaskUserAPI} from 'core/entity/Task/api/TaskApi';
 import {getProjectUsersWithParamsAPI} from 'core/entity/Project/api/ProjectApi';
 import {IQueryToProjectUsers} from 'core/entity/Project/model/model';
+import {getUserDepartmentName, getUserDisplayName} from "core/entity/User/service/service";
 
 interface UsersBlockSidebarTaskProps {
     task: ITask
@@ -17,8 +18,6 @@ interface UsersBlockSidebarTaskProps {
 }
 
 type TaskMemberLevel = 'responsible' | 'collaborator' | 'observer'
-
-const getDisplayName = (user: IUser) => user.name || user.username || `ID ${user.id}`
 
 interface IPendingMember {
     user: IUser
@@ -61,8 +60,8 @@ const UsersBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Users
         .filter(user => !existingUserIds.has(user.id))
         .map(user => ({
             value: user.id,
-            label: getDisplayName(user),
-            subtitle: user.department?.name || user.username || 'Пользователь',
+            label: getUserDisplayName(user),
+            subtitle: getUserDepartmentName(user) || user.username || 'Пользователь',
             image: user.image,
             entity: 'user',
         }))
@@ -77,8 +76,8 @@ const UsersBlockSidebarTask = ({task, onTaskChange = () => {}, className}: Users
         return !!user && array.findIndex(item => item?.id === user.id) === index
     }).map(user => ({
         value: user.id,
-        label: getDisplayName(user),
-        subtitle: user.department?.name || user.username || 'Пользователь',
+        label: getUserDisplayName(user),
+        subtitle: getUserDepartmentName(user) || user.username || 'Пользователь',
         image: user.image,
         entity: 'user',
     }))

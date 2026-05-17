@@ -4,6 +4,16 @@
   margin: 0 auto;
 }
 
+.request {
+  margin: 0 auto;
+  color: $gray-1;
+  text-decoration: none;
+
+  &:hover {
+    color: $green;
+  }
+}
+
 .message {
   margin: 10px auto auto;
 }

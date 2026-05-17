@@ -24,3 +24,17 @@
     color: $black-light-5;
   }
 }
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: $white;
+  text-decoration: none;
+  border-radius: 8px;
+
+  &:hover {
+    color: $green;
+  }
+}

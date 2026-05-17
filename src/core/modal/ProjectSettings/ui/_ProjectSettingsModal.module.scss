@@ -32,6 +32,26 @@
   }
 }
 
+.fileField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: $black-light-5;
+
+  input {
+    min-height: 42px;
+    border: 1px dashed $black-light-4;
+    border-radius: 8px;
+    background: $black-light-2;
+    color: $gray-2;
+    padding: 9px 12px;
+  }
+
+  small {
+    color: $black-light-5;
+  }
+}
+
 .actions {
   display: grid;
   grid-template-columns: 1fr 1fr;

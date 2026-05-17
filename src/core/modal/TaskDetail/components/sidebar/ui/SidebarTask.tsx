@@ -30,7 +30,7 @@ const SidebarTask = ({task, onTaskChange, className}: SidebarTaskProps) => {
                                                    onTaskChange={onTaskChange}/>
                         <StageBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <CategoryBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
-                        <TextBlockSidebarTask task={task}/>
+                        <TextBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                         <UsersBlockSidebarTask task={task} onTaskChange={onTaskChange}/>
                     </>
                 }

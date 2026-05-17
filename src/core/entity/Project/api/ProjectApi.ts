@@ -48,6 +48,18 @@ export const updateProjectAPI = async (projectId: number | string, body: IArgsRe
     } as IRequest)
 }
 
+export const updateProjectFormAPI = async (projectId: number | string, body: FormData) => {
+    const url = `${PROJECT_API}/${projectId}/update/`
+    return await request({
+        method: 'PUT',
+        url,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        body,
+    } as IRequest)
+}
+
 
 export const deleteProjectAPI = async (projectId: number | string) => {
     const url = `${PROJECT_API}/${projectId}/delete/`
@@ -96,5 +108,14 @@ export const addProjectUserAPI = async (projectId: number | string, body: IArgsR
         url: url,
         headers: getHeaders(true),
         body: JSON.stringify(body),
+    } as IRequest)
+}
+
+export const deleteProjectUserAPI = async (projectId: number | string, userId: number | string) => {
+    const url = `${PROJECT_API}/${projectId}/users/${userId}/`
+    return await request({
+        method: 'DELETE',
+        url: url,
+        headers: getHeaders(true),
     } as IRequest)
 }

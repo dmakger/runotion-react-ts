@@ -6,6 +6,7 @@ import {IHintModal, IModal} from 'core/modal/core/modal/modal';
 import {getErrorHintModal, getSuccessHintModal} from 'core/modal/core/ui/components/hint/service/service';
 import {
     addProjectUserAPI,
+    deleteProjectUserAPI,
     getProjectRolesAPI,
     getProjectUsersWithParamsAPI
 } from 'core/entity/Project/api/ProjectApi';
@@ -16,6 +17,7 @@ import {cls} from 'core/service/cls';
 import User from 'core/entity/User/ui/user/User';
 import SmartSelect, {ISmartSelectOption} from 'core/components/SmartSelect/SmartSelect';
 import cl from './_ProjectUserModal.module.scss';
+import {getUserDepartmentName, getUserDisplayName} from "core/entity/User/service/service";
 
 interface ProjectUserModalProps extends IModal {
     projectId: number | string
@@ -28,10 +30,8 @@ interface IUserQuery {
     results: IUser[]
 }
 
-const PAGE_LIMIT = '12'
+const PAGE_LIMIT = '18'
 const USER_LIMIT = '10'
-
-const getDisplayName = (user: IUser) => user.name || user.username || `ID ${user.id}`
 
 const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className}: ProjectUserModalProps) => {
     const [roles, setRoles] = useState<IRoleProject[]>([])
@@ -107,12 +107,13 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
 
     const projectAdmin = useMemo(() => projectUsers.find(it => it.id === null), [projectUsers])
     const usersToInvite = useMemo(() => {
-        return users.filter(it => it.id !== projectAdmin?.user.id)
-    }, [projectAdmin, users])
+        const projectUserIds = new Set(projectUsers.map(it => it.user.id))
+        return users.filter(it => it.id !== projectAdmin?.user.id && !projectUserIds.has(it.id))
+    }, [projectAdmin, projectUsers, users])
     const userOptions: ISmartSelectOption[] = usersToInvite.map(user => ({
         value: user.id,
-        label: getDisplayName(user),
-        subtitle: user.department?.name || user.username || 'Пользователь',
+        label: getUserDisplayName(user),
+        subtitle: getUserDepartmentName(user) || user.username || 'Пользователь',
         image: user.image,
         entity: 'user',
     }))
@@ -131,6 +132,8 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
     }
 
     const saveUserRole = (userId: string | number, roleId: string | number) => {
+        if (!roleId) return Promise.resolve()
+
         setIsSaving(true)
         return addProjectUserAPI(projectId, {
             user_id: userId,
@@ -144,6 +147,21 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
                 return
             }
             setHintModal(getErrorHintModal('Не удалось сохранить должность'))
+        }).finally(() => setIsSaving(false))
+    }
+
+    const deleteProjectUser = (item: IUserToProject) => {
+        if (item.id === null) return
+
+        const previousUsers = projectUsers
+        setProjectUsers(prev => prev.filter(it => it.user.id !== item.user.id))
+        setIsSaving(true)
+
+        deleteProjectUserAPI(projectId, item.user.id).then(() => {
+            setHintModal(getSuccessHintModal('Участник удален из проекта'))
+        }).catch(() => {
+            setProjectUsers(previousUsers)
+            setHintModal(getErrorHintModal('Не удалось удалить участника'))
         }).finally(() => setIsSaving(false))
     }
 
@@ -224,16 +242,33 @@ const ProjectUserModal = ({projectId, isVisible = false, setIsVisible, className
                     <div className={cl.list} onScroll={handleScroll} ref={listRef}>
                         {projectUsers.map(item => (
                             <div className={cl.user} key={`${item.id}-${item.user.id}`}>
-                                <User user={item.user}
-                                      subtitle={item.user.username || 'Участник проекта'}
-                                      variant={'compact'}/>
-                                <SmartSelect value={item.role.id}
-                                             options={roleOptions}
-                                             disabled={item.id === null || isSaving}
-                                             onChange={(value) => saveUserRole(item.user.id, value)}
-                                             placeholder={'Должность'}
-                                             searchPlaceholder={'Найти должность'}
-                                             className={cl.roleSelect}/>
+                                <div className={cl.person}>
+                                    <User user={item.user}
+                                          subtitle={item.user.username || 'Участник проекта'}
+                                          variant={'compact'}/>
+                                    <div className={cl.metaRows}>
+                                        <span className={cl.rolePill}>{item.role.name}</span>
+                                        <span className={cl.locationText}>
+                                            {getUserDepartmentName(item.user) || 'Подразделение не указано'}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className={cl.controls}>
+                                    <SmartSelect value={item.role.id}
+                                                 options={roleOptions}
+                                                 disabled={item.id === null || isSaving}
+                                                 clearable={false}
+                                                 onChange={(value) => saveUserRole(item.user.id, value)}
+                                                 placeholder={'Должность'}
+                                                 searchPlaceholder={'Найти должность'}
+                                                 className={cl.roleSelect}/>
+                                    <button className={cl.remove}
+                                            type="button"
+                                            disabled={item.id === null || isSaving}
+                                            onClick={() => deleteProjectUser(item)}>
+                                        Удалить
+                                    </button>
+                                </div>
                             </div>
                         ))}
 

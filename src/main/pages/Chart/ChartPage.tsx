@@ -3,7 +3,6 @@ import {ChartItemLeftMenu} from "core/entity/LeftMenu/data/data";
 import {useDispatch} from "react-redux";
 import {LeftMenuSlice} from "core/entity/LeftMenu/slice/slice";
 import {PathSlice} from "core/entity/Path/slice/slice";
-import {CHART__ROOT} from "main/router/routes/chartRoot";
 import {
     chartFiltersAPI,
     taskByQuarterAPI,
@@ -25,6 +24,7 @@ import {IProject} from "core/entity/Project/model/model";
 import {IUser} from "core/entity/User/model/model";
 import SmartSelect, {ISmartSelectOption} from "core/components/SmartSelect/SmartSelect";
 import cl from './_ChartPage.module.scss'
+import {getUserDepartmentName, getUserDisplayName} from "core/entity/User/service/service";
 
 interface IChartState {
     deviation?: IChartPayload[]
@@ -73,7 +73,12 @@ const mergeById = <T extends {id: number}>(items: T[], selected: T[]) => {
     })
 }
 
-const ChartPage = () => {
+interface ChartPageProps {
+    projectId?: number
+    embedded?: boolean
+}
+
+const ChartPage = ({projectId, embedded = false}: ChartPageProps) => {
     const dispatch = useDispatch();
     const [projectOptions, setProjectOptions] = useState<IProject[]>([])
     const [userOptions, setUserOptions] = useState<IUser[]>([])
@@ -87,6 +92,7 @@ const ChartPage = () => {
     const [error, setError] = useState<string>()
     const [isLoading, setIsLoading] = useState(false)
     const selectedProjectIds = useMemo(() => selectedProjects.map(it => it.id), [selectedProjects])
+    const activeProjectIds = useMemo(() => projectId ? [projectId] : selectedProjectIds, [projectId, selectedProjectIds])
     const selectedUserIds = useMemo(() => selectedUsers.map(it => it.id), [selectedUsers])
 
     const projectSelectOptions: ISmartSelectOption[] = projectOptions.map(project => ({
@@ -98,27 +104,32 @@ const ChartPage = () => {
     }))
     const userSelectOptions: ISmartSelectOption[] = userOptions.map(user => ({
         value: user.id,
-        label: user.name || user.username,
-        subtitle: user.department?.name || user.username || 'Пользователь',
+        label: getUserDisplayName(user),
+        subtitle: getUserDepartmentName(user) || user.username || 'Пользователь',
         image: user.image,
         entity: 'user',
     }))
 
     const filterBody = useMemo(() => ({
-        projects: selectedProjectIds,
+        projects: activeProjectIds,
         users: selectedUserIds,
         status: selectedStatus || undefined,
         levels: [],
-    }), [selectedProjectIds, selectedStatus, selectedUserIds])
+    }), [activeProjectIds, selectedStatus, selectedUserIds])
 
     useEffect(() => {
+        if (embedded) return
         dispatch(LeftMenuSlice.actions.setLeftMenu(ChartItemLeftMenu));
-        dispatch(PathSlice.actions.setPath([CHART__ROOT]));
-    }, [dispatch]);
+        dispatch(PathSlice.actions.setPath([{
+            key: 'Chart',
+            route: {path: '/chart/'},
+            title: 'Статистика',
+        }]));
+    }, [dispatch, embedded]);
 
     useEffect(() => {
         chartFiltersAPI({
-            projects: selectedProjectIds,
+            projects: activeProjectIds,
             users: selectedUserIds,
             project_search: projectSearch,
             user_search: userSearch,
@@ -129,7 +140,7 @@ const ChartPage = () => {
             setProjectOptions(selectedProjects)
             setUserOptions(selectedUsers)
         })
-    }, [projectSearch, selectedProjectIds, selectedProjects, selectedUserIds, selectedUsers, userSearch])
+    }, [activeProjectIds, projectSearch, selectedProjects, selectedUserIds, selectedUsers, userSearch])
 
     useEffect(() => {
         setIsLoading(true)
@@ -173,7 +184,7 @@ const ChartPage = () => {
         setUserSearch('')
     }
 
-    const activeFilterCount = selectedProjects.length + selectedUsers.length + (selectedStatus ? 1 : 0)
+    const activeFilterCount = (projectId ? 0 : selectedProjects.length) + selectedUsers.length + (selectedStatus ? 1 : 0)
 
     return (
         <div className={cl.main}>
@@ -185,7 +196,7 @@ const ChartPage = () => {
                 </button>
 
                 <div className={cl.chips}>
-                    {selectedProjects.map(project => (
+                    {!projectId && selectedProjects.map(project => (
                         <button className={cl.chip} key={project.id}
                                 onClick={() => setProjectsByIds(selectedProjectIds.filter(id => id !== project.id))}>
                             {project.name}
@@ -194,7 +205,7 @@ const ChartPage = () => {
                     {selectedUsers.map(user => (
                         <button className={cl.chip} key={user.id}
                                 onClick={() => setUsersByIds(selectedUserIds.filter(id => id !== user.id))}>
-                            {user.name || user.username}
+                            {getUserDisplayName(user)}
                         </button>
                     ))}
                     {selectedStatus && (
@@ -209,7 +220,7 @@ const ChartPage = () => {
 
             {isFilterOpen && (
                 <div className={cl.popover}>
-                    <SmartSelect label={'Проекты'}
+                    {!projectId && <SmartSelect label={'Проекты'}
                                  hint={'Можно выбрать один или несколько проектов'}
                                  value={selectedProjectIds}
                                  options={projectSelectOptions}
@@ -220,7 +231,7 @@ const ChartPage = () => {
                                  searchValue={projectSearch}
                                  onSearchChange={setProjectSearch}
                                  emptyText={'Проекты не найдены'}
-                                 className={cl.filterColumn}/>
+                                 className={cl.filterColumn}/>}
 
                     <SmartSelect label={'Пользователи'}
                                  hint={'Список зависит от выбранных проектов'}
