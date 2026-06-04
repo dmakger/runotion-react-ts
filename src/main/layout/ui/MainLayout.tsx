@@ -8,6 +8,7 @@ import {TRoute} from "core/entity/Route/model/model";
 import H1 from "core/components/H/1/H1";
 import FunctionTopLine from "core/widget/FunctionTopLine/ui/FunctionTopLine";
 import {useLocation} from "react-router-dom";
+import NotificationBell from "core/entity/Notification/ui/NotificationBell";
 
 interface MainLayoutProps {
     children: ReactNode,
@@ -27,15 +28,23 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         }
     }, [dispatch, path, setCurrent]);
 
+    useEffect(() => {
+        const title = current?.titlePath || current?.title
+        document.title = title ? `${title} | ТаскМенеджер` : 'ТаскМенеджер'
+    }, [current]);
+
 
     return (
         <div className={cl.layout}>
             <LeftBarMain className={cl.leftBar} />
             <div className={cl.content}>
                 <Path />
-                {current !== undefined &&
-                    <H1>{current.title}</H1>
-                }
+                <div className={cl.topLine}>
+                    {current !== undefined &&
+                        <H1>{current.title}</H1>
+                    }
+                    <NotificationBell />
+                </div>
                 {!isChartPage && <FunctionTopLine />}
                 {children}
             </div>

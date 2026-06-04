@@ -3,6 +3,11 @@ import {IArgsRequest, IRequest} from "core/api/model/model";
 
 export const TASK_API = URL_API + '/task'
 
+const getAuthFormHeaders = () => ({
+    Accept: '*/*',
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+})
+
 // TASKS
 export const getTasksAPI = async (params?: IArgsRequest["params"], body?: IArgsRequest["body"]) => {
     const url = `${TASK_API}/all/`
@@ -88,13 +93,76 @@ export const getTaskCommentsAPI = async (taskId: number | string) => {
     } as IRequest)
 }
 
-export const createTaskCommentAPI = async (taskId: number | string, text: string) => {
+export const createTaskCommentAPI = async (taskId: number | string, text: string, files: File[] = []) => {
     const url = `${TASK_API}/${taskId}/comments/`
+    if (files.length > 0) {
+        const formData = new FormData()
+        formData.append('text', text)
+        files.forEach(file => formData.append('attachments', file))
+
+        return await request({
+            method: 'POST',
+            url: url,
+            headers: getAuthFormHeaders(),
+            body: formData,
+        } as IRequest)
+    }
+
     return await request({
         method: 'POST',
         url: url,
         headers: getHeaders(true),
         body: JSON.stringify({text}),
+    } as IRequest)
+}
+
+export const getNotificationsAPI = async () => {
+    const url = `${TASK_API}/notifications/`
+    return await request({
+        method: 'GET',
+        url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+export const getTaskAttachmentsAPI = async (taskId: number | string) => {
+    const url = `${TASK_API}/${taskId}/attachments/`
+    return await request({
+        method: 'GET',
+        url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+export const createTaskAttachmentsAPI = async (taskId: number | string, files: File[]) => {
+    const url = `${TASK_API}/${taskId}/attachments/`
+    const formData = new FormData()
+    files.forEach(file => formData.append('attachments', file))
+
+    return await request({
+        method: 'POST',
+        url,
+        headers: getAuthFormHeaders(),
+        body: formData,
+    } as IRequest)
+}
+
+export const deleteTaskAttachmentAPI = async (attachmentId: number | string) => {
+    const url = `${TASK_API}/attachment/${attachmentId}/delete/`
+    return await request({
+        method: 'DELETE',
+        url,
+        headers: getHeaders(true),
+    } as IRequest)
+}
+
+export const readNotificationsAPI = async (ids?: number[]) => {
+    const url = `${TASK_API}/notifications/`
+    return await request({
+        method: 'PATCH',
+        url,
+        headers: getHeaders(true),
+        body: JSON.stringify(ids ? {ids} : {all: true}),
     } as IRequest)
 }
 

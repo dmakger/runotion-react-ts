@@ -1,0 +1,90 @@
+@import "core/scss/vars";
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid $black-light-4;
+  border-radius: 10px;
+  background: $black-light-2;
+  padding: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: $black-light-5;
+}
+
+.upload {
+  min-height: 34px;
+  border-radius: 8px;
+  background: $green;
+  color: $black;
+  padding: 0 12px;
+  transition: opacity .2s, transform .2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: .55;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 8px;
+  background: $black-light-1;
+  padding: 7px 9px;
+}
+
+.link {
+  min-width: 0;
+  color: $white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.size {
+  color: $gray-1;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.delete {
+  color: $red;
+  font-size: 12px;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.empty {
+  color: $black-light-5;
+  font-size: 13px;
+}

@@ -11,6 +11,17 @@ export interface ITaskCategory {
     created_at: string
 }
 
+export interface ITaskAttachment {
+    id: number
+    user?: IUser | null
+    name: string
+    size: number
+    content_type: string
+    file: string
+    file_url: string
+    created_at: string
+}
+
 // TASK
 export interface ITask {
     id: number
@@ -27,13 +38,32 @@ export interface ITask {
     observers?: IUser[],
     category?: ITaskCategory | null,
     section?: ISection | null,
+    attachments?: ITaskAttachment[],
 }
 
 export interface ITaskComment {
     id: number
     user: IUser
     text: string
+    attachments?: ITaskAttachment[]
     created_at: string
+}
+
+export interface INotification {
+    id: number
+    type: string
+    title: string
+    text: string
+    is_read: boolean
+    created_at: string
+    actor?: IUser | null
+    project?: IProject | null
+    task?: {
+        id: number
+        name: string
+        code: string
+        project: number
+    } | null
 }
 
 

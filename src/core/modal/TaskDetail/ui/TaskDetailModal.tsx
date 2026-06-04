@@ -30,6 +30,15 @@ const TaskDetailModal = ({isVisible = false, setIsVisible, id, className}: TaskD
         }
     }, [id]);
 
+    useEffect(() => {
+        if (!task || !isVisible) return
+        const previousTitle = document.title
+        document.title = `${task.name} | ТаскМенеджер`
+        return () => {
+            document.title = previousTitle
+        }
+    }, [task, isVisible])
+
     if (!id || !task)
         return null;
 

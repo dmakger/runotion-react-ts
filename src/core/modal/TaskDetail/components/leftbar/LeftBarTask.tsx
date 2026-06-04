@@ -10,6 +10,7 @@ import ChecklistList from "core/entity/Checklist/ui/list/ChecklistList";
 import LoadingWrapper from "core/widget/Loading/ui/wrapper/LoadingWrapper";
 import TaskDescription from './components/description/TaskDescription';
 import TaskComments from './components/comments/TaskComments';
+import TaskAttachments from './components/attachments/TaskAttachments';
 
 interface LeftBarTaskProps {
     id: number
@@ -93,6 +94,7 @@ const LeftBarTask = ({id, task, onTaskChange = () => {}, className}: LeftBarTask
                 <TaskCode code={task.code} className={cl.code}/>
             </div>
             <TaskDescription task={task} onTaskChange={onTaskChange}/>
+            <TaskAttachments task={task} onTaskChange={onTaskChange}/>
             <LoadingWrapper isLoading={isLoadingChecklists}>
                 <ChecklistList checklistList={checklists}
                                createChecklist={createChecklist}

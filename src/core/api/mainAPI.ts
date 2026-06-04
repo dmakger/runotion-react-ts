@@ -6,6 +6,13 @@ export const IS_PROD = false;
 // export const CURRENT_URL = GLOBAL_URL;
 export const CURRENT_URL = LOCAL_URL;
 export const URL_API = `${CURRENT_URL}/api`;
+export const WS_URL = CURRENT_URL.replace(/^http/, 'ws');
+
+export const getWebSocketURL = (path: string) => {
+    const token = localStorage.getItem('accessToken')
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`
+    return `${WS_URL}${normalizedPath}?token=${encodeURIComponent(token || '')}`
+}
 
 export const HEADERS: Record<string, string> = {
     'Content-Type': 'application/json',

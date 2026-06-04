@@ -88,6 +88,41 @@
   line-height: 1.35;
 }
 
+.attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.attachment {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, .18);
+  color: $white;
+  padding: 7px 9px;
+
+  &:hover {
+    border-color: rgba($green, .42);
+  }
+}
+
+.attachmentName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachmentSize {
+  color: $gray-1;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
 .time {
   align-self: flex-end;
   color: $gray-2;
@@ -103,11 +138,18 @@
 
 .form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   gap: 10px;
   padding: 10px;
   border-top: 1px solid $black-light-4;
   background: $black-light-2;
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
 }
 
 .input {
@@ -130,14 +172,56 @@
   }
 }
 
+.selectedFiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.selectedFile {
+  max-width: 180px;
+  min-height: 28px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 8px;
+  background: $black-light-1;
+  color: $gray-2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 9px;
+
+  &:hover {
+    border-color: $red;
+    color: $white;
+  }
+}
+
+.attach,
 .send {
   align-self: end;
   min-height: 42px;
   border-radius: 10px;
-  background: $green;
-  color: $black;
   padding: 0 14px;
   transition: opacity .2s, transform .2s;
+}
+
+.attach {
+  border: 1px solid $black-light-4;
+  background: $black-light-1;
+  color: $white;
+
+  &:hover {
+    border-color: $green;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+
+.send {
+  background: $green;
+  color: $black;
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
