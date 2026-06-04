@@ -2,9 +2,8 @@ import {IParams, IRequest} from "core/api/model/model";
 
 export const LOCAL_URL = 'http://127.0.0.1:8000';
 export const GLOBAL_URL = 'https://api.ru-notion.ru';
-export const IS_PROD = false;
-// export const CURRENT_URL = GLOBAL_URL;
-export const CURRENT_URL = LOCAL_URL;
+export const CURRENT_URL = process.env.REACT_APP_SERVER_URL || LOCAL_URL;
+export const IS_PROD = CURRENT_URL === GLOBAL_URL;
 export const URL_API = `${CURRENT_URL}/api`;
 export const WS_URL = CURRENT_URL.replace(/^http/, 'ws');
 
