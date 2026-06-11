@@ -12,10 +12,11 @@ interface ItemBodySectionItemProps {
     sectionData: any
     color?: string
     isRecentlyMoved?: boolean
+    onClick?: (itemId: number) => void
     className?: string
 }
 
-const ItemBodySectionItem = ({ident, sectionData, color, isRecentlyMoved, className}: ItemBodySectionItemProps) => {    
+const ItemBodySectionItem = ({ident, sectionData, color, isRecentlyMoved, onClick, className}: ItemBodySectionItemProps) => {    
     const {attributes, listeners, setNodeRef, transform, transition, isDragging} = useSortable({
         id: ident,
         data: {
@@ -36,6 +37,7 @@ const ItemBodySectionItem = ({ident, sectionData, color, isRecentlyMoved, classN
                 style={style}
                 {...attributes}
                 {...listeners}
+                onClick={() => onClick?.(sectionData.id)}
                 className={cls(cl.block, isDragging ? cl.dragging : '', isRecentlyMoved ? cl.justMoved : '', className)}>
             <span className={cl.name}>{sectionData.name}</span>
             {sectionData.category &&

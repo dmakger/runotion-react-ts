@@ -20,10 +20,10 @@ const StageBlockSidebarTask = ({task, onTaskChange = () => {}}: StageBlockSideba
     }, [task.project.id])
 
     const activeIndex = useMemo(() => {
-        const indexByBody = sections.findIndex(section => section.body?.some(item => item.id === task.id))
-        if (indexByBody >= 0) return indexByBody
+        const indexByTask = sections.findIndex(section => section.id === task.section?.id)
+        if (indexByTask >= 0) return indexByTask
 
-        return sections.findIndex(section => section.id === task.section?.id)
+        return sections.findIndex(section => section.body?.some(item => item.id === task.id))
     }, [sections, task.id, task.section?.id])
 
     const activeSection = activeIndex >= 0 ? sections[activeIndex] : undefined

@@ -22,36 +22,10 @@
 }
 
 .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 17px;
-  border-radius: 8px 8px 6px 6px;
-  border: 2px solid currentColor;
-  border-bottom: 0;
-  position: relative;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    width: 7px;
-    height: 5px;
-    border: 2px solid currentColor;
-    border-bottom: 0;
-    border-radius: 8px 8px 0 0;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: currentColor;
-  }
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin: auto;
 }
 
 .badge {

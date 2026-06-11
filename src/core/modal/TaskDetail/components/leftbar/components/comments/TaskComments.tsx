@@ -2,11 +2,11 @@ import React, {ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState} fro
 import {format, isSameDay, isSameYear, isToday, parseISO} from 'date-fns';
 import {ru} from 'date-fns/locale/ru';
 import {createTaskCommentAPI, getTaskCommentsAPI} from 'core/entity/Task/api/TaskApi';
-import {ITaskComment} from 'core/entity/Task/model/model';
+import {ITaskComment, ITaskFeedItem, ITaskHistory} from 'core/entity/Task/model/model';
 import {getWebSocketURL} from 'core/api/mainAPI';
 import {useAppSelector} from 'core/storage/hooks';
 import {cls} from 'core/service/cls';
-import {getAttachmentUrl} from '../attachments/TaskAttachments';
+import {downloadAttachment, getAttachmentDisplayName} from '../attachments/TaskAttachments';
 import cl from './_TaskComments.module.scss';
 
 interface TaskCommentsProps {
@@ -19,17 +19,19 @@ const getDateLabel = (date: Date) => {
     return format(date, 'd MMMM yyyy', {locale: ru})
 }
 
-const groupComments = (comments: ITaskComment[]) => {
-    return comments.reduce<{label: string, comments: ITaskComment[]}[]>((acc, comment) => {
-        const date = parseISO(comment.created_at)
+const isHistoryItem = (item: ITaskFeedItem): item is ITaskHistory => item.item_type === 'history'
+
+const groupFeedItems = (items: ITaskFeedItem[]) => {
+    return items.reduce<{label: string, items: ITaskFeedItem[]}[]>((acc, item) => {
+        const date = parseISO(item.created_at)
         const lastGroup = acc[acc.length - 1]
 
-        if (lastGroup && isSameDay(parseISO(lastGroup.comments[0].created_at), date)) {
-            lastGroup.comments.push(comment)
+        if (lastGroup && isSameDay(parseISO(lastGroup.items[0].created_at), date)) {
+            lastGroup.items.push(item)
             return acc
         }
 
-        acc.push({label: getDateLabel(date), comments: [comment]})
+        acc.push({label: getDateLabel(date), items: [item]})
         return acc
     }, [])
 }
@@ -40,19 +42,21 @@ const formatFileSize = (size: number) => {
     return `${(size / 1024 / 1024).toFixed(1)} МБ`
 }
 
+const getItemKey = (item: ITaskFeedItem) => `${item.item_type || 'comment'}-${item.id}`
+
 const TaskComments = ({taskId}: TaskCommentsProps) => {
     const currentUser = useAppSelector(state => state.user)
-    const [comments, setComments] = useState<ITaskComment[]>([])
+    const [items, setItems] = useState<ITaskFeedItem[]>([])
     const [text, setText] = useState('')
     const [files, setFiles] = useState<File[]>([])
     const [isSending, setIsSending] = useState(false)
     const socketRef = useRef<WebSocket | null>(null)
     const bottomRef = useRef<HTMLDivElement>(null)
     const fileInputRef = useRef<HTMLInputElement>(null)
-    const groups = useMemo(() => groupComments(comments), [comments])
+    const groups = useMemo(() => groupFeedItems(items), [items])
 
     useEffect(() => {
-        getTaskCommentsAPI(taskId).then(setComments)
+        getTaskCommentsAPI(taskId).then(setItems)
     }, [taskId])
 
     useEffect(() => {
@@ -61,8 +65,12 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
 
         socket.onmessage = (event) => {
             const payload = JSON.parse(event.data)
-            if (payload.type !== 'comment.created' || !payload.comment) return
-            setComments(prev => prev.some(item => item.id === payload.comment.id) ? prev : [...prev, payload.comment])
+            if (payload.type === 'comment.created' && payload.comment) {
+                addFeedItem(payload.comment)
+            }
+            if (payload.type === 'history.created' && payload.history) {
+                addFeedItem(payload.history)
+            }
         }
 
         socket.onclose = () => {
@@ -77,7 +85,7 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
 
     useEffect(() => {
         bottomRef.current?.scrollIntoView({block: 'end'})
-    }, [comments.length])
+    }, [items.length])
 
     const selectFiles = (event: ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = Array.from(event.target.files || [])
@@ -90,8 +98,8 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
         setFiles(prev => prev.filter((_, fileIndex) => fileIndex !== index))
     }
 
-    const addComment = (comment: ITaskComment) => {
-        setComments(prev => prev.some(item => item.id === comment.id) ? prev : [...prev, comment])
+    const addFeedItem = (item: ITaskFeedItem) => {
+        setItems(prev => prev.some(prevItem => getItemKey(prevItem) === getItemKey(item)) ? prev : [...prev, item])
     }
 
     const sendComment = (event?: FormEvent) => {
@@ -104,7 +112,7 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
             setIsSending(true)
             createTaskCommentAPI(taskId, nextText, nextFiles)
                 .then((comment: ITaskComment) => {
-                    addComment(comment)
+                    addFeedItem(comment)
                     setText('')
                     setFiles([])
                 })
@@ -113,6 +121,7 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
         }
 
         const optimisticComment: ITaskComment = {
+            item_type: 'comment',
             id: -Date.now(),
             user: currentUser,
             text: nextText,
@@ -129,14 +138,14 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
             return
         }
 
-        setComments(prev => [...prev, optimisticComment])
+        setItems(prev => [...prev, optimisticComment])
 
         createTaskCommentAPI(taskId, nextText)
             .then((comment: ITaskComment) => {
-                setComments(prev => prev.map(item => item.id === optimisticComment.id ? comment : item))
+                setItems(prev => prev.map(item => getItemKey(item) === getItemKey(optimisticComment) ? comment : item))
             })
             .catch(() => {
-                setComments(prev => prev.filter(item => item.id !== optimisticComment.id))
+                setItems(prev => prev.filter(item => getItemKey(item) !== getItemKey(optimisticComment)))
                 setText(nextText)
             })
             .finally(() => setIsSending(false))
@@ -149,36 +158,49 @@ const TaskComments = ({taskId}: TaskCommentsProps) => {
                 {groups.map(group => (
                     <div className={cl.group} key={group.label}>
                         <div className={cl.date}>{group.label}</div>
-                        {group.comments.map(comment => {
-                            const isMine = comment.user.id === currentUser.id
-                            const attachments = comment.attachments || []
+                        {group.items.map(item => {
+                            if (isHistoryItem(item)) {
+                                return (
+                                    <div className={cl.historyRow} key={getItemKey(item)}>
+                                        <div className={cl.historyCard}>
+                                            <span className={cl.historyTitle}>{item.title}</span>
+                                            {item.text && <span className={cl.historyText}>{item.text}</span>}
+                                            <span className={cl.historyMeta}>
+                                                {item.user?.name || item.user?.username || 'Система'} · {format(parseISO(item.created_at), 'HH:mm')}
+                                            </span>
+                                        </div>
+                                    </div>
+                                )
+                            }
+
+                            const isMine = item.user.id === currentUser.id
+                            const attachments = item.attachments || []
                             return (
-                                <div className={cls(cl.messageRow, isMine ? cl.mine : '')} key={comment.id}>
+                                <div className={cls(cl.messageRow, isMine ? cl.mine : '')} key={getItemKey(item)}>
                                     <div className={cl.bubble}>
-                                        {!isMine && <span className={cl.author}>{comment.user.name || comment.user.username}</span>}
-                                        {comment.text && <span className={cl.text}>{comment.text}</span>}
+                                        {!isMine && <span className={cl.author}>{item.user.name || item.user.username}</span>}
+                                        {item.text && <span className={cl.text}>{item.text}</span>}
                                         {attachments.length > 0 && (
                                             <div className={cl.attachments}>
                                                 {attachments.map(attachment => (
-                                                    <a className={cl.attachment}
-                                                       href={getAttachmentUrl(attachment)}
-                                                       target="_blank"
-                                                       rel="noreferrer"
-                                                       key={attachment.id}>
-                                                        <span className={cl.attachmentName}>{attachment.name}</span>
+                                                    <button className={cl.attachment}
+                                                            type="button"
+                                                            onClick={() => downloadAttachment(attachment)}
+                                                            key={attachment.id}>
+                                                        <span className={cl.attachmentName}>{getAttachmentDisplayName(attachment)}</span>
                                                         <span className={cl.attachmentSize}>{formatFileSize(attachment.size)}</span>
-                                                    </a>
+                                                    </button>
                                                 ))}
                                             </div>
                                         )}
-                                        <span className={cl.time}>{format(parseISO(comment.created_at), 'HH:mm')}</span>
+                                        <span className={cl.time}>{format(parseISO(item.created_at), 'HH:mm')}</span>
                                     </div>
                                 </div>
                             )
                         })}
                     </div>
                 ))}
-                {comments.length === 0 && <div className={cl.empty}>Комментариев пока нет</div>}
+                {items.length === 0 && <div className={cl.empty}>Комментариев пока нет</div>}
                 <div ref={bottomRef}/>
             </div>
             <form className={cl.form} onSubmit={sendComment}>

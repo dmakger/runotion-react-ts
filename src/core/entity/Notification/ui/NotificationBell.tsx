@@ -3,6 +3,7 @@ import {format, parseISO} from 'date-fns';
 import {getNotificationsAPI, readNotificationsAPI} from 'core/entity/Task/api/TaskApi';
 import {INotification} from 'core/entity/Task/model/model';
 import {getWebSocketURL} from 'core/api/mainAPI';
+import notificationIcon from 'core/static/img/notification.svg';
 import cl from './_NotificationBell.module.scss';
 
 const NotificationBell = () => {
@@ -45,7 +46,7 @@ const NotificationBell = () => {
     return (
         <div className={cl.wrapper}>
             <button className={cl.button} type="button" onClick={() => setIsOpen(prev => !prev)} title="Уведомления">
-                <span className={cl.icon}/>
+                <img className={cl.icon} src={notificationIcon} alt=""/>
                 {unreadCount > 0 && <span className={cl.badge}>{unreadCount > 99 ? '99+' : unreadCount}</span>}
             </button>
             {isOpen && (

@@ -18,11 +18,44 @@ const formatFileSize = (size: number) => {
     return `${(size / 1024 / 1024).toFixed(1)} МБ`
 }
 
-export const getAttachmentUrl = (attachment: Pick<ITaskAttachment, 'file' | 'file_url'>) => {
-    const url = attachment.file_url || attachment.file
+const getAbsoluteUrl = (url: string) => {
     if (!url) return ''
     if (url.startsWith('http')) return url
     return `${CURRENT_URL}${url.startsWith('/') ? url : `/${url}`}`
+}
+
+export const getAttachmentUrl = (attachment: Pick<ITaskAttachment, 'file' | 'file_url'>) => {
+    return getAbsoluteUrl(attachment.file_url || attachment.file)
+}
+
+export const getAttachmentDownloadUrl = (
+    attachment: Pick<ITaskAttachment, 'file' | 'file_url' | 'download_url'>,
+) => {
+    return getAbsoluteUrl(attachment.download_url || attachment.file_url || attachment.file)
+}
+
+export const getAttachmentDisplayName = (attachment: Pick<ITaskAttachment, 'name' | 'display_name'>) => {
+    return attachment.display_name || attachment.name
+}
+
+export const downloadAttachment = async (attachment: ITaskAttachment) => {
+    const response = await fetch(getAttachmentDownloadUrl(attachment), {
+        credentials: 'include',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+    })
+    if (!response.ok) return Promise.reject(response)
+
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = getAttachmentDisplayName(attachment)
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    window.URL.revokeObjectURL(url)
 }
 
 const TaskAttachments = ({task, onTaskChange = () => {}}: TaskAttachmentsProps) => {
@@ -78,12 +111,12 @@ const TaskAttachments = ({task, onTaskChange = () => {}}: TaskAttachmentsProps) 
                 <div className={cl.list}>
                     {attachments.map(attachment => (
                         <div className={cl.item} key={attachment.id}>
-                            <a className={cl.link}
-                               href={getAttachmentUrl(attachment)}
-                               target="_blank"
-                               rel="noreferrer">
-                                {attachment.name}
-                            </a>
+                            <button className={cl.link}
+                                    type="button"
+                                    onClick={() => downloadAttachment(attachment)}>
+                                <span className={cl.displayName}>{getAttachmentDisplayName(attachment)}</span>
+                                <span className={cl.storedName}>Сохранено как: {attachment.stored_name || attachment.file}</span>
+                            </button>
                             <span className={cl.size}>{formatFileSize(attachment.size)}</span>
                             <button className={cl.delete}
                                     type="button"

@@ -15,10 +15,13 @@ export interface ITaskAttachment {
     id: number
     user?: IUser | null
     name: string
+    display_name?: string
+    stored_name?: string
     size: number
     content_type: string
     file: string
     file_url: string
+    download_url?: string
     created_at: string
 }
 
@@ -42,12 +45,28 @@ export interface ITask {
 }
 
 export interface ITaskComment {
+    item_type?: 'comment'
     id: number
     user: IUser
     text: string
     attachments?: ITaskAttachment[]
     created_at: string
 }
+
+export interface ITaskHistory {
+    item_type: 'history'
+    id: number
+    user?: IUser | null
+    type: string
+    title: string
+    text: string
+    field: string
+    old_value: string
+    new_value: string
+    created_at: string
+}
+
+export type ITaskFeedItem = ITaskComment | ITaskHistory
 
 export interface INotification {
     id: number

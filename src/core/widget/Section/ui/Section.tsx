@@ -186,6 +186,7 @@ const Section = ({
                                      activeItemId={activeItemId}
                                      movedItemId={movedItemId}
                                      onFinalToggle={onSectionFinalToggle}
+                                     onItemClick={onItemClick}
                                      key={it.id} />
                     ))}
                 </SortableContext>

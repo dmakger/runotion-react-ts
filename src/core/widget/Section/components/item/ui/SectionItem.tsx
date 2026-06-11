@@ -21,10 +21,11 @@ interface SectionItemProps {
     activeItemId?: number
     movedItemId?: number
     onFinalToggle?: (section: ISection, isFinal: boolean) => void
+    onItemClick?: ISectionFunction['onItemClick']
     className?: string
 }
 
-const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropIndex, activeItemId, movedItemId, onFinalToggle, className}: SectionItemProps) => {
+const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropIndex, activeItemId, movedItemId, onFinalToggle, onItemClick, className}: SectionItemProps) => {
     // console.log('SectionItem');
     
     const colorValue = getValueColor(color)
@@ -63,7 +64,8 @@ const SectionItem = ({ident, section, color, onAddItemClick, isDragTarget, dropI
                              isDragTarget={isDragTarget}
                              dropIndex={dropIndex}
                              activeItemId={activeItemId}
-                             movedItemId={movedItemId}/>
+                             movedItemId={movedItemId}
+                             onItemClick={onItemClick}/>
         </div>
     );
 };

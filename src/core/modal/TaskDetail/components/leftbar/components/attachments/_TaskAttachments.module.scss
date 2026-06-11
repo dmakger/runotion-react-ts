@@ -59,14 +59,30 @@
 
 .link {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   color: $white;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-align: left;
 
   &:hover {
     color: $green;
   }
+}
+
+.displayName,
+.storedName {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.storedName {
+  color: $gray-1;
+  font-size: 11px;
 }
 
 .size {

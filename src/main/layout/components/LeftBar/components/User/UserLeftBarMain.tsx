@@ -19,7 +19,8 @@ const UserLeftBarMain = ({className}: UserLeftBarMainProps) => {
                 <User user={user}
                       subtitle={getUserDepartmentName(user)}
                       size={'lg'}
-                      variant={'compact'}/>
+                      variant={'compact'}
+                      clickable={false}/>
             </LoadingWrapper>
         </Link>
     );

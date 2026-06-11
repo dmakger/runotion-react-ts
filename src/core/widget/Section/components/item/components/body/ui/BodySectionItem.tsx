@@ -4,7 +4,7 @@ import {cls} from "core/service/cls";
 import ItemBodySectionItem
     from "core/widget/Section/components/item/components/body/components/item/ItemBodySectionItem";
 import {SortableContext} from '@dnd-kit/sortable';
-import {ETypeSection} from "core/widget/Section/model/model";
+import {ETypeSection, ISectionFunction} from "core/widget/Section/model/model";
 
 interface BodySectionItemProps {
     body?: any[]
@@ -13,12 +13,13 @@ interface BodySectionItemProps {
     dropIndex?: number
     activeItemId?: number
     movedItemId?: number
+    onItemClick?: ISectionFunction['onItemClick']
     className?: string
 }
 
 const DropIndicator = () => <div className={cl.dropIndicator}/>
 
-const BodySectionItem = ({body, color, isDragTarget, dropIndex, activeItemId, movedItemId, className}: BodySectionItemProps) => {
+const BodySectionItem = ({body, color, isDragTarget, dropIndex, activeItemId, movedItemId, onItemClick, className}: BodySectionItemProps) => {
     const items = body || []
 
     return (
@@ -31,7 +32,8 @@ const BodySectionItem = ({body, color, isDragTarget, dropIndex, activeItemId, mo
                         <ItemBodySectionItem ident={`${ETypeSection.ITEM}-${it.id}`}
                                              sectionData={it}
                                              color={color}
-                                             isRecentlyMoved={movedItemId === it.id}/>
+                                             isRecentlyMoved={movedItemId === it.id}
+                                             onClick={onItemClick}/>
                     </React.Fragment>
                 ))}
                 {dropIndex === items.length && <DropIndicator/>}
